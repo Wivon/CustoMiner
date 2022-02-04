@@ -10,21 +10,25 @@
     "deploy": "electron-builder build --win --publish always"
   },
   "build": {
-    "appId": "og-hub",
+    "appId": "custominer",
     "win": {
       "icon": "src/img/logoX512.ico"
     },
     "nsis": {
       "installerIcon": "src/img/setup_logoX512.ico",
       "uninstallerIcon": "src/img/uninstall_logoX512.ico",
-      "uninstallDisplayName": "uninstall OG Hub",
+      "uninstallDisplayName": "uninstall CustoMiner",
       "oneClick": false,
-      "shortcutName": "OG Hub",
+      "shortcutName": "CustoMiner",
       "allowToChangeInstallationDirectory": true
     }
   },
   "keywords": [
-    "OG hub"
+    "CustoMiner",
+    "custominer",
+    "customine",
+    "CustoMine",
+    "Minecraft"
   ],
   "author": "Wivon Hub",
   "repository": {
