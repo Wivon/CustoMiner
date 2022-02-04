@@ -1,0 +1,44 @@
+{
+  "name": "custominer",
+  "productName": "CustoMiner",
+  "version": "0.0.1",
+  "description": "Easiest way to install mods, resourcespacks to Minecraft",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
+  },
+  "build": {
+    "appId": "og-hub",
+    "win": {
+      "icon": "src/img/logoX512.ico"
+    },
+    "nsis": {
+      "installerIcon": "src/img/setup_logoX512.ico",
+      "uninstallerIcon": "src/img/uninstall_logoX512.ico",
+      "uninstallDisplayName": "uninstall OG Hub",
+      "oneClick": false,
+      "shortcutName": "OG Hub",
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "keywords": [
+    "OG hub"
+  ],
+  "author": "Wivon Hub",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wivon/CustoMiner.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.1.7",
+    "electron-builder": "^22.11.7"
+  },
+  "dependencies": {
+    "electron-log": "^4.4.1",
+    "electron-updater": "^4.3.9",
+    "path": "^0.12.7"
+  }
+}
