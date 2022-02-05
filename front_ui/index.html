@@ -9,6 +9,7 @@
 
     <!-- links -->
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/app.js" defer></script>
 </head>
 
 <body>
@@ -16,12 +17,18 @@
         <div class="left">
             <img src="#" alt="appIcon">
             <div class="actions">
-                <a href="#">HOME</a>
+                <a href="#" class="active">HOME</a>
                 <a href="#">SETTINGS</a>
                 <a href="#">LIBRARY</a>
             </div>
         </div>
+        <div class="right">
+            <div class="minimizeBtn miniBtn">-</div>
+            <div class="closeBtn miniBtn">X</div>
+        </div>
     </div>
+
+    
 
     <script>
         window.onkeyup = (e) => {

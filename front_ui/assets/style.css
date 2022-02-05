@@ -5,12 +5,41 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
+    transition: 0.2s ease-in;
+    user-select: none;
+}
+
+:root {
+    /* colors */
+    --primary-action-backgrnd: #51F570;
+    --destructive-action-backgrnd: #E02B2B;
+    --secondary-action-backgrnd: rgba(195, 195, 195, 0.4);
+
+    /* button text */
+    --btn-text-size: 36;
+    --btn-text-weight: 500;
+    --btn-border-radius: 8px;
+
+    /* text sizes */
+    --title-size: 48px;
+    --subtitle-size: 40px;
+    --text-size: 22px;
+
+    /* text weights */
+    --title-weight: 700;
+    --subtitle-weight: 500;
+    --text-weight: 500;
+
+    /* text colors */
+    --main-text-color: #ffffff;
+    --main-text-color: rgba(255, 255, 255, 0.75);
 }
 
 body {
     background: url(img/bg-wool-dark.png);
     background-repeat: repeat;
     background-size: 25%;
+    background-position: fixed;
 }
 
 .nav {
@@ -19,13 +48,13 @@ body {
     left: 0;
     right: 0;
     height: 60px;
-    background: rgba(31, 31, 31, 0.50);
+    background: rgba(0, 0, 0, .25);
     backdrop-filter: blur(15px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     vertical-align: middle;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .nav .left {
@@ -51,6 +80,26 @@ body {
 .nav .left a {
     color: #fff;
     text-decoration: none;
-    font-size: 34px;
-    padding-right: 20px;
+    font-size: 32px;
+    margin-right: 35px;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav .left a::after {
+    content: '';
+    background: #fff;
+    height: 3px;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: 0.2s ease-in !important;
+}
+
+.nav .left a.active::after {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
 }
