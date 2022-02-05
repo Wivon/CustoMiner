@@ -23,18 +23,23 @@
             </div>
         </div>
         <div class="right">
-            <div class="minimizeBtn miniBtn">-</div>
-            <div class="closeBtn miniBtn">X</div>
+            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')">-</div>
+            <div class="closeBtn miniBtn" onclick="ipcRenderer.send('quit')">X</div>
         </div>
     </div>
 
     
 
     <script>
+        const { ipcRenderer, shell } = require('electron');
+
         window.onkeyup = (e) => {
             if (e.keyCode == 116) {
                 window.location.reload()
                 console.log('reloading...')
+            }
+            if (e.keyCode == 123) {
+                ipcRenderer.send('open-devtools')
             }
         }
     </script>

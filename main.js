@@ -24,12 +24,22 @@ function createWindow() {
         mainWindow = null;
     });
 
-    // open dev tools 
-    mainWindow.webContents.openDevTools()
-
     // hide menubar  
     mainWindow.setMenu(null)
+
+    // open dev tools 
+    mainWindow.webContents.openDevTools()
 }
+
+ipcMain.on('open-devtools', () => {
+    console.log('opening dev tools')
+    // open dev tools 
+    mainWindow.webContents.openDevTools()
+})
+
+ipcMain.on('minimize', () => {
+    mainWindow.minimize()
+})
 
 app.on('ready', () => {
     createWindow()
