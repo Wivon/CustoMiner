@@ -15,14 +15,17 @@
     /* colors */
     --primary-action-backgrnd: #51F570;
     --destructive-action-backgrnd: #E02B2B;
-    --destructive-transparent-dark: rgba(224, 43, 43,  0.4);
-    --destructive-transparent-light: rgba(224, 43, 43,  0.6);
+    --destructive-transparent-dark: rgba(224, 43, 43, 0.4);
+    --destructive-transparent-light: rgba(224, 43, 43, 0.6);
     --secondary-action-backgrnd: rgba(195, 195, 195, 0.4);
-
+    --low-backgrnd: rgba(195, 195, 195, 0.15);
+    --section-backgrnd: rgba(195, 195, 195, 0.4);
+    
     /* button text */
     --btn-text-size: 36px;
     --btn-text-weight: 500;
     --btn-border-radius: 8px;
+    --btn-text-color: rgba(0, 0, 0, 0.9);
 
     /* text sizes */
     --title-size: 48px;
@@ -37,6 +40,9 @@
     /* text colors */
     --main-text-color: #ffffff;
     --secondary-text-color: rgba(255, 255, 255, 0.75);
+
+    /* inputs */
+    --input-backgrnd: rgba(13, 13, 13, .75);
 }
 
 body {
@@ -51,14 +57,14 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background: rgba(0, 0, 0, .25);
+    height: 45px;
+    background: var(--low-backgrnd);
     backdrop-filter: blur(15px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     vertical-align: middle;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); */
     -webkit-app-region: drag;
 }
 
@@ -72,7 +78,7 @@ body {
 }
 
 .nav .left img {
-    height: 45px;
+    height: 35px;
     margin-right: 15px;
     margin-left: 8px;
     aspect-ratio: 1/1;
@@ -96,7 +102,7 @@ body {
 .nav .left a {
     color: var(--secondary-text-color);
     text-decoration: none;
-    font-size: 32px;
+    font-size: 24px;
     margin-right: 35px;
     cursor: pointer !important;
     position: relative;
@@ -112,12 +118,12 @@ body {
     height: 3px;
     position: absolute;
     transform: translateY(20px);
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .right {
     display: flex;
-    justify-content:end;
+    justify-content: end;
     width: max-content;
     height: 100%;
     align-items: center;
@@ -126,19 +132,134 @@ body {
 
 .right .miniBtn {
     aspect-ratio: 1 / 1;
-    height: 44px;
+    height: 30px;
     text-align: center;
     background: var(--secondary-action-backgrnd);
-    border-radius: var(--btn-border-radius);
+    border-radius: 3px;
     margin-left: 15px;
     vertical-align: middle;
     color: var(--main-text-color);
-    font-size: var(--btn-text-size);
+    font-size: 28px;
     font-weight: var(--btn-text-weight);
     cursor: pointer;
     -webkit-app-region: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniBtn .square {
+    background: transparent;
+    aspect-ratio: 1 / 1;
+    height: 18px;
+    border-radius: 3px;
+    border: solid 3px var(--main-text-color);
+    vertical-align: middle;
 }
 
 .right .closeBtn {
     background: var(--destructive-transparent-dark);
+}
+
+div.home {
+    display: flex;
+    justify-content:start;
+    flex-direction: column;
+    align-items: center;
+    padding-right: auto;
+    padding-left: auto;
+    padding-top: 100px;
+}
+
+h2 {
+    font-size: var(--subtitle-size);
+    font-weight: var(--subtitle-weight);
+    color: var(--main-text-color);
+}
+
+/* home sections */
+section {
+    background: var(--section-backgrnd);
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+    max-width: 1000px;
+    position: relative;
+}
+
+section#gameDirectory {
+    height: 156px;
+    background: var(--secondary-action-backgrnd);
+    width: 1000px;
+}
+
+#gameDirectory h2 {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#gameDirectory .actions {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 13px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#gameDirectory .actions .input {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    position: relative;
+}
+
+#gameDirectory .actions .input .fileSelector input {
+    background: var(--input-backgrnd);
+    border-radius: 8px 0 0 8px;
+    padding-left: 65px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 64px;
+    border: none;
+    font-size: 24px;
+    width: 600px;
+}
+
+#gameDirectory .actions .input .fileSelector img{
+    aspect-ratio: 1/1;
+    height: 45px;
+    position: absolute;
+    filter: invert();
+    opacity: .9;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+#gameDirectory .actions .input button {
+    background: var(--primary-action-backgrnd);
+    border: none;
+    height: 64px;
+    aspect-ratio: 1 / 1;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    padding: 0 !important;
+}
+
+#gameDirectory .actions .input button img {
+    height: 40px;
+    vertical-align: middle;
+}
+
+button {
+    background: var(--primary-action-backgrnd);
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: var(--btn-text-size);
+    font-weight: var(--btn-text-weight);
+    color: var(--btn-text-color);
+    cursor: pointer;
+    align-items: center;
 }

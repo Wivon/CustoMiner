@@ -46,6 +46,16 @@ ipcMain.on('quit', () => {
     app.quit()
 })
 
+ipcMain.on('toggle-maximize', () => {
+    if (!mainWindow.isMaximized()) {
+        mainWindow.maximize()
+        console.log('maximized app')
+    } else {
+        mainWindow.unmaximize()
+        console.log('unmaximized app')
+    }
+})
+
 app.on('ready', () => {
     createWindow()
     console.log(`app version: ${app.getVersion()}`)

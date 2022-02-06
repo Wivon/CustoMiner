@@ -25,13 +25,27 @@
         </div>
         <div class="right">
             <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')">-</div>
-            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')"><div class="square"></div></div>
+            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('toggle-maximize')"><div class="square"></div></div>
             <div class="closeBtn miniBtn" onclick="ipcRenderer.send('quit')">X</div>
         </div>
     </div>
 
     <div class="home active">
-        <div style="width: 1000px; height: 160px; background: var(--secondary-action-backgrnd); margin-right:auto; margin-left:auto; margin-top: 100px;"></div>
+        <section id="gameDirectory">
+            <h2>Game directory</h2>
+            <div class="actions">
+                <div class="input">
+                    <div class="fileSelector">
+                        <img src="assets/img/icons/files-folder.png" alt="browse">
+                        <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDirectory" placeholder="game directory path">
+                    </div>
+                    <button>
+                        <img src="assets/img/icons/next-transparent.png" alt="next">
+                    </button>
+                </div>
+                <button>AUTO DETECT</button>
+            </div>
+        </section>
     </div>
 
     <script>
