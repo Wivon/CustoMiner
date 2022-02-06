@@ -9,6 +9,9 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1240,
         height: 720,
+        minWidth: 1040,
+        minHeight: 620,
+        frame: false,
         resizable: true,
         backgroundColor: '#1f1f1f',
         webPreferences: {
@@ -16,7 +19,7 @@ function createWindow() {
             contextIsolation: false,
             enableRemoteModule: true,
         },
-        // icon: path.join(__dirname, 'src/img/logoX512.png')
+        icon: path.join(__dirname, 'assets/icons/CustoMinerICONx128.ico')
     });
 
     mainWindow.loadFile('front_ui/index.html');
@@ -24,11 +27,7 @@ function createWindow() {
         mainWindow = null;
     });
 
-    // hide menubar  
-    mainWindow.setMenu(null)
-
-    // open dev tools 
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 }
 
 ipcMain.on('open-devtools', () => {
@@ -38,7 +37,13 @@ ipcMain.on('open-devtools', () => {
 })
 
 ipcMain.on('minimize', () => {
+    console.log('app minimized')
     mainWindow.minimize()
+})
+
+ipcMain.on('quit', () => {
+    console.log('closing app...')
+    app.quit()
 })
 
 app.on('ready', () => {

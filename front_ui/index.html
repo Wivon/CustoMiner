@@ -15,20 +15,24 @@
 <body>
     <div class="nav">
         <div class="left">
-            <img src="#" alt="appIcon">
+            <img src="assets/img/icons/CustoMinerICONx128.png" alt="appIcon">
             <div class="actions">
-                <a href="#" class="active">HOME</a>
-                <a href="#">SETTINGS</a>
-                <a href="#">LIBRARY</a>
+                <a href="#home" class="active">HOME</a>
+                <a href="#settings">SETTINGS</a>
+                <a href="#library">LIBRARY</a>
+                <div class="activeMenuIndicator"></div>
             </div>
         </div>
         <div class="right">
             <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')">-</div>
+            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')"><div class="square"></div></div>
             <div class="closeBtn miniBtn" onclick="ipcRenderer.send('quit')">X</div>
         </div>
     </div>
 
-    
+    <div class="home active">
+        <div style="width: 1000px; height: 160px; background: var(--secondary-action-backgrnd); margin-right:auto; margin-left:auto; margin-top: 100px;"></div>
+    </div>
 
     <script>
         const { ipcRenderer, shell } = require('electron');
