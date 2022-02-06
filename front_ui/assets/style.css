@@ -161,7 +161,13 @@ body {
     background: var(--destructive-transparent-dark);
 }
 
-div.home {
+h2 {
+    font-size: var(--subtitle-size);
+    font-weight: var(--subtitle-weight);
+    color: var(--main-text-color);
+}
+
+.menu {
     display: flex;
     justify-content:start;
     flex-direction: column;
@@ -169,12 +175,15 @@ div.home {
     padding-right: auto;
     padding-left: auto;
     padding-top: 100px;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
 }
 
-h2 {
-    font-size: var(--subtitle-size);
-    font-weight: var(--subtitle-weight);
-    color: var(--main-text-color);
+.menu.active {
+    opacity: 1;
+    height: auto;
+    pointer-events: auto;
 }
 
 /* home sections */

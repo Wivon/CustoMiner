@@ -6,6 +6,7 @@ document.querySelectorAll('.actions a').forEach(a => {
                 if (b == a) {
                     a.classList.add('active')
                     renderActiveMenuIndicator(a)
+                    showMenu(a.getAttribute('href').slice(1))
                 } else {
                     b.classList.remove('active')
                 }
@@ -24,6 +25,18 @@ function renderActiveMenuIndicator(a) {
     activeMenuIndicator.style.left = offsetLeft + "px"
     activeMenuIndicator.style.width = a.offsetWidth + "px"
     console.log(offsetLeft + 'px' + " | " + a.style.width + "px | ")
+}
+
+function showMenu(menuClassName) {
+    document.querySelectorAll('.menu').forEach(menu => {
+        if (menu.classList.contains(menuClassName)) {
+            if (!menu.classList.contains('active')) {
+                menu.classList.add('active')
+            }
+        } else {
+            menu.classList.remove('active')
+        }
+    })
 }
 
 function saveInput(input) {
