@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
     color: var(--main-text-color);
-    transition: 0.2s ease-in;
+    transition: 0.2s cubic-bezier(.68,-0.04,0,1.31);
     user-select: none;
     outline: none;
 }
@@ -119,6 +119,7 @@ body {
     position: absolute;
     transform: translateY(20px);
     border-radius: 3px;
+    transition: 0.3s cubic-bezier(.68,-0.04,0,1.31);
 }
 
 .right {
