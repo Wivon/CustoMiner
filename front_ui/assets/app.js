@@ -32,9 +32,15 @@ function showMenu(menuClassName) {
         if (menu.classList.contains(menuClassName)) {
             if (!menu.classList.contains('active')) {
                 menu.classList.add('active')
+                setTimeout(() => {
+                    menu.style.height = "max-content"
+                },120)
             }
         } else {
             menu.classList.remove('active')
+            setTimeout(() => {
+                menu.style.height = "0"
+            },120)
         }
     })
 }

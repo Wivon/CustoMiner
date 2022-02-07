@@ -50,6 +50,7 @@ body {
     background-repeat: repeat;
     background-size: 25%;
     background-position: fixed;
+    overflow-x: hidden;
 }
 
 .nav {
@@ -66,6 +67,7 @@ body {
     vertical-align: middle;
     /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); */
     -webkit-app-region: drag;
+    z-index: 9999999;
 }
 
 .nav .left {
@@ -119,7 +121,7 @@ body {
     position: absolute;
     transform: translateY(20px);
     border-radius: 3px;
-    transition: 0.3s cubic-bezier(.68,-0.04,0,1.31);
+    transition: 0.45s cubic-bezier(.68,-0.04,0,1.31);
 }
 
 .right {
@@ -133,7 +135,7 @@ body {
 
 .right .miniBtn {
     aspect-ratio: 1 / 1;
-    height: 30px;
+    height: 35px;
     text-align: center;
     background: var(--secondary-action-backgrnd);
     border-radius: 3px;
@@ -175,16 +177,18 @@ h2 {
     align-items: center;
     padding-right: auto;
     padding-left: auto;
-    padding-top: 100px;
     opacity: 0;
-    height: 0;
     pointer-events: none;
+    padding-top: 0;
+    transform: scale(0.85);
+    transition: 0.3s cubic-bezier(.68,-0.04,0,1.31);
 }
 
 .menu.active {
     opacity: 1;
-    height: auto;
     pointer-events: auto;
+    transform: scale(1);
+    padding-top: 100px;
 }
 
 /* home sections */
@@ -209,7 +213,7 @@ section#gameDirectory {
 
 #gameDirectory .actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     flex-direction: row;
     margin-top: 13px;
     margin-left: 20px;
@@ -221,6 +225,7 @@ section#gameDirectory {
     justify-content: start;
     flex-direction: row;
     position: relative;
+    margin-right: 15px;
 }
 
 #gameDirectory .actions .input .fileSelector input {
@@ -272,4 +277,10 @@ button {
     color: var(--btn-text-color);
     cursor: pointer;
     align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+    transition: 0.05s linear;
 }
