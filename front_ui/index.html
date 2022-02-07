@@ -40,20 +40,46 @@
                         <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDirectory" placeholder="game directory path">
                     </div>
                     <button>
-                        <img src="assets/img/icons/next-transparent.png" alt="next">
+                        <img src="assets/img/icons/next-transparent.png" alt="next" onclick="document.getElementById('addNew').scrollIntoView();">
                     </button>
                 </div>
                 <button>AUTO DETECT</button>
             </div>
         </section>
+
+        <section id="addNew">
+            <div class="container">
+                <div class="card">
+                    <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
+                    <div class="add">
+                        <p class="name">Shaderpacks</p>
+                        <button class="addBtn">add</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
+                    <div class="add">
+                        <p class="name">Resources packs</p>
+                        <button class="addBtn">add</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
+                    <div class="add">
+                        <p class="name">Mods</p>
+                        <button class="addBtn">add</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div class="settings menu">
-        settings
+        <button onclick="ipcRenderer.send('open-devtools')">open dev tools</button>
     </div>
 
     <div class="library menu">
-        library
+        <button>OPEN SOMETHING</button>
     </div>
 
     <script>
