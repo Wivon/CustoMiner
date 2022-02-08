@@ -331,7 +331,7 @@ section#gameDirectory {
 #addNew .container .card:hover .add {
     border-radius: 0 0 8px 8px;
     width: 100%;
-    height: max-content;
+    height: 67px;
     padding-bottom: 12px;
 }
 
