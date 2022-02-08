@@ -25,7 +25,9 @@
         </div>
         <div class="right">
             <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')">-</div>
-            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('toggle-maximize')"><div class="square"></div></div>
+            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('toggle-maximize')">
+                <div class="square"></div>
+            </div>
             <div class="closeBtn miniBtn" onclick="ipcRenderer.send('quit')">X</div>
         </div>
     </div>
@@ -37,10 +39,12 @@
                 <div class="input">
                     <div class="fileSelector">
                         <img src="assets/img/icons/files-folder.png" alt="browse">
-                        <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDirectory" placeholder="game directory path">
+                        <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDirectory"
+                            placeholder="game directory path">
                     </div>
                     <button>
-                        <img src="assets/img/icons/next-transparent.png" alt="next" onclick="document.getElementById('addNew').scrollIntoView();">
+                        <img src="assets/img/icons/next-transparent.png" alt="next"
+                            onclick="document.getElementById('addNew').scrollIntoView();">
                     </button>
                 </div>
                 <button>AUTO DETECT</button>
@@ -75,7 +79,19 @@
     </div>
 
     <div class="settings menu">
-        <button onclick="ipcRenderer.send('open-devtools')">open dev tools</button>
+        <section>
+            <h2>Languages</h2>
+            <div class="actions">
+                <select name="ThemeSelector" class="ThemeSelector">
+                    <option value="fr">English</option>
+                    <option value="en">French</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </div>
+        </section>
+        <section>
+            <h2>Updates</h2>
+        </section>
     </div>
 
     <div class="library menu">
