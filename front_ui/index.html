@@ -10,6 +10,7 @@
     <!-- links -->
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/app.js" defer></script>
+    <script src="assets/translator.js" defer></script>
 </head>
 
 <body>
@@ -17,9 +18,9 @@
         <div class="left">
             <img src="assets/img/icons/CustoMinerICONx128.png" alt="appIcon">
             <div class="actions">
-                <a href="#home" class="active">HOME</a>
-                <a href="#settings">SETTINGS</a>
-                <a href="#library">LIBRARY</a>
+                <a href="#home" class="active" translation-id="nav.home">HOME</a>
+                <a href="#settings" translation-id="nav.settings">SETTINGS</a>
+                <a href="#library" translation-id="nav.library">LIBRARY</a>
                 <div class="activeMenuIndicator"></div>
             </div>
         </div>
@@ -34,7 +35,7 @@
 
     <div class="home active menu">
         <section id="gameDirectory">
-            <h2>Game directory</h2>
+            <h2 translation-id="menus.homeMenu.sections.gameDirectory.title">Game directory</h2>
             <div class="actions">
                 <div class="input">
                     <div class="fileSelector">
@@ -46,7 +47,7 @@
                         <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
                     </button>
                 </div>
-                <button>AUTO DETECT</button>
+                <button translation-id="menus.homeMenu.sections.gameDirectory.autoDetect">AUTO DETECT</button>
             </div>
         </section>
 
@@ -55,22 +56,22 @@
                 <div class="card">
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
                     <div class="add">
-                        <p class="name">Shaderpacks</p>
-                        <button class="addBtn">add</button>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks">Shaderpacks</p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
                     <div class="add">
-                        <p class="name">Resources Packs</p>
-                        <button class="addBtn">add</button>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks">Resources Packs</p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
-                        <p class="name">Mods</p>
-                        <button class="addBtn">add</button>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.mods">Mods</p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
                     </div>
                 </div>
             </div>
@@ -79,7 +80,7 @@
 
     <div class="settings menu" style="height: 0;">
         <section id="locale">
-            <h2>Languages</h2>
+            <h2 translation-id="menus.settingsMenu.sections.locale.title">Languages</h2>
             <div class="actions">
                 <div class="input">
                     <select name="locale" class="localeSelector rounded-left">
@@ -87,17 +88,17 @@
                         <option value="fr">Français</option>
                         <option value="es">Español</option>
                     </select>
-                    <button onclick="saveInput(document.querySelector('.localeSelector'))" class="rounded-right iconBTN">
+                    <button onclick="saveInput(document.querySelector('.localeSelector')); loadLocaleFile();" class="rounded-right iconBTN">
                         <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
                     </button>
                 </div>
-                <button onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector'));">RESET</button>
+                <button translation-id="menus.settingsMenu.sections.locale.reset" onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector')); loadLocaleFile();">RESET</button>
             </div>
         </section>
         <section id="updates" class="section-mt">
-            <h2>Updates</h2>
+            <h2 translation-id="menus.settingsMenu.sections.updates.title">Updates</h2>
             <progress class="downloadProgress"></progress>
-            <button>CHECK</button>
+            <button translation-id="menus.settingsMenu.sections.updates.check">CHECK</button>
         </section>
     </div>
 

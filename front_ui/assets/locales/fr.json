@@ -13,8 +13,8 @@
                 },
                 "addNew": {
                     "cardsNames": {
-                        "shaderPacks": "Packs de Shader",
-                        "resourcePacks": "Packs de Resources",
+                        "shaderPacks": "Pack de Shaders",
+                        "resourcePacks": "Pack de Resources",
                         "mods": "Mods"
                     },
                     "add": "ajouter"

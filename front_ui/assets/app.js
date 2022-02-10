@@ -15,7 +15,7 @@ document.querySelectorAll('.actions a').forEach(a => {
     }
 })
 
-function renderActiveMenuIndicator(a) {
+function renderActiveMenuIndicator(a=document.querySelector('.nav .left .actions a.active')) {
     // render active menu indicator
     let activeMenuIndicator = document.querySelector('.activeMenuIndicator')
     let bodyRect = document.body.getBoundingClientRect(),
@@ -60,6 +60,7 @@ if (localStorage.getItem('gameDirectory') !== null) {
     document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDirectory')
 }
 
+// restore locale
 if (localStorage.getItem('locale') !== null) {
     document.querySelector('.localeSelector').value = localStorage.getItem('locale')
 } else {
@@ -74,4 +75,6 @@ document.getElementById('nextGameDirectory').onclick = () => {
     }
 }
 
-renderActiveMenuIndicator(document.querySelector('.nav .left .actions a.active'))
+setTimeout(() => {
+    renderActiveMenuIndicator()
+}, 200)
