@@ -24,7 +24,6 @@ function renderActiveMenuIndicator(a) {
 
     activeMenuIndicator.style.left = offsetLeft + "px"
     activeMenuIndicator.style.width = a.offsetWidth + "px"
-    console.log(offsetLeft + 'px' + " | " + a.style.width + "px | ")
 }
 
 function showMenu(menuClassName) {
@@ -34,15 +33,22 @@ function showMenu(menuClassName) {
                 menu.classList.add('active')
                 setTimeout(() => {
                     menu.style.height = "max-content"
-                },120)
+                }, 120)
             }
         } else {
             menu.classList.remove('active')
             setTimeout(() => {
                 menu.style.height = "0"
-            },120)
+            }, 120)
         }
     })
+}
+
+function highlight(elem) {
+    elem.style.transform = "scale(1.025)"
+    setTimeout(() => {
+        elem.style.transform = "scale(1)"
+    }, 400)
 }
 
 function saveInput(input) {
@@ -52,6 +58,20 @@ function saveInput(input) {
 // restore game directory input
 if (localStorage.getItem('gameDirectory') !== null) {
     document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDirectory')
+}
+
+if (localStorage.getItem('locale') !== null) {
+    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
+} else {
+    localStorage.setItem('locale', 'en')
+    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
+}
+
+document.getElementById('nextGameDirectory').onclick = () => {
+    document.getElementById('addNew').scrollIntoView()
+    if (window.innerHeight > 870) { 
+        highlight(document.querySelector('#addNew')) 
+    }
 }
 
 renderActiveMenuIndicator(document.querySelector('.nav .left .actions a.active'))

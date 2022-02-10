@@ -2,7 +2,7 @@
   "name": "custominer",
   "productName": "CustoMiner",
   "version": "0.0.1",
-  "description": "Easiest way to install mods, resourcespacks to Minecraft",
+  "description": "Easiest way to install mods, resources packs and more to Minecraft",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -12,11 +12,11 @@
   "build": {
     "appId": "custominer",
     "win": {
-      "icon": "src/img/logoX512.ico"
+      "icon": "assets/icons/CustoMinerx128.ico"
     },
     "nsis": {
-      "installerIcon": "src/img/setup_logoX512.ico",
-      "uninstallerIcon": "src/img/uninstall_logoX512.ico",
+      "installerIcon": "assets/icons/CustoMinerICONx128.ico",
+      "uninstallerIcon": "assets/icons/CustoMinerICONx128.ico",
       "uninstallDisplayName": "uninstall CustoMiner",
       "oneClick": false,
       "shortcutName": "CustoMiner",

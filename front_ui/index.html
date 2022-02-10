@@ -40,18 +40,17 @@
                     <div class="fileSelector">
                         <img src="assets/img/icons/files-folder.png" alt="browse">
                         <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDirectory"
-                            placeholder="game directory path">
+                            placeholder="game directory path" class="rounded-left leftpad-icon">
                     </div>
-                    <button>
-                        <img src="assets/img/icons/next-transparent.png" alt="next"
-                            onclick="document.getElementById('addNew').scrollIntoView();">
+                    <button class="rounded-right iconBTN">
+                        <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
                     </button>
                 </div>
                 <button>AUTO DETECT</button>
             </div>
         </section>
 
-        <section id="addNew">
+        <section id="addNew" class="section-mt">
             <div class="container">
                 <div class="card">
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
@@ -63,7 +62,7 @@
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
                     <div class="add">
-                        <p class="name">Resources packs</p>
+                        <p class="name">Resources Packs</p>
                         <button class="addBtn">add</button>
                     </div>
                 </div>
@@ -78,23 +77,31 @@
         </section>
     </div>
 
-    <div class="settings menu">
-        <section>
+    <div class="settings menu" style="height: 0;">
+        <section id="locale">
             <h2>Languages</h2>
             <div class="actions">
-                <select name="ThemeSelector" class="ThemeSelector">
-                    <option value="fr">English</option>
-                    <option value="en">French</option>
-                    <option value="es">Spanish</option>
-                </select>
+                <div class="input">
+                    <select name="locale" class="localeSelector rounded-left">
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <option value="es">Spanish</option>
+                    </select>
+                    <button onclick="saveInput(document.querySelector('.localeSelector'))" class="rounded-right iconBTN">
+                        <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
+                    </button>
+                </div>
+                <button onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector'));">RESET</button>
             </div>
         </section>
-        <section>
+        <section id="updates" class="section-mt">
             <h2>Updates</h2>
+            <progress class="downloadProgress"></progress>
+            <button>CHECK</button>
         </section>
     </div>
 
-    <div class="library menu">
+    <div class="library menu" style="height: 0;">
         <button>OPEN SOMETHING</button>
     </div>
 

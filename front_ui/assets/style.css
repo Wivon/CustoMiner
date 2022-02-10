@@ -8,6 +8,7 @@
     color: var(--main-text-color);
     transition: 0.2s cubic-bezier(.68, -0.04, 0, 1.31);
     user-select: none;
+    -webkit-user-drag: none;
     outline: none;
     scroll-behavior: smooth;
 }
@@ -21,29 +22,34 @@
     --secondary-action-backgrnd: rgba(195, 195, 195, 0.4);
     --low-backgrnd: rgba(195, 195, 195, 0.15);
     --section-backgrnd: rgba(195, 195, 195, 0.4);
-
+    
     /* button text */
     --btn-text-size: 36px;
     --btn-text-weight: 500;
     --btn-border-radius: 8px;
     --btn-text-color: rgba(0, 0, 0, 0.9);
-
+    
     /* text sizes */
     --title-size: 48px;
     --subtitle-size: 40px;
     --text-size: 22px;
-
+    
     /* text weights */
     --title-weight: 700;
     --subtitle-weight: 500;
     --text-weight: 500;
-
+    
     /* text colors */
     --main-text-color: #ffffff;
     --secondary-text-color: rgba(255, 255, 255, 0.75);
-
+    
     /* inputs */
     --input-backgrnd: rgba(13, 13, 13, .75);
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+    display: none;
 }
 
 body {
@@ -184,6 +190,8 @@ h2 {
     padding-top: 0;
     transform: scale(0.92);
     transition: 0.3s cubic-bezier(.68, -0.04, 0, 1.31);
+    overflow: hidden;
+    padding-bottom: 30px;
 }
 
 .menu.active {
@@ -191,6 +199,7 @@ h2 {
     pointer-events: auto;
     transform: scale(1);
     padding-top: 100px;
+    overflow: auto;
 }
 
 /* home sections */
@@ -208,7 +217,7 @@ section#gameDirectory {
     width: 1000px;
 }
 
-#gameDirectory h2 {
+section h2 {
     margin-top: 15px;
     margin-left: 20px;
 }
@@ -230,12 +239,12 @@ section#gameDirectory {
     margin-right: 15px;
 }
 
-#gameDirectory .actions .input .fileSelector input {
+section input, section select{
     background: var(--input-backgrnd);
-    border-radius: 8px 0 0 8px;
-    padding-left: 65px;
     padding-right: 10px;
+    padding-left: 10px;
     padding-top: 5px;
+    border-radius: 8px;
     padding-bottom: 5px;
     height: 64px;
     border: none;
@@ -259,18 +268,16 @@ section#gameDirectory {
     border: none;
     height: 64px;
     aspect-ratio: 1 / 1;
-    border-radius: 0 8px 8px 0;
     cursor: pointer;
     padding: 0 !important;
 }
 
-#gameDirectory .actions .input button img {
+button.iconBTN img {
     height: 40px;
     vertical-align: middle;
 }
 
 #addNew {
-    margin-top: 50px;
     width: 1000px;
     padding: 40px 0;
 }
@@ -296,6 +303,7 @@ section#gameDirectory {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    transform: translateY(-10px);
 }
 
 #addNew .container .card .add {
@@ -304,7 +312,7 @@ section#gameDirectory {
     position: absolute;
     bottom: -3px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(15px);
     border-radius: 8px;
     background: var(--secondary-action-backgrnd);
     backdrop-filter: blur(15px);
@@ -333,10 +341,12 @@ section#gameDirectory {
     width: 100%;
     height: 67px;
     padding-bottom: 12px;
+    transform: translateX(-50%) translateY(0);
 }
 
 #addNew .container .card:hover img {
     border-radius: 8px 8px 0 0;
+    transform: translateY(0);
 }
 
 #addNew .container .card:hover .add p.name {
@@ -365,25 +375,40 @@ button:active {
     transition: 0.05s linear;
 }
 
-/* scroll bar */
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
+.rounded-left { border-radius: 8px 0 0 8px }
+.rounded-right { border-radius: 0 8px 8px 0}
+.leftpad-icon { padding-left: 65px }
+.section-mt { margin-top: 50px }
+
+/* settings section */
+#locale {
+    padding-right: 20px;
+    padding-bottom: 20px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: #1f1f1f;
+#locale .actions {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    transition: 0.2s ;
+#locale .actions .input {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    margin-right: 10px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
+#locale .actions .input select {
+    width: 220px;
+}
+
+#locale .actions .input  button {
+    height: 64px;
+}
+
+#updates {
+    width: 1000px;
 }
