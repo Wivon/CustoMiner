@@ -1,0 +1,43 @@
+{
+    "nav": {
+        "home": "BIENVENIDA",
+        "settings": "CONFIGURACIONES",
+        "library": "BIBLIOTECA"
+    },
+    "menus": {
+        "homeMenu": {
+            "sections": {
+                "gameDirectory": {
+                    "title": "Directorio del juego",
+                    "autoDetect": "DETECTAR"
+                },
+                "addNew": {
+                    "cardsNames": {
+                        "shaderPacks": "Packs de Shader",
+                        "resourcePacks": "Packs de Resource",
+                        "mods": "Mods"
+                    },
+                    "add": "agregar"
+                }
+            }
+        },
+        "settingsMenu": {
+            "sections": {
+                "locale": {
+                    "title": "Idioma",
+                    "reset": "REINICIAR"
+                },
+                "updates": {
+                    "title": "Actualizaciones",
+                    "check": "BUSCAR",
+                    "restart": "REINICIAR",
+                    "messages": {
+                        "UTDMsg": "¡Estas actualizado!",
+                        "availableUpadteMsg": "Nueva actualización disponible",
+                        "downloadingUpdateMsg": "Descargando actualización..."
+                    }
+                }
+            }
+        }
+    }
+}
