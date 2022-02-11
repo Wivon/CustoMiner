@@ -16,18 +16,19 @@
 :root {
     /* colors */
     --primary-action-backgrnd: #51F570;
-    --destructive-action-backgrnd: #E02B2B;
-    --destructive-transparent-dark: rgba(224, 43, 43, 0.4);
+    --destructive-action-backgrnd: rgba(224, 43, 43, 0.5);
     --destructive-transparent-light: rgba(224, 43, 43, 0.6);
+    --destructive-transparent-dark: rgba(224, 43, 43, 0.4);
     --secondary-action-backgrnd: rgba(195, 195, 195, 0.4);
-    --low-backgrnd: rgba(195, 195, 195, 0.15);
     --section-backgrnd: rgba(195, 195, 195, 0.4);
+    --low-backgrnd: rgba(195, 195, 195, 0.15);
     
     /* button text */
     --btn-text-size: 36px;
     --btn-text-weight: 500;
     --btn-border-radius: 8px;
-    --btn-text-color: rgba(0, 0, 0, 0.9);
+    --btn-text-color-dark: rgba(0, 0, 0, 0.9);
+    --btn-text-color-light: rgba(255, 255, 255, 0.9);
     
     /* text sizes */
     --title-size: 48px;
@@ -192,7 +193,6 @@ h2 {
     transform: scale(0.92);
     transition: 0.3s cubic-bezier(.68, -0.04, 0, 1.31);
     overflow: hidden;
-    padding-bottom: 30px;
 }
 
 .menu.active {
@@ -200,6 +200,7 @@ h2 {
     pointer-events: auto;
     transform: scale(1);
     padding-top: 100px;
+    padding-bottom: 30px;
     overflow: auto;
 }
 
@@ -210,6 +211,8 @@ section {
     backdrop-filter: blur(2px);
     max-width: 1000px;
     position: relative;
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
 section#gameDirectory {
@@ -220,7 +223,6 @@ section#gameDirectory {
 
 section h2 {
     margin-top: 15px;
-    margin-left: 20px;
 }
 
 #gameDirectory .actions {
@@ -228,7 +230,6 @@ section h2 {
     justify-content: start;
     flex-direction: row;
     margin-top: 13px;
-    margin-left: 20px;
     margin-right: 20px;
 }
 
@@ -240,7 +241,7 @@ section h2 {
     margin-right: 15px;
 }
 
-section input, section select{
+section input[type="text"], section select{
     background: var(--input-backgrnd);
     padding-right: 10px;
     padding-left: 10px;
@@ -365,7 +366,7 @@ button {
     padding: 5px 10px;
     font-size: var(--btn-text-size);
     font-weight: var(--btn-text-weight);
-    color: var(--btn-text-color);
+    color: var(--btn-text-color-dark);
     cursor: pointer;
     align-items: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -376,22 +377,42 @@ button:active {
     transition: 0.05s linear;
 }
 
-.rounded-left { border-radius: 8px 0 0 8px }
-.rounded-right { border-radius: 0 8px 8px 0}
-.leftpad-icon { padding-left: 65px }
+.rounded-left { border-radius: 8px 0 0 8px !important }
+
+.rounded-right { border-radius: 0 8px 8px 0 !important}
+
+input.leftpad-icon[type="text"] { padding-left: 65px }
+
 .section-mt { margin-top: 50px }
+
+.destructive-btn { 
+    background: var(--destructive-action-backgrnd);
+    color: var(--main-text-color);
+}
+
+.secondary-btn { 
+    background: var(--secondary-action-backgrnd);
+    color: var(--btn-text-color-light);
+}
+
+.horizontal {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    width: 1000px;
+}
 
 /* settings section */
 #locale {
     padding-right: 20px;
     padding-bottom: 20px;
+    margin-right: 50px;
 }
 
 #locale .actions {
     display: flex;
     justify-content: start;
     flex-direction: row;
-    margin-left: 20px;
     margin-top: 15px;
 }
 
@@ -412,4 +433,78 @@ button:active {
 
 #updates {
     width: 1000px;
+}
+
+/* loader */
+
+body.loading {
+    overflow: hidden;
+}
+
+.loader {
+    display: none;
+}
+
+.loading .loader {
+    background: #1f1f1f;
+    transition: 0.2s;
+
+    /* position */
+    z-index: 999999999999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    /* flex */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading .CustoMiner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 200px;
+}
+
+.loading .CustoMiner img {
+    transform: scale(0.8);
+}
+
+.loading .CustoMiner h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.loading .loader .animation {
+    height: max-content;
+    transform: translateX(20px) scale(.5);
+    align-self: center;
+}
+
+.loading .loader span {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    height: 12px;
+    transform: translateX(20px);
+    animation: spinner 2s linear infinite;
+    transform-origin: -56px;
+    opacity: 0;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateX(20px) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(20px) rotate(360deg);
+        opacity: 1;
+    }
 }

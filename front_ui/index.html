@@ -13,7 +13,24 @@
     <script src="assets/translator.js" defer></script>
 </head>
 
-<body>
+<body class="loading">
+
+    <div class="loader">
+        <div class="CustoMiner">
+            <img src="assets/img/icons/CustoMinerICONx128.png">
+            <h1>CustoMiner</h1>
+        </div>
+
+        <div class="animation">
+            <span style="animation-delay: 0s;"></span>
+            <span style="animation-delay: 0.4s;"></span>
+            <span style="animation-delay: 0.8s;"></span>
+            <span style="animation-delay: 1.2s;"></span>
+            <span style="animation-delay: 1.6s;"></span>
+            <span style="animation-delay: 2s;"></span>
+        </div>
+    </div>
+
     <div class="nav">
         <div class="left">
             <img src="assets/img/icons/CustoMinerICONx128.png" alt="appIcon">
@@ -47,7 +64,8 @@
                         <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
                     </button>
                 </div>
-                <button translation-id="menus.homeMenu.sections.gameDirectory.autoDetect">AUTO DETECT</button>
+                <button class="secondary-btn" translation-id="menus.homeMenu.sections.gameDirectory.autoDetect">AUTO
+                    DETECT</button>
             </div>
         </section>
 
@@ -56,14 +74,16 @@
                 <div class="card">
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
                     <div class="add">
-                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks">Shaderpacks</p>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks">
+                            Shaderpacks</p>
                         <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
                     <div class="add">
-                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks">Resources Packs</p>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks">
+                            Resources Packs</p>
                         <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
                     </div>
                 </div>
@@ -79,22 +99,36 @@
     </div>
 
     <div class="settings menu" style="height: 0;">
-        <section id="locale">
-            <h2 translation-id="menus.settingsMenu.sections.locale.title">Languages</h2>
-            <div class="actions">
-                <div class="input">
-                    <select name="locale" class="localeSelector rounded-left">
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
-                        <option value="es">Español</option>
-                    </select>
-                    <button onclick="saveInput(document.querySelector('.localeSelector')); loadLocaleFile();" class="rounded-right iconBTN">
-                        <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
-                    </button>
+        <div class="horizontal">
+            <section id="locale">
+                <h2 translation-id="menus.settingsMenu.sections.locale.title">Languages</h2>
+                <div class="actions">
+                    <div class="input">
+                        <select name="locale" class="localeSelector rounded-left">
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                            <option value="es">Español</option>
+                        </select>
+                        <button onclick="saveInput(document.querySelector('.localeSelector')); loadLocaleFile();"
+                            class="rounded-right iconBTN">
+                            <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
+                        </button>
+                    </div>
+                    <button class="destructive-btn" translation-id="menus.settingsMenu.sections.locale.reset"
+                        onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector')); loadLocaleFile();">RESET</button>
                 </div>
-                <button translation-id="menus.settingsMenu.sections.locale.reset" onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector')); loadLocaleFile();">RESET</button>
-            </div>
-        </section>
+                <a href="#" translation-id="menus.settingsMenu.sections.locale.report">report translation</a>
+            </section>
+            <section>
+                <h2>Developer Tools</h2>
+                <label for="dev-shortcuts">Developer Shortcuts</label>
+                <input type="checkbox" name="dev-shortcuts">
+                <label for="reduced-motion">Reduced motion</label>
+                <input type="checkbox" name="reduced-motion">
+                <br>
+                <button onclick="ipcRenderer.send('open-devtools')">open devtools</button>
+            </section>
+        </div>
         <section id="updates" class="section-mt">
             <h2 translation-id="menus.settingsMenu.sections.updates.title">Updates</h2>
             <progress class="downloadProgress"></progress>

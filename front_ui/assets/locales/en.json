@@ -25,7 +25,8 @@
             "sections": {
                 "locale": {
                     "title": "Languages",
-                    "reset": "RESET"
+                    "reset": "RESET",
+                    "report": "Report a translation"
                 },
                 "updates": {
                     "title": "Updates",

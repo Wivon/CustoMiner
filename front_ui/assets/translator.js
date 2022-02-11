@@ -1,6 +1,7 @@
 let toTranslate = document.querySelectorAll("*[translation-id]");
 
 let localeTexts = {}
+let localeLoaded = false
 
 function loadLocaleFile(locale = localStorage.getItem('locale')) {
     fetch('assets/locales/' + locale + '.json').then(response => {
@@ -29,6 +30,8 @@ function setTexts() {
         // change texts and render
         elem.textContent = lastObj
         renderActiveMenuIndicator()
+        
+        localeLoaded = true
     })
 }
 

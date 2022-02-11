@@ -78,3 +78,10 @@ document.getElementById('nextGameDirectory').onclick = () => {
 setTimeout(() => {
     renderActiveMenuIndicator()
 }, 200)
+
+window.onload = () => {
+    window.scrollTo({ top: 0 });
+    setTimeout(() => {
+        document.body.classList.remove('loading')
+    }, 2000)
+}
