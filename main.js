@@ -2,6 +2,9 @@ const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('el
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
+const fs = require('fs');
+
+let OS = ""
 
 let mainWindow;
 
@@ -60,3 +63,25 @@ app.on('ready', () => {
     createWindow()
     console.log(`app version: ${app.getVersion()}`)
 });
+
+function getOS() {
+    if (process.platform === "win32") {
+        return "win"
+    } else if (process.platform === "darwin") {
+        return "mac"
+    } else if (process.platform === "linux") {
+        return "lin"
+    } else {
+        return "unsupported"
+    }
+}
+
+OS = getOS()
+
+console.log(`OS: ${OS}`)
+
+function loadDefaultMinecraftFolder() {
+    
+}
+
+loadDefaultMinecraftFolder()
