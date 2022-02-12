@@ -413,7 +413,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     display: flex;
     justify-content: start;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: 8px;
 }
 
 #locale .actions .input {
@@ -429,6 +429,10 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 
 #locale .actions .input  button {
     height: 64px;
+}
+
+#locale a {
+    margin-top: 20px;
 }
 
 #updates {
@@ -493,7 +497,7 @@ body.loading {
     aspect-ratio: 1 / 1;
     height: 12px;
     transform: translateX(20px);
-    animation: spinner 2s linear infinite;
+    animation: spinner 1s linear infinite;
     transform-origin: -56px;
     opacity: 0;
 }

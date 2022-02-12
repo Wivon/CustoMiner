@@ -83,5 +83,5 @@ window.onload = () => {
     window.scrollTo({ top: 0 });
     setTimeout(() => {
         document.body.classList.remove('loading')
-    }, 2000)
+    }, 1000)
 }
