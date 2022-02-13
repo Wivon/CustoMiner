@@ -13,6 +13,10 @@
     scroll-behavior: smooth;
 }
 
+.reduced-motion * {
+    transition: 0.1s linear !important;
+}
+
 :root {
     /* colors */
     --primary-action-backgrnd: #51F570;
@@ -34,6 +38,7 @@
     --title-size: 48px;
     --subtitle-size: 40px;
     --text-size: 22px;
+    --small-text-size: 18px;
     
     /* text weights */
     --title-weight: 700;
@@ -406,7 +411,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 #locale {
     padding-right: 20px;
     padding-bottom: 20px;
-    margin-right: 50px;
+    margin-right: 35px;
 }
 
 #locale .actions {
@@ -437,6 +442,20 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 
 #updates {
     width: 1000px;
+}
+
+#devtools h2 {
+    margin-top: 10px;
+}
+
+#devtools label {
+    font-size: var(--small-text-size);
+}
+
+#devtools input {
+    width: 20px;
+    transform: scale(1.5);
+    margin-bottom: 10px;
 }
 
 /* loader */

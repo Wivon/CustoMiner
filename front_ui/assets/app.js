@@ -15,7 +15,7 @@ document.querySelectorAll('.actions a').forEach(a => {
     }
 })
 
-function renderActiveMenuIndicator(a=document.querySelector('.nav .left .actions a.active')) {
+function renderActiveMenuIndicator(a = document.querySelector('.nav .left .actions a.active')) {
     // render active menu indicator
     let activeMenuIndicator = document.querySelector('.activeMenuIndicator')
     let bodyRect = document.body.getBoundingClientRect(),
@@ -70,8 +70,8 @@ if (localStorage.getItem('locale') !== null) {
 
 document.getElementById('nextGameDirectory').onclick = () => {
     document.getElementById('addNew').scrollIntoView()
-    if (window.innerHeight > 870) { 
-        highlight(document.querySelector('#addNew')) 
+    if (window.innerHeight > 870) {
+        highlight(document.querySelector('#addNew'))
     }
 }
 
@@ -82,6 +82,33 @@ setTimeout(() => {
 window.onload = () => {
     window.scrollTo({ top: 0 });
     setTimeout(() => {
-        document.body.classList.remove('loading')
+        if (!document.body.classList.contains('reduced-motion')) {
+            document.querySelector('.loader').style.transform = 'scale(1.5)'
+            document.querySelector('.loader').style.opacity = 0
+        }
+        setTimeout(() => {
+            document.body.classList.remove('loading')
+        }, 300)
     }, 1000)
+}
+
+// dev tools 
+document.getElementById('r-motion').onclick = () => {
+    if (document.getElementById('r-motion').checked) {
+        document.body.classList.add('reduced-motion')
+        localStorage.setItem('r-motion', true)
+    } else {
+        document.body.classList.remove('reduced-motion')
+        localStorage.setItem('r-motion', false)
+    }
+}
+
+if (localStorage.getItem('r-motion') !== null) {
+    document.getElementById('r-motion').checked = JSON.parse(localStorage.getItem('r-motion'))
+    if (JSON.parse(localStorage.getItem('r-motion')) == true) {
+        document.body.classList.add('reduced-motion')
+    }
+} else {
+    localStorage.setItem('r-motion', false)
+    document.getElementById('r-motion').checked = JSON.parse(localStorage.getItem('r-motion'))
 }

@@ -12,6 +12,7 @@
     <script src="assets/app.js" defer></script>
     <script src="assets/translator.js" defer></script>
     <script src="assets/gameDirectory.js" defer></script>
+    <script src="assets/shortcuts.js" defer></script>
 </head>
 
 <body class="loading">
@@ -120,12 +121,13 @@
                 </div>
                 <a href="#" translation-id="menus.settingsMenu.sections.locale.report">report translation</a>
             </section>
-            <section>
+            <section id="devtools">
                 <h2>Developer Tools</h2>
+                <input type="checkbox" name="dev-shortcuts" id="devshortcuts">
                 <label for="dev-shortcuts">Developer Shortcuts</label>
-                <input type="checkbox" name="dev-shortcuts">
+                <br>
+                <input type="checkbox" name="reduced-motion" id="r-motion">
                 <label for="reduced-motion">Reduced motion</label>
-                <input type="checkbox" name="reduced-motion">
                 <br>
                 <button onclick="ipcRenderer.send('open-devtools')">open devtools</button>
             </section>
@@ -143,16 +145,6 @@
 
     <script>
         const { ipcRenderer, shell } = require('electron');
-
-        window.onkeyup = (e) => {
-            if (e.keyCode == 116) {
-                window.location.reload()
-                console.log('reloading...')
-            }
-            if (e.keyCode == 123) {
-                ipcRenderer.send('open-devtools')
-            }
-        }
     </script>
 </body>
 
