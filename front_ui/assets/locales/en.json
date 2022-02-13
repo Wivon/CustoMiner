@@ -29,13 +29,12 @@
                     "report": "Report a translation"
                 },
                 "updates": {
-                    "title": "Updates",
                     "check": "CHECK",
                     "restart": "RESTART",
-                    "messages": {
-                        "UTDMsg": "You're up to date !",
-                        "availableUpadteMsg": "New update available",
-                        "downloadingUpdateMsg": "Downloading update..."
+                    "titles": {
+                        "UTD": "Updates - You're up to date !",
+                        "downloading": "Updates - Downloading...",
+                        "downloaded": "Updates - Downloaded !"
                     }
                 }
             }

@@ -1,8 +1,8 @@
-const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('electron');
+const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('electron')
 const ipc = ipcRenderer
-const { autoUpdater } = require('electron-updater');
-const path = require('path');
-const fs = require('fs');
+const { autoUpdater } = require('electron-updater')
+const path = require('path')
+const fs = require('fs')
 
 let OS = ""
 
@@ -30,8 +30,27 @@ function createWindow() {
         mainWindow = null;
     });
 
-    // mainWindow.webContents.openDevTools()
+    mainWindow.once('ready-to-show', () => {
+        autoUpdater.checkForUpdates()
+    })
 }
+
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})
+
+app.on('ready', () => {
+    createWindow()
+    console.log(`app version: ${app.getVersion()}`)
+});
+
+app.on('activate', function () {
+    if (mainWindow === null) {
+        createWindow()
+    }
+})
 
 ipcMain.on('open-devtools', () => {
     console.log('opening dev tools')
@@ -58,11 +77,6 @@ ipcMain.on('toggle-maximize', () => {
         console.log('unmaximized app')
     }
 })
-
-app.on('ready', () => {
-    createWindow()
-    console.log(`app version: ${app.getVersion()}`)
-});
 
 function getOS() {
     if (process.platform === "win32") {
@@ -101,4 +115,17 @@ const MinecraftFolderExists = checkFolder(getDefaultMinecraftFolder())
 
 ipcMain.handle('game-directory', (event, arg) => {
     return MinecraftFolderExists ? getDefaultMinecraftFolder() : "not-detected"
+})
+
+// updates
+autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('update-available')
+})
+
+autoUpdater.on('update-downloaded', () => {
+    mainWindow.webContents.send('update-downloaded')
+})
+
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall()
 })

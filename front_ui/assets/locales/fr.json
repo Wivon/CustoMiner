@@ -29,13 +29,12 @@
                     "report": "Signaler une traduction"
                 },
                 "updates": {
-                    "title": "Mises à jour",
                     "check": "VÉRIFIER",
                     "restart": "REDÉMARRER",
-                    "messages": {
-                        "UTDMsg": "Vous êtes à jour !",
-                        "availableUpadteMsg": "Nouvelle mise à jour disponible",
-                        "downloadingUpdateMsg": "Téléchargement de la mise à jour..."
+                    "titles": {
+                        "UTD": "Vous êtes à jour !",
+                        "downloading": "Téléchargement de la mise à jour...",
+                        "downloaded": "Mise à jour téléchargée !"
                     }
                 }
             }
