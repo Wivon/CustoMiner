@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/app.js" defer></script>
     <script src="assets/translator.js" defer></script>
+    <script src="assets/gameDirectory.js" defer></script>
 </head>
 
 <body class="loading">
@@ -57,14 +58,14 @@
                 <div class="input">
                     <div class="fileSelector">
                         <img src="assets/img/icons/files-folder.png" alt="browse">
-                        <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDirectory"
+                        <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDir"
                             placeholder="game directory path" class="rounded-left leftpad-icon">
                     </div>
                     <button class="rounded-right iconBTN">
                         <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
                     </button>
                 </div>
-                <button class="secondary-btn" translation-id="menus.homeMenu.sections.gameDirectory.autoDetect">AUTO
+                <button onclick="detectMinecraftDir()" class="secondary-btn" translation-id="menus.homeMenu.sections.gameDirectory.autoDetect">AUTO
                     DETECT</button>
             </div>
         </section>

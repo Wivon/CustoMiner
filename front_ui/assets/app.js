@@ -56,8 +56,8 @@ function saveInput(input) {
 }
 
 // restore game directory input
-if (localStorage.getItem('gameDirectory') !== null) {
-    document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDirectory')
+if (localStorage.getItem('gameDir') !== null) {
+    document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDir')
 }
 
 // restore locale

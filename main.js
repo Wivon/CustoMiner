@@ -80,8 +80,25 @@ OS = getOS()
 
 console.log(`OS: ${OS}`)
 
-function loadDefaultMinecraftFolder() {
-    
+function getDefaultMinecraftFolder() {
+    if (OS == "win") {
+        return process.env.APPDATA + "\\.minecraft"
+    } else {
+        return "unsupported"
+    }
 }
 
-loadDefaultMinecraftFolder()
+function checkFolder(dir) {
+    // check if directory exists
+    if (fs.existsSync(dir)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const MinecraftFolderExists = checkFolder(getDefaultMinecraftFolder())
+
+ipcMain.handle('game-directory', (event, arg) => {
+    return MinecraftFolderExists ? getDefaultMinecraftFolder() : "not-detected"
+})
