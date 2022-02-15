@@ -2,8 +2,10 @@ const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut, dialog } = req
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater')
 const path = require('path')
+const log = require('electron-log');
 const fs = require('fs')
 
+autoUpdater.logger = log;
 let OS = ""
 
 let mainWindow;
@@ -31,7 +33,7 @@ function createWindow() {
     });
 
     mainWindow.once('ready-to-show', () => {
-        autoUpdater.checkForUpdates()
+        autoUpdater.checkForUpdatesAndNotify()
     })
 }
 
@@ -79,7 +81,7 @@ ipcMain.on('toggle-maximize', () => {
 })
 
 ipcMain.handle('select-folder', () => {
-    if(OS == "win") {
+    if (OS == "win") {
         return dialog.showOpenDialog({
             title: "Select Minecraft game directory",
             properties: ['openDirectory', 'dontAddToRecent'],
@@ -134,13 +136,35 @@ ipcMain.handle('game-directory', (event, arg) => {
 
 // updates
 autoUpdater.on('update-available', () => {
-    mainWindow.webContents.send('update-available')
+    mainWindow.webContents.send('update_available');
 })
-
 autoUpdater.on('update-downloaded', () => {
-    mainWindow.webContents.send('update-downloaded')
+    mainWindow.webContents.send('update_downloaded');
 })
 
 ipcMain.on('restart_app', () => {
     autoUpdater.quitAndInstall()
 })
+
+autoUpdater.on('download-progress', (progressObj) => {
+    // get values
+    let bytePerSecond = progressObj.bytesPerSecond
+    let dlPercent = progressObj.percent
+
+    // send response
+    let response = [bytePerSecond, dlPercent]
+    mainWindow.webContents.send('download-progress', JSON.stringify(response));
+})
+
+// single instance
+if (!app.requestSingleInstanceLock()) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        // Someone tried to run a second instance, we should focus our window.
+        if (mainWindow) {
+            if (mainWindow.isMinimized()) mainWindow.restore()
+            mainWindow.focus()
+        }
+    })
+}

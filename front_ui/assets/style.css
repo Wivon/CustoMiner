@@ -391,6 +391,8 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 
 .section-mt { margin-top: 40px }
 
+.disabled { opacity: .5; pointer-events: none; }
+
 .destructive-btn { 
     background: var(--destructive-action-backgrnd);
     color: var(--main-text-color);
@@ -446,8 +448,8 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     padding-bottom: 20px;
 }
 
-#updates .actions {
-    display: flex;
+#updates.u-av .actions .downloading {
+    display: flex !important;
     flex-direction: row;
     justify-content: start;
     margin-top: 13px;
@@ -477,6 +479,24 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     font-size: var(--text-size)
 }
 
+#updates .actions .utd button {
+    margin-right: 10px;
+}
+
+#updates .actions .utd {
+    margin-top: 15px;
+}
+
+#updates .actions .utd, #updates .actions .downloading, #updates .actions .downloaded {
+    margin-top: 0;
+    display: none;
+}
+
+#updates.utd .actions .utd {
+    display: block !important;
+}
+
+/* dev tools */
 #devtools h2 {
     margin-top: 10px;
 }

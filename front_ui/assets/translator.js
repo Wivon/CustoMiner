@@ -18,21 +18,24 @@ function setTexts() {
     toTranslate.forEach(elem => {
         let translationID = elem.getAttribute('translation-id')
 
-        // get JSON obj with translation id
-        let lastObj = localeTexts
-        let y = translationID.split('.')
-        y.forEach((elem, i) => {
-            if (i < y.length) {
-                lastObj = lastObj[elem]
-            }
-        })
-
-        // change texts and render
-        elem.textContent = lastObj
-        renderActiveMenuIndicator()
-        
-        localeLoaded = true
+        setTranslation(translationID, elem)
     })
+    renderActiveMenuIndicator()
+    localeLoaded = true
+}
+
+function setTranslation(id, elem) {
+    // get JSON obj with translation id
+    let lastObj = localeTexts
+    let y = id.split('.')
+    y.forEach((elem, i) => {
+        if (i < y.length) {
+            lastObj = lastObj[elem]
+        }
+    })
+
+    // change texts and render
+    elem.textContent = lastObj
 }
 
 loadLocaleFile()
