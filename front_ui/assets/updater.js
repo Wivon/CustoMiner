@@ -9,3 +9,24 @@ ipcRenderer.on('update_downloaded', () => {
     restartButton.classList.remove('hidden');
     notification.classList.remove('hidden');
 });
+
+// progress bar
+var element = document.querySelector("#updates .actions .progress .displayer")
+
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === "attributes") {
+      let percent = element.getAttribute('value')
+      document.querySelector("#updates .actions .progress .percentage").textContent = percent + "%"
+
+      // calc displayer width
+      let containerWidth = document.querySelector("#updates .actions .progress").offsetWidth
+      element.style.width = percent * containerWidth / 100
+      console.log('changing width...')
+    }
+  })
+})
+
+observer.observe(element, {
+  attributes: true
+})

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('electron')
+const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut, dialog } = require('electron')
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater')
 const path = require('path')
@@ -75,6 +75,21 @@ ipcMain.on('toggle-maximize', () => {
     } else {
         mainWindow.unmaximize()
         console.log('unmaximized app')
+    }
+})
+
+ipcMain.handle('select-folder', () => {
+    if(OS == "win") {
+        return dialog.showOpenDialog({
+            title: "Select Minecraft game directory",
+            properties: ['openDirectory', 'dontAddToRecent'],
+            defaultPath: process.env.APPDATA
+        })
+    } else {
+        return dialog.showOpenDialog({
+            title: "Select Minecraft game directory",
+            properties: ['openDirectory']
+        })
     }
 })
 

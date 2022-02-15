@@ -23,6 +23,7 @@
     --destructive-action-backgrnd: rgba(224, 43, 43, 0.5);
     --destructive-transparent-light: rgba(224, 43, 43, 0.6);
     --destructive-transparent-dark: rgba(224, 43, 43, 0.4);
+    --secondary-display-backgrnd: #4790FF;
     --secondary-action-backgrnd: rgba(195, 195, 195, 0.4);
     --section-backgrnd: rgba(195, 195, 195, 0.4);
     --low-backgrnd: rgba(195, 195, 195, 0.15);
@@ -388,7 +389,7 @@ button:active {
 
 input.leftpad-icon[type="text"] { padding-left: 65px }
 
-.section-mt { margin-top: 50px }
+.section-mt { margin-top: 40px }
 
 .destructive-btn { 
     background: var(--destructive-action-backgrnd);
@@ -442,6 +443,38 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 
 #updates {
     width: 1000px;
+    padding-bottom: 20px;
+}
+
+#updates .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-top: 13px;
+    padding-right: 10px;
+}
+
+#updates .progress {
+    width: 100%;
+    background-color: var(--input-backgrnd);
+    border-radius: 8px;
+    margin-right: 10px;
+    position: relative;
+}
+
+#updates .progress .displayer {
+    background-color: var(--secondary-display-backgrnd);
+    height: 100%;
+    width: 0;
+    z-index: -1;
+}
+
+#updates .progress p {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--text-size)
 }
 
 #devtools h2 {

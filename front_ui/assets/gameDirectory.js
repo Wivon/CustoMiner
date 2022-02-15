@@ -21,3 +21,17 @@ if (localStorage.getItem('gameDir') === null) {
     document.getElementById('gameDirectoryInput').value = gameDir
     console.log('default minecraft directory loaded')
 }
+
+function setGameDir(path) {
+    gameDir = path
+    localStorage.setItem('gameDir', gameDir)
+    document.getElementById('gameDirectoryInput').value = gameDir
+}
+
+document.querySelector("#gameDirectory .actions .input .fileSelector img").onclick = () => {
+    ipcRenderer.invoke('select-folder').then(path => {
+        gameDirPath = path.filePaths
+        setGameDir(gameDirPath)
+        console.log('new game dir path:' + gameDirPath)
+    })
+}

@@ -55,11 +55,11 @@
 
     <div class="home active menu">
         <section id="gameDirectory">
-            <h2 translation-id="menus.homeMenu.sections.gameDirectory.title">Game directory</h2>
+            <h2 translation-id="menus.homeMenu.sections.gameDirectory.title"></h2>
             <div class="actions">
                 <div class="input">
                     <div class="fileSelector">
-                        <img src="assets/img/icons/files-folder.png" alt="browse">
+                        <img src="assets/img/icons/browse_icon.png" alt="browse">
                         <input type="text" onkeyup="saveInput(this)" id="gameDirectoryInput" name="gameDir"
                             placeholder="game directory path" class="rounded-left leftpad-icon">
                     </div>
@@ -67,8 +67,8 @@
                         <img src="assets/img/icons/next-transparent.png" alt="next" id="nextGameDirectory">
                     </button>
                 </div>
-                <button onclick="detectMinecraftDir()" class="secondary-btn" translation-id="menus.homeMenu.sections.gameDirectory.autoDetect">AUTO
-                    DETECT</button>
+                <button onclick="detectMinecraftDir()" class="secondary-btn"
+                    translation-id="menus.homeMenu.sections.gameDirectory.autoDetect"></button>
             </div>
         </section>
 
@@ -135,8 +135,13 @@
         </div>
         <section id="updates" class="section-mt">
             <h2 translation-id="menus.settingsMenu.sections.updates.titles.UTD"></h2>
-            <progress class="downloadProgress"></progress>
-            <button translation-id="menus.settingsMenu.sections.updates.check"></button>
+            <div class="actions">
+                <div class="progress">
+                    <div class="displayer"></div>
+                    <p class="percentage">0%</p>
+                </div>
+                <button translation-id="menus.settingsMenu.sections.updates.check"></button>
+            </div>
         </section>
     </div>
 
