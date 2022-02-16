@@ -452,7 +452,6 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     display: flex !important;
     flex-direction: row;
     justify-content: start;
-    margin-top: 13px;
     padding-right: 10px;
 }
 
@@ -483,8 +482,8 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     margin-right: 10px;
 }
 
-#updates .actions .utd {
-    margin-top: 15px;
+#updates .actions {
+    padding-top: 15px;
 }
 
 #updates .actions .utd, #updates .actions .downloading, #updates .actions .downloaded {
