@@ -77,4 +77,14 @@ function loadUpdateSection() {
   }
 }
 
-loadUpdateSection()
+function tryLoadUpdateSection() {
+  if(localeLoaded == true) {
+    loadUpdateSection()
+    console.log('loading update section')
+  } else {
+    setTimeout(() => {tryLoadUpdateSection()}, 500)
+    console.log('locale not loaded, retrying in 500ms')
+  }
+}
+
+tryLoadUpdateSection()
