@@ -21,6 +21,7 @@ function setTexts() {
         setTranslation(translationID, elem)
     })
     renderActiveMenuIndicator()
+    tryLoadUpdateSection()
     localeLoaded = true
 }
 

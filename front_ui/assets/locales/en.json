@@ -34,7 +34,8 @@
                     "titles": {
                         "UTD": "Updates - You're up to date !",
                         "downloading": "Updates - Downloading...",
-                        "downloaded": "Updates - Downloaded !"
+                        "downloaded": "Updates - Downloaded !",
+                        "checking": "Checking for updates..."
                     }
                 }
             }

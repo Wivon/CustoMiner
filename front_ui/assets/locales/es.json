@@ -34,7 +34,8 @@
                     "titles": {
                         "UTD": "¡Estas actualizado!",
                         "downloading": "Descargando la actualización...",
-                        "downloaded": "¡Actualización descargada!"
+                        "downloaded": "¡Actualización descargada!",
+                        "checking": "Comprobación..."
                     }
                 }
             }

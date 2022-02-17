@@ -34,7 +34,8 @@
                     "titles": {
                         "UTD": "Vous êtes à jour !",
                         "downloading": "Téléchargement de la mise à jour...",
-                        "downloaded": "Mise à jour téléchargée !"
+                        "downloaded": "Mise à jour téléchargée !",
+                        "checking": "Vérification..."
                     }
                 }
             }

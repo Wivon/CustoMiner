@@ -10,6 +10,19 @@ ipcRenderer.on('update_downloaded', () => {
   tryLoadUpdateSection()
 })
 
+// check for updates manually
+document.querySelector('#updates .actions .utd .checkUpdates').onclick = () => {
+  setTranslation('menus.settingsMenu.sections.updates.titles.checking', document.querySelector('#updates h2'))
+  document.querySelector('#updates .actions .utd .checkUpdates').classList.add('disabled')
+  document.querySelector('#currentVersion').style.transform = 'translateX(150px)'
+  setTimeout(() => {
+    document.querySelector('#updates .actions .utd .checkUpdates').classList.remove('disabled')
+    document.querySelector('#currentVersion').style.transform = 'translateX(0)'
+    tryLoadUpdateSection()
+  }, 3000);
+}
+
+
 // progress bar
 var element = document.querySelector("#updates .actions .progress .displayer")
 
