@@ -137,15 +137,16 @@
             <h2></h2>
             <div class="actions">
                 <div class="downloading">
+                    <p class="speed"></p>
                     <div class="progress">
                         <div class="displayer"></div>
                         <p class="percentage">0%</p>
                     </div>
-                    <button translation-id="menus.settingsMenu.sections.updates.restart" class="disabled"></button>
+                    <button translation-id="menus.settingsMenu.sections.updates.restart" onclick="ipcRenderer.send('restart_app')" class="disabled"></button>
                 </div>
                 <div class="utd">
-                    <button translation-id="menus.settingsMenu.sections.updates.check"></button>
-                    <button>GITHUB</button>
+                    <button translation-id="menus.settingsMenu.sections.updates.check" onclick="ipcRenderer.send('check_updates')"></button>
+                    <button onclick="shell.openExternal('https://github.com/Wivon/CustoMiner')">GITHUB</button>
                 </div>
             </div>
         </section>

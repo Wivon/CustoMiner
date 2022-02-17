@@ -146,6 +146,10 @@ ipcMain.on('restart_app', () => {
     autoUpdater.quitAndInstall()
 })
 
+ipcMain.on('check_updates', () => {
+    autoUpdater.checkForUpdatesAndNotify()
+})
+
 autoUpdater.on('download-progress', (progressObj) => {
     // get values
     let bytePerSecond = progressObj.bytesPerSecond

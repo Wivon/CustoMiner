@@ -2,10 +2,12 @@ let UPDATER_STATUS = "UTD"
 
 ipcRenderer.on('update_available', () => {
   UPDATER_STATUS = "UPDATE_AV"
+  tryLoadUpdateSection()
 })
 ipcRenderer.on('update_downloaded', () => {
   ipcRenderer.removeAllListeners('update_downloaded');
   UPDATER_STATUS = "UPDATE_DL"
+  tryLoadUpdateSection()
 })
 
 // progress bar
@@ -19,8 +21,7 @@ var observer = new MutationObserver(function (mutations) {
 
       // calc displayer width
       let containerWidth = document.querySelector("#updates .actions .progress").offsetWidth
-      element.style.width = percent * containerWidth / 100
-      console.log('changing width...', `${percent} ${containerWidth} 100` + percent * containerWidth / 100)
+      element.style.width = percent * containerWidth / 100 + "px"
     }
   })
 })
@@ -33,21 +34,19 @@ dlProgressObj = []
 
 ipcRenderer.on('download-progress', (event, progress) => {
   dlProgressObj = JSON.parse(progress)
+  setDownloadProgress(dlProgressObj)
   console.log(progress)
 })
 
 function setDownloadProgress(progressArr) {
   // calc
   let speed = Math.round((progressArr[0] / 1000000 + Number.EPSILON) * 100) / 100 + "Mb/s"
-  let percent = progressArr[1].slice(0, 3) + '%'
+  let percent = progressArr[1].slice(0, 3)
 
   // display
-  document.querySelector('#updates .actions .progress .speed').textContent = speed
-  document.querySelector('#updates .actions .progress .displayer').setAttribute('value', percent)
+  document.querySelector('#updates .actions .downloading .speed').textContent = speed
+  document.querySelector('#updates .actions .downloading .progress .displayer').setAttribute('value', percent)
 }
-// [0] speed
-// [1] percent
-// [2] downloaded
 
 function loadUpdateSection() {
   let updateSection = document.querySelector('#updates')
@@ -56,21 +55,19 @@ function loadUpdateSection() {
   if(UPDATER_STATUS == "UTD") {
     updateSection.classList.add('utd')
     updateSection.classList.remove('u-av')
-    updateSection.classList.remove('u-dl')
 
     // title
     setTranslation('menus.settingsMenu.sections.updates.titles.UTD', title)
   } else if (UPDATER_STATUS == "UPDATE_AV") {
     updateSection.classList.add('u-av')
-    updateSection.classList.remove('u-dl')
     updateSection.classList.remove('utd')
 
     // title
     setTranslation('menus.settingsMenu.sections.updates.titles.downloading', title)
   } else if (UPDATER_STATUS == "UPDATE_DL") {
-    updateSection.classList.add('u-dl')
-    updateSection.classList.remove('u-av')
+    updateSection.classList.add('u-av')
     updateSection.classList.remove('utd')
+    updateSection.querySelector('.actions .downloading button').classList.remove('disabled')
 
     // title
     setTranslation('menus.settingsMenu.sections.updates.titles.downloaded', title)

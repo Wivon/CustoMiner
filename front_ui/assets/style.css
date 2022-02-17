@@ -18,6 +18,8 @@
 }
 
 :root {
+    --animation-timing-function: cubic-bezier(.68, -0.04, 0, 1.31);
+
     /* colors */
     --primary-action-backgrnd: #51F570;
     --destructive-action-backgrnd: rgba(224, 43, 43, 0.5);
@@ -83,6 +85,21 @@ body {
     -webkit-app-region: drag;
     z-index: 9999999;
     box-shadow: 0 0 25px rgba(0, 0, 0, .7);
+    animation: navDisplay .8s var(--animation-timing-function);
+    animation-delay: 0.5s;
+    opacity: .2;
+    transform: translateY(-100%);
+}
+
+@keyframes navDisplay {
+    from {
+        opacity: .2;
+        transform: translateY(-100%);
+    } 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .nav .left {
@@ -465,6 +482,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 
 #updates .progress .displayer {
     background-color: var(--secondary-display-backgrnd);
+    border-radius: 8px;
     height: 100%;
     width: 0;
     z-index: -1;
@@ -478,6 +496,15 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     font-size: var(--text-size)
 }
 
+#updates .actions .downloading .speed {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--text-size);
+    z-index: 3;
+}
+
 #updates .actions .utd button {
     margin-right: 10px;
 }
@@ -489,6 +516,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 #updates .actions .utd, #updates .actions .downloading, #updates .actions .downloaded {
     margin-top: 0;
     display: none;
+    position: relative;
 }
 
 #updates.utd .actions .utd {
@@ -525,7 +553,7 @@ body.loading {
     transition: 0.2s;
 
     /* position */
-    z-index: 999999999999;
+    z-index: 9999998;
     position: absolute;
     top: 0;
     bottom: 0;

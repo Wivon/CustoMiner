@@ -112,3 +112,9 @@ if (localStorage.getItem('r-motion') !== null) {
     localStorage.setItem('r-motion', false)
     document.getElementById('r-motion').checked = JSON.parse(localStorage.getItem('r-motion'))
 }
+
+// nav load animation
+setTimeout(() => {
+    document.querySelector('.nav').style.transform = 'translateY(0)'
+    document.querySelector('.nav').style.opacity = 1
+}, 500)
