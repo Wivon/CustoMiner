@@ -41,7 +41,7 @@ ipcRenderer.on('download-progress', (event, progress) => {
 function setDownloadProgress(progressArr) {
   // calc
   let speed = Math.round((progressArr[0] / 1000000 + Number.EPSILON) * 100) / 100 + "Mb/s"
-  let percent = progressArr[1].slice(0, 3)
+  let percent = progressArr[1].toString().slice(0, 4)
 
   // display
   document.querySelector('#updates .actions .downloading .speed').textContent = speed
