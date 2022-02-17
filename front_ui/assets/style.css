@@ -40,6 +40,7 @@
     /* text sizes */
     --title-size: 48px;
     --subtitle-size: 40px;
+    --info-size: 32px;
     --text-size: 22px;
     --small-text-size: 18px;
     
@@ -463,6 +464,19 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 #updates {
     width: 1000px;
     padding-bottom: 20px;
+    position: relative;
+}
+
+#updates #currentVersion {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: var(--info-size);
+    background: var(--low-backgrnd);
+    border-radius: var(--btn-border-radius);
+    backdrop-filter: blur(15px);
+    border: solid 2px var(--main-text-color);
+    padding: 5px 10px;
 }
 
 #updates.u-av .actions .downloading {

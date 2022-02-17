@@ -38,9 +38,9 @@
         <div class="left">
             <img src="assets/img/icons/CustoMinerICONx128.png" alt="appIcon">
             <div class="actions">
-                <a href="#home" class="active" translation-id="nav.home">HOME</a>
-                <a href="#settings" translation-id="nav.settings">SETTINGS</a>
-                <a href="#library" translation-id="nav.library">LIBRARY</a>
+                <a href="#home" class="active" translation-id="nav.home"></a>
+                <a href="#settings" translation-id="nav.settings"></a>
+                <a href="#library" translation-id="nav.library"></a>
                 <div class="activeMenuIndicator"></div>
             </div>
         </div>
@@ -77,24 +77,22 @@
                 <div class="card">
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
                     <div class="add">
-                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks">
-                            Shaderpacks</p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks"></p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
                     <div class="add">
-                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks">
-                            Resources Packs</p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks"></p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
-                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.mods">Mods</p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add">add</button>
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.mods"></p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
                     </div>
                 </div>
             </div>
@@ -104,7 +102,7 @@
     <div class="settings menu" style="height: 0;">
         <div class="horizontal">
             <section id="locale">
-                <h2 translation-id="menus.settingsMenu.sections.locale.title">Languages</h2>
+                <h2 translation-id="menus.settingsMenu.sections.locale.title"></h2>
                 <div class="actions">
                     <div class="input">
                         <select name="locale" class="localeSelector rounded-left">
@@ -118,9 +116,9 @@
                         </button>
                     </div>
                     <button class="destructive-btn" translation-id="menus.settingsMenu.sections.locale.reset"
-                        onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector')); loadLocaleFile();">RESET</button>
+                        onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector')); loadLocaleFile();"></button>
                 </div>
-                <a href="#" translation-id="menus.settingsMenu.sections.locale.report">report translation</a>
+                <a href="#" translation-id="menus.settingsMenu.sections.locale.report"></a>
             </section>
             <section id="devtools">
                 <h2>Developer Tools</h2>
@@ -135,6 +133,7 @@
         </div>
         <section id="updates" class="section-mt">
             <h2></h2>
+            <p id="currentVersion"></p>
             <div class="actions">
                 <div class="downloading">
                     <p class="speed"></p>
@@ -142,10 +141,12 @@
                         <div class="displayer"></div>
                         <p class="percentage">0%</p>
                     </div>
-                    <button translation-id="menus.settingsMenu.sections.updates.restart" onclick="ipcRenderer.send('restart_app')" class="disabled"></button>
+                    <button translation-id="menus.settingsMenu.sections.updates.restart"
+                        onclick="ipcRenderer.send('restart_app')" class="disabled"></button>
                 </div>
                 <div class="utd">
-                    <button translation-id="menus.settingsMenu.sections.updates.check" onclick="ipcRenderer.send('check_updates')"></button>
+                    <button translation-id="menus.settingsMenu.sections.updates.check"
+                        onclick="ipcRenderer.send('check_updates')"></button>
                     <button onclick="shell.openExternal('https://github.com/Wivon/CustoMiner')">GITHUB</button>
                 </div>
             </div>
@@ -158,6 +159,13 @@
 
     <script>
         const { ipcRenderer, shell } = require('electron');
+
+        // app version
+        const appVersion = ipcRenderer.invoke('get-version')
+            .then(version => {
+                document.getElementById('currentVersion').innerHTML = "V" + version
+                return version
+            })
     </script>
 </body>
 

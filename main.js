@@ -150,6 +150,10 @@ ipcMain.on('check_updates', () => {
     autoUpdater.checkForUpdatesAndNotify()
 })
 
+ipcMain.handle('get-version', (event, arg) => {
+    return app.getVersion()
+})
+
 autoUpdater.on('download-progress', (progressObj) => {
     // get values
     let bytePerSecond = progressObj.bytesPerSecond
