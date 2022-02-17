@@ -40,5 +40,11 @@
                 }
             }
         }
+    },
+    "notification": {
+        "actions": {
+            "open": "abrir",
+            "close": "cerrar"
+        }
     }
 }

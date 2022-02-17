@@ -1,4 +1,4 @@
-document.querySelectorAll('.actions a').forEach(a => {
+document.querySelectorAll('.nav .left a').forEach(a => {
     a.onclick = (e) => {
         // e.preventDefault();
         if (!a.classList.contains('active')) {

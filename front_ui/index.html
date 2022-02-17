@@ -14,6 +14,7 @@
     <script src="assets/gameDirectory.js" defer></script>
     <script src="assets/shortcuts.js" defer></script>
     <script src="assets/updater.js" defer></script>
+    <script src="assets/notifications.js" defer></script>
 </head>
 
 <body class="loading">
@@ -50,6 +51,15 @@
                 <div class="square"></div>
             </div>
             <div class="closeBtn miniBtn" onclick="ipcRenderer.send('quit')">X</div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification hidden-notif">
+        <h3>This is a test</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+        <div class="actions">
+            <a href="#settings" class="main" translation-id="notification.actions.open"></a>
+            <a onclick="hideNotification()" translation-id="notification.actions.close"></a>
         </div>
     </div>
 
@@ -146,7 +156,8 @@
                 </div>
                 <div class="utd">
                     <button translation-id="menus.settingsMenu.sections.updates.check" class="checkUpdates"></button>
-                    <button onclick="shell.openExternal('https://github.com/Wivon/CustoMiner')"><img src="assets/img/icons/github_icon.png"> GITHUB</button>
+                    <button onclick="shell.openExternal('https://github.com/Wivon/CustoMiner')"><img
+                            src="assets/img/icons/github_icon.png"> GITHUB</button>
                 </div>
             </div>
         </section>
