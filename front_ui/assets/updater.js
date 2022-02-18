@@ -3,17 +3,29 @@ let UPDATER_STATUS = "UTD"
 ipcRenderer.on('update_available', () => {
   UPDATER_STATUS = "UPDATE_AV"
   tryLoadUpdateSection()
-  sendNotification('New update available !', 'Downloading new update...', () => {
-    // open settings
-  })
+  if (ACTIVE_MENU != "SETTINGS") {
+    sendNotification('New update available !', 'Downloading new update...', () => {
+      //open settings
+      openMenu(document.querySelector('.nav .left a[href="#settings'))
+      setTimeout(() => {
+        highlight(document.querySelector('.menu.settings #updates'))
+      }, 500)
+    })
+  }
 })
 ipcRenderer.on('update_downloaded', () => {
   ipcRenderer.removeAllListeners('update_downloaded');
   UPDATER_STATUS = "UPDATE_DL"
   tryLoadUpdateSection()
-  sendNotification('Update downloaded', 'Update will be installed on restart (open to restart)', () => {
-    //open settings
-  })
+  if (ACTIVE_MENU != "SETTINGS") {
+    sendNotification('Update downloaded', 'Update will be installed on restart (open to restart)', () => {
+      //open settings
+      openMenu(document.querySelector('.nav .left a[href="#settings'))
+      setTimeout(() => {
+        highlight(document.querySelector('.menu.settings #updates'))
+      }, 500)
+    })
+  }
 })
 
 // check for updates manually

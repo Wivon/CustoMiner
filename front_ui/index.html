@@ -46,6 +46,7 @@
             </div>
         </div>
         <div class="right">
+            <h2 style="display: none;">PROD. BUILD</h2>
             <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')">-</div>
             <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('toggle-maximize')">
                 <div class="square"></div>
@@ -102,6 +103,27 @@
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.mods"></p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
+                    <div class="add">
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.maps"></p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/banners/banner_shaderpacks_card.png" alt="mods banner">
+                    <div class="add">
+                        <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.screenshots"></p>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.view"></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/banners/banner_resourcespacks_card.png" alt="mods banner">
+                    <div class="add">
+                        <p class="name">Datapacks</p>
                         <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
                     </div>
                 </div>
@@ -176,6 +198,15 @@
                 document.getElementById('currentVersion').innerHTML = "V" + version
                 return version
             })
+
+        const isDev = ipcRenderer.invoke('is-dev')
+            .then(dev => {
+                return JSON.parse(dev)
+            })
+
+        if (isDev) {
+            document.querySelector('.nav .right h2').style.display = 'block';
+        }
     </script>
 </body>
 

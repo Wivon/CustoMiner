@@ -1,19 +1,25 @@
+let ACTIVE_MENU = "HOME"
+
 document.querySelectorAll('.nav .left a').forEach(a => {
-    a.onclick = (e) => {
-        // e.preventDefault();
-        if (!a.classList.contains('active')) {
-            document.querySelectorAll('.actions a').forEach(b => {
-                if (b == a) {
-                    a.classList.add('active')
-                    renderActiveMenuIndicator(a)
-                    showMenu(a.getAttribute('href').slice(1))
-                } else {
-                    b.classList.remove('active')
-                }
-            })
-        }
+    a.onclick = () => {
+        openMenu(a)
     }
 })
+
+function openMenu(a) {
+    // e.preventDefault();
+    if (!a.classList.contains('active')) {
+        document.querySelectorAll('.actions a').forEach(b => {
+            if (b == a) {
+                a.classList.add('active')
+                showMenu(a.getAttribute('href').slice(1), a)
+                ACTIVE_MENU = a.getAttribute('href').slice(1).toUpperCase()
+            } else {
+                b.classList.remove('active')
+            }
+        })
+    }
+}
 
 function renderActiveMenuIndicator(a = document.querySelector('.nav .left .actions a.active')) {
     // render active menu indicator
@@ -26,7 +32,7 @@ function renderActiveMenuIndicator(a = document.querySelector('.nav .left .actio
     activeMenuIndicator.style.width = a.offsetWidth + "px"
 }
 
-function showMenu(menuClassName) {
+function showMenu(menuClassName, navElem) {
     document.querySelectorAll('.menu').forEach(menu => {
         if (menu.classList.contains(menuClassName)) {
             if (!menu.classList.contains('active')) {
@@ -42,6 +48,7 @@ function showMenu(menuClassName) {
             }, 120)
         }
     })
+    renderActiveMenuIndicator(navElem)
 }
 
 function highlight(elem) {

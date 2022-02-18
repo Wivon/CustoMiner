@@ -21,7 +21,7 @@
     --animation-timing-function: cubic-bezier(.68, -0.04, 0, 1.31);
 
     /* colors */
-    --primary-action-backgrnd: #51F570;
+    --primary-action-backgrnd: #0ebb62;
     --destructive-action-backgrnd: rgba(224, 43, 43, 0.5);
     --destructive-transparent-light: rgba(224, 43, 43, 0.6);
     --destructive-transparent-dark: rgba(224, 43, 43, 0.4);
@@ -334,13 +334,14 @@ button.iconBTN img {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #addNew .container .card {
     position: relative;
     height: 448px;
     width: 272px;
-    margin: 0 20px;
+    margin: 40px 20px;
 }
 
 #addNew .container .card img {

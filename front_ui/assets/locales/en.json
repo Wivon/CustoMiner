@@ -15,9 +15,12 @@
                     "cardsNames": {
                         "shaderPacks": "Shader Packs",
                         "resourcePacks": "Resource Packs",
-                        "mods": "Mods"
+                        "mods": "Mods",
+                        "maps": "Maps",
+                        "screenshots": "Screenshots"
                     },
-                    "add": "add"
+                    "add": "add",
+                    "view": "view"
                 }
             }
         },
