@@ -97,13 +97,13 @@ body:not(.reduced-motion) .nav {
     animation: navDisplay .8s var(--animation-timing-function);
     animation-delay: 0.5s;
     opacity: .2;
-    transform: translateY(-100%);
+    transform: translateY(-120%);
 }
 
 @keyframes navDisplay {
     from {
         opacity: .2;
-        transform: translateY(-100%);
+        transform: translateY(-120%);
     } 
     to {
         opacity: 1;

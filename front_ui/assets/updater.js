@@ -3,11 +3,17 @@ let UPDATER_STATUS = "UTD"
 ipcRenderer.on('update_available', () => {
   UPDATER_STATUS = "UPDATE_AV"
   tryLoadUpdateSection()
+  sendNotification('New update available !', 'Downloading new update...', () => {
+    // open settings
+  })
 })
 ipcRenderer.on('update_downloaded', () => {
   ipcRenderer.removeAllListeners('update_downloaded');
   UPDATER_STATUS = "UPDATE_DL"
   tryLoadUpdateSection()
+  sendNotification('Update downloaded', 'Update will be installed on restart (open to restart)', () => {
+    //open settings
+  })
 })
 
 // check for updates manually

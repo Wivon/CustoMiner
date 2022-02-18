@@ -111,9 +111,11 @@ OS = getOS()
 
 console.log(`OS: ${OS}`)
 
-function getDefaultMinecraftFolder() {
+function getDefaultMinecraftFolderPath() {
     if (OS == "win") {
         return process.env.APPDATA + "\\.minecraft"
+    } else if (OS == "lin") {
+        return process.env.HOME + "/.minecraft"
     } else {
         return "unsupported"
     }
@@ -128,10 +130,10 @@ function checkFolder(dir) {
     }
 }
 
-const MinecraftFolderExists = checkFolder(getDefaultMinecraftFolder())
+const MinecraftFolderExists = checkFolder(getDefaultMinecraftFolderPath())
 
 ipcMain.handle('game-directory', (event, arg) => {
-    return MinecraftFolderExists ? getDefaultMinecraftFolder() : "not-detected"
+    return MinecraftFolderExists ? getDefaultMinecraftFolderPath() : "not-detected"
 })
 
 // updates
