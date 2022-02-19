@@ -10,6 +10,7 @@
     <!-- links -->
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/app.js" defer></script>
+    <script src="assets/simplePopup.js" defer></script>
     <script src="assets/translator.js" defer></script>
     <script src="assets/gameDirectory.js" defer></script>
     <script src="assets/shortcuts.js" defer></script>
@@ -63,6 +64,19 @@
             <a onclick="hideNotification()" translation-id="notification.actions.close"></a>
         </div>
     </div>
+
+    <div class="popup">
+        <img class="invert" src="assets/img/icons/browse_icon.png">
+        <h3></h3>
+        <p class="text"></p>
+        <div class="buttons">
+            <button onclick="hidePopup()" class="Popupbutton">Cancel</button>
+            <hr>
+            <button class="Popupbutton">Confirm</button>
+        </div>
+    </div>
+
+    <div onclick="hidePopup()" class="popupBackground popHidden"></div>
 
     <div class="home active menu">
         <section id="gameDirectory">

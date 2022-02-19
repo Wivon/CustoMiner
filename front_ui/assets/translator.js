@@ -1,3 +1,28 @@
+// restore locale and ask the first time
+if (localStorage.getItem('locale') !== null) {
+    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
+    loadLocaleFile()
+} else {
+    ipcRenderer.invoke('get-sys-locale').then((sysLocale) => {
+        if (sysLocale == 'fr') {
+            openPopup('Changer la langue en français ?',
+                'Change language to french ?',
+                true,
+                `<button onclick="changeLocale('fr')">change</button><button onclick="hidePopup(); changeLocale('en')">cancel</button>`
+            )
+        } else if (sysLocale == 'es') {
+            openPopup(
+                'Cambiar el idioma a español?',
+                'Change language to spanish ?',
+                true,
+                `<button onclick="changeLocale('es')">change</button><button onclick="hidePopup(); changeLocale('en')">cancel</button>`
+            )
+        } else {
+            changeLocale('en')
+        }
+    })
+}
+
 let toTranslate = document.querySelectorAll("*[translation-id]");
 
 let localeTexts = {}
@@ -39,4 +64,9 @@ function setTranslation(id, elem) {
     elem.textContent = lastObj
 }
 
-loadLocaleFile()
+function changeLocale(locale) {
+    localStorage.setItem('locale', locale)
+    hidePopup()
+    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
+    loadLocaleFile()
+}

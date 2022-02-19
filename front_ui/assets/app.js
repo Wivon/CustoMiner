@@ -67,14 +67,6 @@ if (localStorage.getItem('gameDir') !== null) {
     document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDir')
 }
 
-// restore locale
-if (localStorage.getItem('locale') !== null) {
-    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
-} else {
-    localStorage.setItem('locale', 'en')
-    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
-}
-
 document.getElementById('nextGameDirectory').onclick = () => {
     document.getElementById('addNew').scrollIntoView()
     if (window.innerHeight > 870) {
