@@ -28,10 +28,17 @@ function setGameDir(path) {
     document.getElementById('gameDirectoryInput').value = gameDir
 }
 
-document.querySelector("#gameDirectory .actions .input .fileSelector img").onclick = () => {
+function selectMinecraftFolder() {
     ipcRenderer.invoke('select-folder').then(path => {
-        gameDirPath = path.filePaths
-        setGameDir(gameDirPath)
-        console.log('new game dir path:' + gameDirPath)
+        if (path.canceled != true) {
+            gameDirPath = path.filePaths
+            setGameDir(gameDirPath)
+            console.log('new game dir path:' + gameDirPath)
+            console.log({ "path": path })
+        }
     })
+}
+
+document.querySelector("#gameDirectory .actions .input .fileSelector img").onclick = () => {
+    selectMinecraftFolder()
 }
