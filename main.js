@@ -24,7 +24,7 @@ function createWindow() {
             contextIsolation: false,
             enableRemoteModule: true,
         },
-        icon: path.join(__dirname, 'assets/icons/CustoMinerICONx128.ico')
+        icon: path.join(__dirname, 'assets/icons/CustoMinerICONx512.ico')
     });
 
     mainWindow.loadFile('front_ui/index.html');
