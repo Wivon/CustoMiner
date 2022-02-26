@@ -16,6 +16,7 @@
     <script src="assets/shortcuts.js" defer></script>
     <script src="assets/updater.js" defer></script>
     <script src="assets/notifications.js" defer></script>
+    <script src="assets/addNewPopup.js" defer></script>
 </head>
 
 <body class="loading">
@@ -76,7 +77,31 @@
         </div>
     </div>
 
+    <div class="addnew-popup">
+        <h2>Add new: shaders</h2>
+        <div class="container">
+            <div class="infos">
+                <div class="inputField fileSelector">
+                    <img src="assets/img/icons/browse_icon.png" alt="browse">
+                    <input type="text" name="fileSelector" class="leftpad-icon">
+                </div>
+                <div class="inputField fileSelector">
+                    <input type="text" name="newFileName">
+                </div>
+            </div>
+            <div class="preview">
+                <img src="assets/img/banners/banner_shaderpacks_card.png" alt="resources packs banner">
+                <span>Shaders</span>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="secondary-btn">cancel</button>
+            <button class="main-action">add !</button>
+        </div>
+    </div>
+
     <div onclick="hidePopup()" class="popupBackground popHidden"></div>
+    <div onclick="hidePopup()" class="popupBackground-lower popHidden"></div>
 
     <div class="home active menu">
         <section id="gameDirectory">
@@ -103,7 +128,7 @@
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks"></p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                        <button class="addBtn" add-target="shaderpacks" translation-id="menus.homeMenu.sections.addNew.add"></button>
                     </div>
                 </div>
                 <div class="card">
