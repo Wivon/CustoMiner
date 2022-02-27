@@ -20,7 +20,7 @@
       "uninstallDisplayName": "Uninstall CustoMiner",
       "oneClick": false,
       "shortcutName": "CustoMiner",
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": false
     }
   },
   "keywords": [
