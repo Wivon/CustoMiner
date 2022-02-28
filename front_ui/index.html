@@ -71,32 +71,37 @@
         <h3></h3>
         <p class="text"></p>
         <div class="buttons">
-            <button onclick="hidePopup()" class="Popupbutton">Cancel</button>
+            <button onclick="hidePopup()" class="Popupbutton" translation-id="common.cancel"></button>
             <hr>
-            <button class="Popupbutton">Confirm</button>
+            <button class="Popupbutton" translation-id="common.confirm"></button>
         </div>
     </div>
 
     <div class="addnew-popup">
-        <h2>Add new: shaders</h2>
+        <div class="top">
+            <h2>Add new: shaders</h2>
+            <img class="invert" src="assets/img/icons/close_icon.png" alt="Close" onclick="hideAddNewPopup()">
+        </div>
         <div class="container">
             <div class="infos">
+                <span>Select the Shader you want to add</span>
                 <div class="inputField fileSelector">
                     <img src="assets/img/icons/browse_icon.png" alt="browse">
-                    <input type="text" name="fileSelector" class="leftpad-icon">
+                    <input type="text" placeholder="Shader filepath" name="fileSelector" class="leftpad-icon">
                 </div>
+                <span>Enter the new name of the shader file</span>
                 <div class="inputField fileSelector">
                     <input type="text" name="newFileName">
                 </div>
             </div>
             <div class="preview">
-                <img src="assets/img/banners/banner_shaderpacks_card.png" alt="resources packs banner">
+                <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaders banner">
                 <span>Shaders</span>
             </div>
         </div>
         <div class="actions">
-            <button class="secondary-btn">cancel</button>
-            <button class="main-action">add !</button>
+            <button class="secondary-btn" translation-id="common.cancel" onclick="hideAddNewPopup()"></button>
+            <button class="main-action" translation-id="common.confirm"></button>
         </div>
     </div>
 
@@ -128,28 +133,29 @@
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaderpacks banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks"></p>
-                        <button class="addBtn" add-target="shaderpacks" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                        <button class="addBtn" add-target="shaderpacks" translation-id="common.add"
+                            onclick="openPopup('shaders')"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks"></p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                        <button class="addBtn" translation-id="common.add"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.mods"></p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                        <button class="addBtn" translation-id="common.add"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.maps"></p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                        <button class="addBtn" translation-id="common.add"></button>
                     </div>
                 </div>
                 <div class="card">
@@ -163,7 +169,7 @@
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name">Datapacks</p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.add"></button>
+                        <button class="addBtn" translation-id="common.add"></button>
                     </div>
                 </div>
             </div>
@@ -238,6 +244,7 @@
                 return version
             })
 
+        // is dev ?
         const isDev = ipcRenderer.invoke('is-dev')
             .then(dev => {
                 return JSON.parse(dev)

@@ -19,7 +19,6 @@
                         "maps": "Mundos",
                         "screenshots": "Capturas de Pa..."
                     },
-                    "add": "agregar",
                     "view": "abrir"
                 }
             }
@@ -49,5 +48,10 @@
             "open": "abrir",
             "close": "cerrar"
         }
+    },
+    "common": {
+        "add": "agregar",
+        "cancel": "cancelar",
+        "confirm": "hecho"
     }
 }

@@ -49,5 +49,10 @@
             "open": "ouvrir",
             "close": "fermer"
         }
+    },
+    "common": {
+        "add": "ajouter",
+        "cancel": "annuler",
+        "confirm": "confirmer"
     }
 }
