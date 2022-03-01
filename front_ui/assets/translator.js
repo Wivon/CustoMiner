@@ -50,7 +50,7 @@ function setTexts() {
     localeLoaded = true
 }
 
-function setTranslation(id, elem) {
+function setTranslation(id, elem, prefix="") {
     // get JSON obj with translation id
     let lastObj = localeTexts
     let y = id.split('.')
@@ -61,7 +61,7 @@ function setTranslation(id, elem) {
     })
 
     // change texts and render
-    elem.textContent = lastObj
+    elem.textContent = prefix + lastObj;
 }
 
 function changeLocale(locale) {
