@@ -79,7 +79,11 @@ function openAddNewPopup(newType) {
 
     // nav
     let popupNavItem = document.querySelector('.nav .left .actions a[href="#!addnew-popup"]')
+    // force display when animation is too fast
     popupNavItem.style.display = 'block';
+    setTimeout(() => {
+        popupNavItem.style.display = 'block';
+    }, 500)
     renderActiveMenuIndicator(popupNavItem)
     document.querySelectorAll('.nav .left .actions a').forEach(a => {
         if (a != popupNavItem) {
