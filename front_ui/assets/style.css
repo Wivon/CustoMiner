@@ -151,6 +151,18 @@ body:not(.reduced-motion) .nav {
     position: relative;
     -webkit-app-region: none;
     text-shadow: 0 0 13px rgba(0, 0, 0, 0.7);
+    animation: navItemDisplay 0.5s var(--animation-timing-function);
+}
+
+@keyframes navItemDisplay {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .nav .left a.active {
@@ -359,7 +371,7 @@ button.iconBTN img {
 }
 
 #addNew .container .card .add {
-    width: 229px;
+    width: 240px;
     height: 114px;
     position: absolute;
     bottom: -3px;
@@ -377,6 +389,8 @@ button.iconBTN img {
 
 #addNew .container .card .add p.name {
     font-size: 24px;
+    width: 150%;
+    text-align: center;
     font-weight: 500;
     margin-bottom: 12px;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
@@ -422,8 +436,8 @@ button {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
-.active-anim, .nav .left a:active, button:active, .input img:active{
-    transform: scale(0.98);
+.active-anim:active, .nav .left a:active, button:active, .input img:active{
+    transform: scale(0.97);
     transition: 0.05s linear;
 }
 
@@ -807,7 +821,7 @@ body.loading {
 @keyframes popupDisplay {
     from {
         opacity: 0;
-        transform: scale(1.15);
+        transform: scale(1.5);
     }
 
     to {
@@ -842,23 +856,22 @@ body.loading {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, .7);
-    backdrop-filter: blur(25px);
-    padding: 20px 40px;
-    border-radius: 0.5em;
-    border: 1.5px solid rgba(255, 255, 255, .3);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, .6);
     /* style */
     animation: popupDisplay .4s var(--animation-timing-function);
     overflow: hidden;
+    border-radius: 0.5em;
+    border: 1.5px solid rgba(255, 255, 255, .3);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, .6);
+    backdrop-filter: blur(25px);
+    background-color: rgba(0, 0, 0, .7);
     /* position & size*/
-    top: 50%;
-    right: 50%;
+    top: calc(50% - 420px / 2);
+    left: calc(50% - 860px / 2);
     position: fixed;
     z-index: 96;
-    transform: translate(-50%, -50%);
     width: 860px;
     height: 420px;
+    padding: 20px 40px;
 }
 
 .addnew-popup .top {

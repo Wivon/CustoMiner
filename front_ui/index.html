@@ -16,7 +16,7 @@
     <script src="assets/shortcuts.js" defer></script>
     <script src="assets/updater.js" defer></script>
     <script src="assets/notifications.js" defer></script>
-    <script src="assets/addNewPopup.js" defer></script>
+    <script src="assets/addNew.js" defer></script>
 </head>
 
 <body class="loading">
@@ -44,16 +44,17 @@
                 <a href="#home" class="active" translation-id="nav.home"></a>
                 <a href="#settings" translation-id="nav.settings"></a>
                 <a href="#library" translation-id="nav.library"></a>
+                <a href="#!addnew-popup" style="display: none;">ADD NEW</a>
                 <div class="activeMenuIndicator"></div>
             </div>
         </div>
         <div class="right">
             <h2 style="display: none; opacity: .75; transform: scale(0.8);">PROD. BUILD</h2>
-            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('minimize')">-</div>
-            <div class="minimizeBtn miniBtn" onclick="ipcRenderer.send('toggle-maximize')">
+            <div class="minimizeBtn miniBtn active-anim" onclick="ipcRenderer.send('minimize')">-</div>
+            <div class="minimizeBtn miniBtn active-anim" onclick="ipcRenderer.send('toggle-maximize')">
                 <div class="square"></div>
             </div>
-            <div class="closeBtn miniBtn" onclick="ipcRenderer.send('quit')">X</div>
+            <div class="closeBtn miniBtn active-anim" onclick="ipcRenderer.send('quit')">X</div>
         </div>
     </div>
 
@@ -79,8 +80,7 @@
 
     <div class="addnew-popup">
         <div class="top">
-            <h2>Add new: shaders</h2>
-            <img class="invert" src="assets/img/icons/close_icon.png" alt="Close" onclick="hideAddNewPopup()">
+            <h2></h2>
         </div>
         <div class="container">
             <div class="infos">
@@ -95,8 +95,8 @@
                 </div>
             </div>
             <div class="preview">
-                <img src="assets/img/banners/banner_shaderpacks_card.png" alt="shaders banner">
-                <span>Shaders</span>
+                <img src="" alt="preview image">
+                <span></span>
             </div>
         </div>
         <div class="actions">
@@ -134,42 +134,46 @@
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.shaderPacks"></p>
                         <button class="addBtn" add-target="shaderpacks" translation-id="common.add"
-                            onclick="openPopup('shaders')"></button>
+                            onclick="openAddNewPopup('shaders')"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="resources packs banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.resourcePacks"></p>
-                        <button class="addBtn" translation-id="common.add"></button>
+                        <button class="addBtn" translation-id="common.add"
+                        onclick="openAddNewPopup('resourcepacks')"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.mods"></p>
-                        <button class="addBtn" translation-id="common.add"></button>
+                        <button class="addBtn" translation-id="common.add"
+                        onclick="openAddNewPopup('mods')"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_mods_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.maps"></p>
-                        <button class="addBtn" translation-id="common.add"></button>
+                        <button class="addBtn" translation-id="common.add"
+                        onclick="openAddNewPopup('maps')"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_shaderpacks_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.screenshots"></p>
-                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.view"></button>
+                        <button class="addBtn disabled" translation-id="menus.homeMenu.sections.addNew.view"></button>
                     </div>
                 </div>
                 <div class="card">
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name">Datapacks</p>
-                        <button class="addBtn" translation-id="common.add"></button>
+                        <button class="addBtn" translation-id="common.add"
+                        onclick="openAddNewPopup('datapacks')"></button>
                     </div>
                 </div>
             </div>

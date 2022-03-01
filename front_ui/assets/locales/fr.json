@@ -17,7 +17,8 @@
                         "resourcePacks": "Packs de ressources",
                         "mods": "Mods",
                         "maps": "Mondes",
-                        "screenshots": "Captures d'écran"
+                        "screenshots": "Captures d'écran",
+                        "datapacks": "Datapacks"
                     },
                     "add": "ajouter",
                     "view": "voir"

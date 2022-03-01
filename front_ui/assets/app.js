@@ -8,7 +8,7 @@ document.querySelectorAll('.nav .left a').forEach(a => {
 
 function openMenu(a) {
     // e.preventDefault();
-    if (!a.classList.contains('active')) {
+    if (!a.classList.contains('active') && a.getAttribute('href').slice(1,2) != "!") {
         document.querySelectorAll('.actions a').forEach(b => {
             if (b == a) {
                 a.classList.add('active')
