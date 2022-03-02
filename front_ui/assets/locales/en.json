@@ -1,8 +1,8 @@
 {
     "nav": {
-        "home": "HOME",
-        "settings": "SETTINGS",
-        "library": "LIBRARY"
+        "home": "home",
+        "settings": "settings",
+        "library": "library"
     },
     "menus": {
         "homeMenu": {

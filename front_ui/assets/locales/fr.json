@@ -1,8 +1,8 @@
 {
     "nav": {
-        "home": "ACCUEIL",
-        "settings": "PARAMÈTRES",
-        "library": "BIBLIOTHÈQUE"
+        "home": "acceuil",
+        "settings": "paramètres",
+        "library": "bibliothèque"
     },
     "menus": {
         "homeMenu": {
