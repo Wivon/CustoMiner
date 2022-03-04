@@ -805,7 +805,7 @@ body.loading {
     font-weight: 200;
 }
 
-.popup .buttons button {
+.popup .buttons button, .addnew-popup button {
     color: rgba(0, 0, 0, .9);
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -821,7 +821,7 @@ body.loading {
     margin-top: 10px;
 }
 
-.popup .buttons button.accent {
+button.accent {
     box-shadow: rgba(255, 255, 255, .23) 0px 5px 10px inset;
     background: var(--accent-color);
     cursor: pointer;
@@ -957,10 +957,19 @@ body.loading {
 .addnew-popup .container .infos .fileSelector {
     margin: 12px 0;
 }
+
 .addnew-popup .container .infos .fileSelector input {
-    width: 280px;
+    width: 420px !important;
+    font-size: 20px;
 }
 
-.addnew-popup .container .infos div:nth-child(2) input {
-    width: 420px !important;
+.addnew-popup .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.addnew-popup .actions button {
+    font-size: calc(var(--btn-text-size) - 50%);
+    margin: 0 10px;
 }

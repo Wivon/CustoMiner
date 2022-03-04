@@ -84,14 +84,14 @@
         </div>
         <div class="container">
             <div class="infos">
-                <span>Select the Shader you want to add</span>
+                <span>Select the Shader archive you want to add</span>
                 <div class="inputField fileSelector">
-                    <img src="assets/img/icons/browse_icon.png" alt="browse">
-                    <input type="text" placeholder="Shader filepath" name="fileSelector" class="leftpad-icon">
+                    <img onclick="selectNewFile(document.getElementById('fileSelector'))" src="assets/img/icons/browse_icon.png" alt="browse">
+                    <input type="text" placeholder="Shader archive filepath" id="fileSelector" name="fileSelector" class="leftpad-icon">
                 </div>
                 <span>Enter the new name of the shader file</span>
                 <div class="inputField fileSelector">
-                    <input type="text" name="newFileName">
+                    <input type="text" id="newFileName" name="newFileName" onkeyup="changePreviewName(this.value)">
                 </div>
             </div>
             <div class="preview">
@@ -101,7 +101,7 @@
         </div>
         <div class="actions">
             <button class="secondary-btn" translation-id="common.cancel" onclick="hideAddNewPopup()"></button>
-            <button class="main-action" translation-id="common.confirm"></button>
+            <button class="main-action" translation-id="common.confirm" onclick="addFileToMCFolder()"></button>
         </div>
     </div>
 
@@ -172,7 +172,7 @@
                     <img src="assets/img/banners/banner_resourcespacks_card.png" alt="mods banner">
                     <div class="add">
                         <p class="name">Datapacks</p>
-                        <button class="addBtn" translation-id="common.add"
+                        <button class="addBtn disabled" translation-id="common.add"
                         onclick="openAddNewPopup('datapacks')"></button>
                     </div>
                 </div>

@@ -95,6 +95,36 @@ ipcMain.handle('select-folder', () => {
     }
 })
 
+ipcMain.handle('select-file', () => {
+    let title = "CustoMiner: Select a file"
+    let path
+    if (OS == "win") {
+        path = dialog.showOpenDialog({
+            title: title,
+            properties: ['openFile', 'dontAddToRecent']
+        })
+    } else {
+        let path = dialog.showOpenDialog({
+            title: title,
+            properties: ['openFile']
+        })
+    }
+
+    console.log(path)
+    return path
+})
+
+ipcMain.on('copy-file', (event, args) => {
+    args = JSON.parse(args)
+    let source = args[0],
+        destination = args[1]
+        
+    fs.copyFile(source, destination, (err) => {
+        if (err) throw err;
+        console.log(`${source} was copied to ${destination}`);
+    })
+})
+
 function getOS() {
     if (process.platform === "win32") {
         return "win"

@@ -117,3 +117,15 @@ setTimeout(() => {
     document.querySelector('.nav').style.transform = 'translateY(0)'
     document.querySelector('.nav').style.opacity = 1
 }, 500)
+
+// add backslashes before backslashes for filepaths
+function addslashes(string) {
+    return string.replace(/\\/g, '\\\\').
+        replace(/\u0008/g, '\\b').
+        replace(/\t/g, '\\t').
+        replace(/\n/g, '\\n').
+        replace(/\f/g, '\\f').
+        replace(/\r/g, '\\r').
+        replace(/'/g, '\\\'').
+        replace(/"/g, '\\"');
+}
