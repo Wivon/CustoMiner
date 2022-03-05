@@ -54,6 +54,12 @@
     "common": {
         "add": "ajouter",
         "cancel": "annuler",
-        "confirm": "confirmer"
+        "confirm": "confirmer",
+        "browse": "parcourir"
+    }, "labels": {
+        "addNew": {
+            "selectorLabel": "Selectionnez le {name} que vous voulez ajouter",
+            "newNameLabel": "nouveaux nom du fichier:"
+        }
     }
 }

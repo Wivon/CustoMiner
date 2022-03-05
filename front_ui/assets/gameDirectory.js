@@ -39,6 +39,19 @@ function selectMinecraftFolder() {
     })
 }
 
+function detectMinecraftDirAndOpenPopup(newType) {
+    hidePopup()
+    detectMinecraftDir()
+
+    setTimeout(() => {
+        if (gameDir != "") {
+            openAddNewPopup(newType)
+        } else {
+            sendNotification('Minecraft Directory', 'CustoMiner can\'t find minecraft directory')
+        }
+    }, 250)
+}
+
 document.querySelector("#gameDirectory .actions .input .fileSelector img").onclick = () => {
     selectMinecraftFolder()
 }

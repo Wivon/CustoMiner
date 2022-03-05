@@ -7,8 +7,7 @@ document.querySelectorAll('.nav .left a').forEach(a => {
 })
 
 function openMenu(a) {
-    // e.preventDefault();
-    if (!a.classList.contains('active') && a.getAttribute('href').slice(1,2) != "!") {
+    if (!a.classList.contains('active') && a.getAttribute('href').slice(1, 2) != "!") {
         document.querySelectorAll('.actions a').forEach(b => {
             if (b == a) {
                 a.classList.add('active')
@@ -18,6 +17,8 @@ function openMenu(a) {
                 b.classList.remove('active')
             }
         })
+    } else if (a.getAttribute('href').slice(1, 2) == "!") {
+        window[a.getAttribute('href').slice(2)]()
     }
 }
 
@@ -62,16 +63,13 @@ function saveInput(input) {
     localStorage.setItem(input.getAttribute('name'), input.value)
 }
 
+function scrollToElm(elemQuery) {
+    document.querySelector(elemQuery).scrollIntoView()
+}
+
 // restore game directory input
 if (localStorage.getItem('gameDir') !== null) {
     document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDir')
-}
-
-document.getElementById('nextGameDirectory').onclick = () => {
-    document.getElementById('addNew').scrollIntoView()
-    if (window.innerHeight > 870) {
-        highlight(document.querySelector('#addNew'))
-    }
 }
 
 setTimeout(() => {

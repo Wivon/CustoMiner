@@ -53,6 +53,12 @@
     "common": {
         "add": "agregar",
         "cancel": "cancelar",
-        "confirm": "hecho"
+        "confirm": "hecho",
+        "browse": "recorrer"
+    }, "labels": {
+        "addNew": {
+            "selectorLabel": "Seleccione el {name} que desea agregar",
+            "newNameLabel": "nuevo nombre de archivo:"
+        }
     }
 }

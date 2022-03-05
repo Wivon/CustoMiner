@@ -47,10 +47,10 @@ function hideAddNewPopup() {
         addNewPopup.style.display = 'none';
     }, 200)
     document.querySelector('.popupBackground-lower').classList.add('popHidden')
-    popupDisplayed = false
+    addNewPopupDisplayed = false
 
     // nav
-    let popupNavItem = document.querySelector('.nav .left .actions a[href="#!addnew-popup"]')
+    let popupNavItem = document.querySelector('.nav .left .actions a[href="#!hideAddNewPopup"]')
     popupNavItem.style.transform = "translateY(-100%)"
     popupNavItem.style.opacity = 0
     setTimeout(() => {
@@ -74,32 +74,46 @@ function hideAddNewPopup() {
 }
 
 function openAddNewPopup(newType) {
-    // display
-    popupDisplayed = true
-    addNewPopup.style.display = 'flex';
-    CURRENT_ITEM = newType;
+    if(gameDir != "") {
+        // display
+        addNewPopupDisplayed = true
+        addNewPopup.style.display = 'flex';
+        CURRENT_ITEM = newType;
+    
+        // background
+        document.querySelector('.popupBackground-lower').classList.remove('popHidden')
+    
+        // change texts and images
+        setTranslation(addNewItems[newType].name, addNewPopup.querySelector('.top h2'), localeTexts.common.add + ": ")
+        setTranslation(addNewItems[newType].name, addNewPopup.querySelector('.container .preview span'))
+        addNewPopup.querySelector('.container .preview img').src = `assets/img/banners/${addNewItems[newType].image}`;
 
-    // background
-    document.querySelector('.popupBackground-lower').classList.remove('popHidden')
-
-    // change texts and images
-    setTranslation(addNewItems[newType].name, addNewPopup.querySelector('.top h2'), localeTexts.common.add + ": ")
-    setTranslation(addNewItems[newType].name, addNewPopup.querySelector('.container .preview span'))
-    addNewPopup.querySelector('.container .preview img').src = `assets/img/banners/${addNewItems[newType].image}`;
-
-    // nav
-    let popupNavItem = document.querySelector('.nav .left .actions a[href="#!addnew-popup"]')
-    // force display when animation is too fast
-    popupNavItem.style.display = 'block';
-    setTimeout(() => {
+        // change input labels
+        document.querySelector('#selectorLabel').innerHTML = localeTexts.labels.addNew.selectorLabel.replace('{name}', "<span>" + getDictionnaryItemByStringName(localeTexts, addNewItems[newType].name) + "</span>")
+        document.querySelector('#newNameLabel').textContent = localeTexts.labels.addNew.newNameLabel
+    
+        // nav
+        let popupNavItem = document.querySelector('.nav .left .actions a[href="#!hideAddNewPopup"]')
+        // force display when animation is too fast
         popupNavItem.style.display = 'block';
-    }, 500)
-    renderActiveMenuIndicator(popupNavItem)
-    document.querySelectorAll('.nav .left .actions a').forEach(a => {
-        if (a != popupNavItem) {
-            a.classList.add('disabled')
-        }
-    })
+        setTimeout(() => {
+            popupNavItem.style.display = 'block';
+        }, 500)
+        renderActiveMenuIndicator(popupNavItem)
+        document.querySelectorAll('.nav .left .actions a').forEach(a => {
+            if (a != popupNavItem) {
+                a.classList.add('disabled')
+            }
+        })
+    } else {
+        openPopup('Game Directory', 
+        'Minecraft directory not found', 
+        true, 
+        `<button onclick="detectMinecraftDirAndOpenPopup('${newType}')">${localeTexts.menus.homeMenu.sections.gameDirectory.autoDetect}</button>
+        <button onclick="hidePopup(); selectMinecraftFolder()">${localeTexts.common.browse}</button>
+        <button class="secondary-btn" onclick="hidePopup()">${localeTexts.common.cancel}</button>`
+        )
+    }
 }
 
 // selecting files

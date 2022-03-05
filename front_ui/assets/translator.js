@@ -8,14 +8,14 @@ if (localStorage.getItem('locale') !== null) {
             openPopup('Changer la langue en français ?',
                 'Change language to french ?',
                 true,
-                `<button onclick="changeLocale('fr')">change</button><button onclick="hidePopup(); changeLocale('en')">cancel</button>`
+                `<button onclick="changeLocale('fr')">change</button><button class="secondary-btn" onclick="hidePopup(); changeLocale('en')">cancel</button>`
             )
         } else if (sysLocale == 'es') {
             openPopup(
                 'Cambiar el idioma a español?',
                 'Change language to spanish ?',
                 true,
-                `<button onclick="changeLocale('es')">change</button><button onclick="hidePopup(); changeLocale('en')">cancel</button>`
+                `<button onclick="changeLocale('es')">change</button><button class="secondary-btn" onclick="hidePopup(); changeLocale('en')">cancel</button>`
             )
         } else {
             changeLocale('en')
@@ -40,9 +40,9 @@ function loadLocaleFile(locale = localStorage.getItem('locale')) {
 }
 
 function setTexts() {
+    // change texts and render
     toTranslate.forEach(elem => {
         let translationID = elem.getAttribute('translation-id')
-
         setTranslation(translationID, elem)
     })
     renderActiveMenuIndicator()
@@ -50,23 +50,30 @@ function setTexts() {
     localeLoaded = true
 }
 
-function setTranslation(id, elem, prefix="") {
+function setTranslation(id, elem, prefix = "") {
+    let translation = getDictionnaryItemByStringName(localeTexts, id)
+    elem.textContent = prefix + translation;
+}
+
+function changeLocale(locale) {
+    localStorage.setItem('locale', locale)
+    if (popupDisplayed) {
+        hidePopup()
+    }
+    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
+    loadLocaleFile()
+}
+
+function getDictionnaryItemByStringName(dict, stringName) {
     // get JSON obj with translation id
-    let lastObj = localeTexts
-    let y = id.split('.')
+    let lastObj = dict
+    let y = stringName.split('.')
+
     y.forEach((elem, i) => {
         if (i < y.length) {
             lastObj = lastObj[elem]
         }
     })
 
-    // change texts and render
-    elem.textContent = prefix + lastObj;
-}
-
-function changeLocale(locale) {
-    localStorage.setItem('locale', locale)
-    hidePopup()
-    document.querySelector('.localeSelector').value = localStorage.getItem('locale')
-    loadLocaleFile()
+    return lastObj;
 }

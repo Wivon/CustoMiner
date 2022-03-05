@@ -110,7 +110,6 @@ ipcMain.handle('select-file', () => {
         })
     }
 
-    console.log(path)
     return path
 })
 
@@ -121,7 +120,7 @@ ipcMain.on('copy-file', (event, args) => {
         
     fs.copyFile(source, destination, (err) => {
         if (err) throw err;
-        console.log(`${source} was copied to ${destination}`);
+        // console.log(`${source} was copied to ${destination}`);
     })
 })
 
@@ -160,9 +159,9 @@ function checkFolder(dir) {
     }
 }
 
-const MinecraftFolderExists = checkFolder(getDefaultMinecraftFolderPath())
 
 ipcMain.handle('game-directory', (event, arg) => {
+    const MinecraftFolderExists = checkFolder(getDefaultMinecraftFolderPath())
     return MinecraftFolderExists ? getDefaultMinecraftFolderPath() : "not-detected"
 })
 
