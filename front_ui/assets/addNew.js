@@ -6,32 +6,32 @@ let CURRENT_ITEM
 const addNewItems = {
     "shaders": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.shaderPacks",
-        "image": "banner_shaderpacks_card.png",
+        "image": "shaders_banner.png",
         "folderName": "shaderpacks"
     },
     "resourcepacks": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.resourcePacks",
-        "image": "banner_resourcespacks_card.png",
+        "image": "resourcepacks_banner.png",
         "folderName": "resourcepacks"
     },
     "mods": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.mods",
-        "image": "banner_mods_card.png",
+        "image": "mods_banner.png",
         "folderName": "mods"
     },
     "maps": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.maps",
-        "image": "banner_mods_card.png",
+        "image": "maps_banner.png",
         "folderName": "saves"
     },
     "screenshots": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.screenshots",
-        "image": "banner_screenshots_card.png",
+        "image": "screenshots_banner.png",
         "folderName": "screenshots"
     },
     "datapacks": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.datapacks",
-        "image": "banner_datapacks_card.png",
+        "image": "datapacks_banner.png",
         "folderName": "$$SelectSave-datapacks"
     }
 }

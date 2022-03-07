@@ -59,7 +59,7 @@
     }, "labels": {
         "addNew": {
             "selectorLabel": "Selectionnez le {name} que vous voulez ajouter",
-            "newNameLabel": "nouveaux nom du fichier:"
+            "newNameLabel": "nouveau nom du fichier:"
         }
     }
 }
