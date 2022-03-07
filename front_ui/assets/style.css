@@ -472,6 +472,38 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     color: var(--btn-text-color-light);
 }
 
+.hover-close-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+    aspect-ratio: 1 / 1;
+    height: 25px;
+    background: url(img/icons/close_icon.png);
+    background-position: center;
+    background-size: 100%;
+    filter: invert();
+    transition: 0.3s ease-out;
+    transition-delay: 0s;
+}
+
+.hover-close-icon:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition-delay: 0.2s;
+}
+
+.hover-close-icon {
+    transition-delay: 0.2s;
+}
+
+.hover-close-icon:hover {
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
 .horizontal {
     display: flex;
     justify-content: start;
@@ -873,9 +905,9 @@ button.accent {
     overflow: hidden;
     border-radius: 0.5em;
     border: 1.5px solid rgba(255, 255, 255, .3);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, .6);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .7);
     backdrop-filter: blur(25px);
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .6);
     /* position & size*/
     top: calc(50% - 420px / 2);
     left: calc(50% - 860px / 2);
@@ -895,10 +927,9 @@ button.accent {
     vertical-align: middle;
 }
 
-.addnew-popup .top img {
-    aspect-ratio: 1 / 1;
-    height: 32px;
-    cursor: pointer;
+.addnew-popup .top h2 {
+    text-transform: capitalize;
+    text-shadow: 0 5px 30px rgba(0, 0, 0, 0.9);
 }
 
 .addnew-popup .container {
@@ -924,13 +955,15 @@ button.accent {
     left: -100px;
     top: -100px;
     bottom: 0;
-    box-shadow: 0 -80px 40px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: 0 -30px 20px rgba(0, 0, 0, 0.8) inset;
     z-index: 50;
-    transition: 0.2s linear;
+    transition: 0.2s ease-in;
 }
 
 .addnew-popup .container .preview:hover::after {
-    box-shadow: 0 -80px 60px rgba(0, 0, 0, 0.8) inset;
+    box-shadow: 0 -60px 45px rgba(0, 0, 0, 0.9) inset;
+    right: -10px;
+    left: -10px;
 }
 
 .addnew-popup .container .preview img {
@@ -964,6 +997,7 @@ button.accent {
 .addnew-popup .container .infos .fileSelector input {
     width: 420px !important;
     font-size: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .addnew-popup .actions {
