@@ -127,3 +127,16 @@ function addslashes(string) {
         replace(/'/g, '\\\'').
         replace(/"/g, '\\"');
 }
+
+function closeCustoMiner() {
+    if(UPDATER_STATUS == "UPDATE_AV") {
+        openPopup(
+            'Stop download ?', 
+            'Closing CustoMiner will stop all downloads.', 
+            true,
+            '<button onclick="ipcRenderer.send(\'quit\')">close</button onclick="hidePopup()"><button>cancel</cancel>'
+        )
+    } else {
+        ipcRenderer.send('quit')
+    }
+}
