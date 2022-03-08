@@ -216,16 +216,3 @@ function isDev() {
 ipcMain.handle('is-dev', () => {
     return isDev()
 })
-
-// locale check
-function getSystemLocale(localeID) {
-    locale = localeID.split('_')[0]
-    return locale
-}
-const sysLocale = getSystemLocale(process.env.LC_ALL || process.env.LC_MESSAGES || process.env.LANG || process.env.LANGUAGE)
-
-ipcMain.handle('get-sys-locale', () => {
-    return sysLocale
-})
-
-console.log('system default locale: ' + sysLocale)
