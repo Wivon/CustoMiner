@@ -1,6 +1,6 @@
 let popupDisplayed = false
 
-function openPopup(title, text, blur = true, buttonsHTML = '<button onclick="hidePopup()" class="Popupbutton">Cancel</button>', imageParams = null) {
+function openPopup(title, text, blur = true, buttonsHTML = '<button onclick="hidePopup()" class="Popupbutton">Cancel</button>', imageParams = null, HideWhenClickingOutside=true) {
     document.querySelector('.popup').style.display = 'flex';
     document.querySelector('.popup').style.transition = 'all .3 ease-out';
     document.querySelector('.popup h3').innerHTML = title;
@@ -21,6 +21,11 @@ function openPopup(title, text, blur = true, buttonsHTML = '<button onclick="hid
         document.querySelector('.popupBackground').classList.remove('popHidden')
     }
     popupDisplayed = true
+    if (HideWhenClickingOutside) {
+        document.querySelector('.popupBackground').setAttribute('onclick', 'hidePopup()')
+    } else {
+        document.querySelector('.popupBackground').setAttribute('onclick', '')
+    }
 }
 
 function hidePopup() {
