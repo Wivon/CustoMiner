@@ -49,6 +49,9 @@
         "actions": {
             "open": "open",
             "close": "close"
+        },
+        "MCDirNotFound": {
+            "text": "CustoMiner can't find Minecraft directory !"
         }
     },
     "common": {
@@ -56,12 +59,14 @@
         "cancel": "cancel",
         "confirm": "confirm",
         "browse": "browse"
-    }, "labels": {
+    },
+    "labels": {
         "addNew": {
             "selectorLabel": "Select the {name} you want to add",
             "newNameLabel": "new filename:"
         }
-    }, "popups": {
+    },
+    "popups": {
         "closeCMDuringDownloads": {
             "title": "Cancel download ?",
             "text": "Closing CustoMiner will stop all downloads."

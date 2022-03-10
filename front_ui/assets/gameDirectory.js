@@ -8,7 +8,7 @@ function detectMinecraftDir() {
             document.getElementById('gameDirectoryInput').value = gameDir
             console.log('default minecraft directory detected')
         } else {
-            sendNotification('Minecraft Directory', 'CustoMiner can\'t find minecraft directory')
+            sendNotification(localeTexts.menus.homeMenu.sections.gameDirectory.title, localeTexts.notification.MCDirNotFound.text)
         }
     })
 }

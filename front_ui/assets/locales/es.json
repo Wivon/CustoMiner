@@ -48,6 +48,9 @@
         "actions": {
             "open": "abrir",
             "close": "cerrar"
+        },
+        "MCDirNotFound": {
+            "text": "¡No se puede encontrar el directorio del juego!"
         }
     },
     "common": {
