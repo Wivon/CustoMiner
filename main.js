@@ -35,6 +35,8 @@ function createWindow() {
     mainWindow.once('ready-to-show', () => {
         autoUpdater.checkForUpdatesAndNotify()
     })
+
+    mainWindow.webContents.openDevTools()
 }
 
 app.on('window-all-closed', function () {
@@ -209,10 +211,8 @@ if (!app.requestSingleInstanceLock()) {
 }
 
 // is dev check
-function isDev() {
-    return process.mainModule.filename.indexOf('app.asar') === -1;
-}
+const isDev = process.mainModule.filename.indexOf('app.asar') === -1;
 
 ipcMain.handle('is-dev', () => {
-    return isDev()
+    return JSON.stringify(isDev)
 })

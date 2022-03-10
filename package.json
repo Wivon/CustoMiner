@@ -1,7 +1,7 @@
 {
   "name": "custominer",
   "productName": "CustoMiner",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Easiest way to install mods, resources packs and more to Minecraft",
   "main": "main.js",
   "scripts": {

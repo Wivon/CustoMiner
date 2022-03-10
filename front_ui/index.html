@@ -44,12 +44,13 @@
                 <a href="#home" class="active" translation-id="nav.home"></a>
                 <a href="#settings" translation-id="nav.settings"></a>
                 <a href="#library" translation-id="nav.library"></a>
-                <a href="#!hideAddNewPopup" class="hover-close-icon" style="display: none;" translation-id="common.add"></a>
+                <a href="#!hideAddNewPopup" class="hover-close-icon" style="display: none;"
+                    translation-id="common.add"></a>
                 <div class="activeMenuIndicator"></div>
             </div>
         </div>
         <div class="right">
-            <h2 style="display: none; opacity: .75; transform: scale(0.8);">PROD. BUILD</h2>
+            <h2 style="display: none; opacity: .75; transform: scale(0.8);">DEV. BUILD</h2>
             <div class="minimizeBtn miniBtn active-anim" onclick="ipcRenderer.send('minimize')">-</div>
             <div class="minimizeBtn miniBtn active-anim" onclick="ipcRenderer.send('toggle-maximize')">
                 <div class="square"></div>
@@ -117,8 +118,8 @@
                 <div class="input">
                     <div class="fileSelector">
                         <img src="assets/img/icons/browse_icon.png" alt="browse">
-                        <input type="text" onkeyup="saveInput(this); gameDir = this.value" id="gameDirectoryInput" name="gameDir"
-                            placeholder="game directory path" class="rounded-left leftpad-icon">
+                        <input type="text" onkeyup="saveInput(this); gameDir = this.value" id="gameDirectoryInput"
+                            name="gameDir" placeholder="game directory path" class="rounded-left leftpad-icon">
                     </div>
                     <button class="rounded-right iconBTN">
                         <img src="assets/img/icons/next-transparent.png" alt="next" onclick="scrollToElm('addNew')"
@@ -250,14 +251,16 @@
             })
 
         // is dev ?
-        const isDev = ipcRenderer.invoke('is-dev')
+        let isDev = null
+        ipcRenderer.invoke('is-dev')
             .then(dev => {
-                return JSON.parse(dev)
+                isDev = JSON.parse(dev)
+
+                if (isDev == true) {
+                    document.querySelector('.nav .right h2').style.display = 'block';
+                }
             })
 
-        if (isDev) {
-            document.querySelector('.nav .right h2').style.display = 'block';
-        }
     </script>
 </body>
 
