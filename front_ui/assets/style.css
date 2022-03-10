@@ -58,6 +58,10 @@
     --input-backgrnd: rgba(13, 13, 13, .75);
 }
 
+.reduced-motion * {
+    --animation-timing-function: linear;
+}
+
 /* scroll bar */
 ::-webkit-scrollbar {
     display: none;
@@ -738,10 +742,11 @@ body.loading {
     display: flex;
     justify-content: start;
     flex-direction: column;
+    transition: 0.4s var(--animation-timing-function);
 }
 
 .notification.hidden-notif {
-    transform: translateY(-400px) translateX(-50%);
+    transform: translateY(-100%) translateX(-50%) scaleY(0);
     opacity: 0;
 }
 
