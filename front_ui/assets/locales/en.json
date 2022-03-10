@@ -61,5 +61,10 @@
             "selectorLabel": "Select the {name} you want to add",
             "newNameLabel": "new filename:"
         }
+    }, "popups": {
+        "closeCMDuringDownloads": {
+            "title": "Cancel download ?",
+            "text": "Closing CustoMiner will stop all downloads."
+        }
     }
 }

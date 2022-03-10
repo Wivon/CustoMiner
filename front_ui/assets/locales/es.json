@@ -60,5 +60,10 @@
             "selectorLabel": "Seleccione el {name} que desea agregar",
             "newNameLabel": "nuevo nombre de archivo:"
         }
+    }, "popups": {
+        "closeCMDuringDownloads": {
+            "title": "¿Cancelar descargas?",
+            "text": "Cerrar CustoMiner detendrá todas las descargas."
+        }
     }
 }

@@ -131,10 +131,10 @@ function addslashes(string) {
 function closeCustoMiner() {
     if(UPDATER_STATUS == "UPDATE_AV") {
         openPopup(
-            'Stop download ?', 
-            'Closing CustoMiner will stop all downloads.', 
+            localeTexts.popups.closeCMDuringDownloads.title, 
+            localeTexts.popups.closeCMDuringDownloads.text, 
             true,
-            '<button onclick="ipcRenderer.send(\'quit\')">close</button onclick="hidePopup()"><button>cancel</cancel>'
+            '<button class="destructive-btn" onclick="ipcRenderer.send(\'quit\')">close</button onclick="hidePopup()"><button>cancel</cancel>'
         )
     } else {
         ipcRenderer.send('quit')

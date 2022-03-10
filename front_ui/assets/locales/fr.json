@@ -61,5 +61,10 @@
             "selectorLabel": "Selectionnez le {name} que vous voulez ajouter",
             "newNameLabel": "nouveau nom du fichier:"
         }
+    }, "popups": {
+        "closeCMDuringDownloads": {
+            "title": "Confirmer ?",
+            "text": "La fermeture de CustoMiner arrêtera tous les téléchargements."
+        }
     }
 }
