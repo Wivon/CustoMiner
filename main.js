@@ -35,8 +35,6 @@ function createWindow() {
     mainWindow.once('ready-to-show', () => {
         autoUpdater.checkForUpdatesAndNotify()
     })
-
-    mainWindow.webContents.openDevTools()
 }
 
 app.on('window-all-closed', function () {
@@ -119,7 +117,7 @@ ipcMain.on('copy-file', (event, args) => {
     args = JSON.parse(args)
     let source = args[0],
         destination = args[1]
-        
+
     fs.copyFile(source, destination, (err) => {
         if (err) throw err;
         // console.log(`${source} was copied to ${destination}`);
@@ -197,22 +195,24 @@ autoUpdater.on('download-progress', (progressObj) => {
     mainWindow.webContents.send('download-progress', JSON.stringify(response));
 })
 
-// single instance
-if (!app.requestSingleInstanceLock()) {
-    app.quit()
-} else {
-    app.on('second-instance', (event, commandLine, workingDirectory) => {
-        // Someone tried to run a second instance, we should focus our window.
-        if (mainWindow) {
-            if (mainWindow.isMinimized()) mainWindow.restore()
-            mainWindow.focus()
-        }
-    })
-}
-
 // is dev check
 const isDev = process.mainModule.filename.indexOf('app.asar') === -1;
 
 ipcMain.handle('is-dev', () => {
     return JSON.stringify(isDev)
 })
+
+// single instance
+if (isDev != true) {
+    if (!app.requestSingleInstanceLock()) {
+        app.quit()
+    } else {
+        app.on('second-instance', (event, commandLine, workingDirectory) => {
+            // Someone tried to run a second instance, we should focus our window.
+            if (mainWindow) {
+                if (mainWindow.isMinimized()) mainWindow.restore()
+                mainWindow.focus()
+            }
+        })
+    }
+}
