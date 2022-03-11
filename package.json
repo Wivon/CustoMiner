@@ -18,7 +18,7 @@
       "installerIcon": "assets/icons/CustoMinerICONx128.ico",
       "uninstallerIcon": "assets/icons/CustoMinerICONx128.ico",
       "uninstallDisplayName": "Uninstall CustoMiner",
-      "oneClick": false,
+      "oneClick": true,
       "shortcutName": "CustoMiner",
       "allowToChangeInstallationDirectory": false
     }
