@@ -4,6 +4,7 @@ const { autoUpdater } = require('electron-updater')
 const path = require('path')
 const log = require('electron-log');
 const fs = require('fs')
+const childProcess = require('child_process')
 
 autoUpdater.logger = log;
 let OS = ""
@@ -216,3 +217,12 @@ if (isDev != true) {
         })
     }
 }
+
+// view folder in file explorer
+function viewFolder(path) {
+    childProcess.exec(`start "" ${path}`)
+}
+
+ipcMain.on('view-folder', (event, args) => {
+    viewFolder(args)
+})

@@ -167,7 +167,8 @@
                     <img src="assets/img/banners/screenshots_banner.png" alt="mods banner">
                     <div class="add">
                         <p class="name" translation-id="menus.homeMenu.sections.addNew.cardsNames.screenshots"></p>
-                        <button class="addBtn disabled" translation-id="menus.homeMenu.sections.addNew.view"></button>
+                        <button class="addBtn" translation-id="menus.homeMenu.sections.addNew.view"
+                            onclick="ipcRenderer.send('view-folder', gameDir + '\\' + addNewItems.screenshots.folderName)"></button>
                     </div>
                 </div>
                 <div class="card">
