@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/app.js" defer></script>
     <script src="assets/simplePopup.js" defer></script>
+    <script src="assets/notifications.js" defer></script>
     <script src="assets/translator.js" defer></script>
+    <script src="assets/addNew.js" defer></script>
     <script src="assets/gameDirectory.js" defer></script>
     <script src="assets/shortcuts.js" defer></script>
     <script src="assets/updater.js" defer></script>
-    <script src="assets/notifications.js" defer></script>
-    <script src="assets/addNew.js" defer></script>
+    <script src="assets/library.js" defer></script>
 </head>
 
 <body class="loading">
@@ -238,7 +239,25 @@
     </div>
 
     <div class="library menu" style="height: 0;">
-        <button>OPEN SOMETHING</button>
+    </div>
+
+    <div class="libraryNav">
+        <div class="indicator"></div>
+        <div class="localFolders">
+            <!-- local folders, see library.js -->
+        </div>
+        <hr>
+        <div class="online">
+            <div class="item">
+                <div class="icon">
+                    <img src="assets/img/icons/curseforge_icon.png" alt="folder icon">
+                </div>
+                <div class="infos">
+                    <p class="name">Curseforge</p>
+                    <span>online</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>

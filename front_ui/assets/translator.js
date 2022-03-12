@@ -50,6 +50,7 @@ function setTexts() {
     })
     renderActiveMenuIndicator()
     tryLoadUpdateSection()
+    RenderAddNewItemsInLibrary()
     localeLoaded = true
 }
 

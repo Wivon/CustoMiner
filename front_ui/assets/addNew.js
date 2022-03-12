@@ -27,12 +27,18 @@ const addNewItems = {
     "screenshots": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.screenshots",
         "image": "screenshots_banner.png",
-        "folderName": "screenshots"
+        "folderName": "screenshots",
+        "properties": [
+            "hideInLibrary"
+        ]
     },
     "datapacks": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.datapacks",
         "image": "datapacks_banner.png",
-        "folderName": "$$SelectSave-datapacks"
+        "folderName": "$$SelectSave-datapacks",
+        "properties": [
+            "hideInLibrary"
+        ]
     }
 }
 

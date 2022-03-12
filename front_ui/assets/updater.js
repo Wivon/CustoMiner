@@ -114,5 +114,3 @@ function tryLoadUpdateSection() {
     console.log('locale not loaded, retrying in 500ms')
   }
 }
-
-tryLoadUpdateSection()

@@ -226,3 +226,17 @@ function viewFolder(path) {
 ipcMain.on('view-folder', (event, args) => {
     viewFolder(args)
 })
+
+// list files in directory
+ipcMain.handle('list-files', (event, args) => {
+    let response = []
+    fs.readdirAsync(args, function (err, files) {
+        // error
+        if (err) {
+            return console.log(err)
+        } 
+
+        response = files
+    })
+    return response
+})

@@ -3,6 +3,14 @@ let ACTIVE_MENU = "HOME"
 document.querySelectorAll('.nav .left a').forEach(a => {
     a.onclick = () => {
         openMenu(a)
+
+        let libraryNav = document.querySelector('.libraryNav')
+        if (libraryNav.classList.contains('active') && a.getAttribute('href') != "#library") {
+            libraryNav.classList.remove('active')
+        }
+        if (a.getAttribute('href') == "#library") {
+            libraryNav.classList.add('active')
+        }
     }
 })
 
@@ -129,10 +137,10 @@ function addslashes(string) {
 }
 
 function closeCustoMiner() {
-    if(UPDATER_STATUS == "UPDATE_AV") {
+    if (UPDATER_STATUS == "UPDATE_AV") {
         openPopup(
-            localeTexts.popups.closeCMDuringDownloads.title, 
-            localeTexts.popups.closeCMDuringDownloads.text, 
+            localeTexts.popups.closeCMDuringDownloads.title,
+            localeTexts.popups.closeCMDuringDownloads.text,
             true,
             '<button class="destructive-btn" onclick="ipcRenderer.send(\'quit\')">close</button onclick="hidePopup()"><button>cancel</cancel>'
         )

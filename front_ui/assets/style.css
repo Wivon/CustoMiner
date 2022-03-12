@@ -1026,3 +1026,112 @@ button.accent {
     opacity: 1 !important;
     font-weight: 600;
 }
+
+/* library */
+
+.menu.library {
+    margin-left: 280px;
+}
+
+.libraryNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    background: rgba(31, 31, 31, 0.3);
+    backdrop-filter: blur(3px);
+    transform: translateX(-100%);
+    padding-top: 70px;
+    border-right: solid 4px rgba(255, 255, 255, 0.65);
+    opacity: .2;
+    transition-duration: 0.3s;
+}
+
+.libraryNav.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.libraryNav .localFolders, .libraryNav .online {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.libraryNav .item {
+    width: 250px;
+    height: 80px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.libraryNav .item.active {
+    background: rgba(255, 255, 255, .1) !important;
+}
+
+.libraryNav .item:hover {
+    background: rgba(255, 255, 255, .05);
+}
+
+.libraryNav .item .icon {
+    aspect-ratio: 1 / 1;
+    height: 60px;
+    margin-right: 12px;
+}
+
+.libraryNav .item .icon img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.libraryNav .item .infos {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 5px 0;
+    justify-content: center;
+}
+
+.libraryNav .item .infos p.name {
+    font-size: var(--text-size);
+    font-weight: var(--title-weight);
+}
+
+.libraryNav .item.active .infos p.name {
+    transform: translateY(37.5%);
+}
+
+.libraryNav .item .infos span {
+    margin-top: 6px;
+    opacity: .65;
+}
+
+.libraryNav .item.active .infos span {
+    transform: scaleY(0);
+    margin-top: 0;
+    opacity: 0;
+}
+
+.libraryNav hr {
+    margin: 0 20px;
+    margin-bottom: 12px;
+    opacity: .5;
+}
+
+.libraryNav .indicator {
+    background: var(--main-text-color);
+    width: 4px;
+    position: absolute;
+    border-radius: 8px;
+    transform: translateX(13px);
+    transition: 0.5s cubic-bezier(.68, -0.04, 0, 1.31);
+}
