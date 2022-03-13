@@ -1,4 +1,6 @@
 let localFoldersContainer = document.querySelector('.libraryNav .localFolders')
+let libraryContainer = document.querySelector('.menu.library')
+let libraryAnimationContainer = document.querySelector('.menu.library .container')
 let libraryNavItems
 let CURRENT_LIBRARY_VIEW
 
@@ -31,6 +33,7 @@ function RenderAddNewItemsInLibrary() {
 
             let newItem = document.createElement('div')
             newItem.classList.add('item')
+            newItem.setAttribute('add-new-items-key', item)
             newItem.innerHTML = `
             <div class="icon">
                 <img src="assets/img/banners/${addNewItems[item].image}" alt="folder icon">
@@ -42,9 +45,6 @@ function RenderAddNewItemsInLibrary() {
             `
             localFoldersContainer.appendChild(newItem)
         }
-
-        // save current view
-        CURRENT_LIBRARY_VIEW = item
     })
 
     libraryNavItems = document.querySelectorAll('.libraryNav .item')
@@ -61,11 +61,12 @@ function addLibraryNavItemsEventListener() {
 
     libraryNavItems.forEach(item => {
         item.onclick = () => {
-            libraryNavItems.forEach(i => {
-                i.classList.remove('active');
-            })
+            document.querySelector('.libraryNav .item.active').classList.remove('active')
             item.classList.add('active')
+            // save current view
+            CURRENT_LIBRARY_VIEW = item.getAttribute('add-new-items-key')
             renderLibraryNavIndicator()
+            renderLibraryContainer()
         }
     })
 }
@@ -80,4 +81,20 @@ function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item
 
     activeMenuIndicator.style.top = (offsetTop + 16) + "px"
     activeMenuIndicator.style.height = (a.offsetHeight - 32) + "px"
+}
+
+function renderLibraryContainer() {
+    libraryAnimationContainer.classList.add('animate')
+    setTimeout(() => {
+        console.log('animated')
+        libraryAnimationContainer.classList.remove('animate')
+    }, 1000)
+    libraryAnimationContainer.classList.remove('animate')
+    if (CURRENT_LIBRARY_VIEW != "curseforge") {
+        let item = addNewItems[CURRENT_LIBRARY_VIEW]
+        let name = getDictionnaryItemByStringName(localeTexts, item.name)
+        libraryContainer.querySelector('h2.title').innerHTML = "<span>/" + item.folderName + "</span><br>" + name 
+    } else {
+        libraryContainer.querySelector('h2.title').innerHTML = "<span>work in progress</span><br>Curseforge"
+    }
 }

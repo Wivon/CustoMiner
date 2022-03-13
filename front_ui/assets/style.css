@@ -239,8 +239,9 @@ h2 {
     opacity: 0;
     pointer-events: none;
     padding-top: 0;
-    transform: scale(0.92);
-    transition: 0.3s cubic-bezier(.68, -0.04, 0, 1.31);
+    transform-origin: top;
+    transform: scale(0.7);
+    transition: 0.4s cubic-bezier(.68, -0.04, 0, 1.31);
     overflow: hidden;
 }
 
@@ -249,7 +250,6 @@ h2 {
     pointer-events: auto;
     transform: scale(1);
     padding-top: 100px;
-    padding-bottom: 30px;
     overflow: auto;
 }
 
@@ -1028,11 +1028,6 @@ button.accent {
 }
 
 /* library */
-
-.menu.library {
-    margin-left: 280px;
-}
-
 .libraryNav {
     position: fixed;
     left: 0;
@@ -1107,7 +1102,8 @@ button.accent {
 }
 
 .libraryNav .item.active .infos p.name {
-    transform: translateY(37.5%);
+    transform-origin: left center;
+    transform: translateY(37.5%) scale(1.05);
 }
 
 .libraryNav .item .infos span {
@@ -1134,4 +1130,40 @@ button.accent {
     border-radius: 8px;
     transform: translateX(13px);
     transition: 0.5s cubic-bezier(.68, -0.04, 0, 1.31);
+}
+
+.menu.library {
+    margin-left: 280px;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-top: 60px;
+}
+
+.menu.library h2.title {
+    text-align: left;
+}
+
+.menu.library h2.title span {
+    opacity: 0.5;
+    font-size: var(--text-size);
+    font-weight: 300;
+}
+
+.menu.library .container {
+    animation: none;
+}
+
+.menu.library .container.animate {
+    animation: bottomToTop 0.2s ease-in;
+}
+
+@keyframes bottomToTop {
+    from {
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
