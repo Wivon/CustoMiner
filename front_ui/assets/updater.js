@@ -83,7 +83,7 @@ function loadUpdateSection() {
   let updateSection = document.querySelector('#updates')
   let title = updateSection.querySelector('h2')
 
-  if(UPDATER_STATUS == "UTD") {
+  if (UPDATER_STATUS == "UTD") {
     updateSection.classList.add('utd')
     updateSection.classList.remove('u-av')
 
@@ -98,7 +98,10 @@ function loadUpdateSection() {
   } else if (UPDATER_STATUS == "UPDATE_DL") {
     updateSection.classList.add('u-av')
     updateSection.classList.remove('utd')
+    // enable restart btn
     updateSection.querySelector('.actions .downloading button').classList.remove('disabled')
+    // clear speed span
+    document.querySelector('#updates .actions .downloading .speed').textContent = ""
 
     // title
     setTranslation('menus.settingsMenu.sections.updates.titles.downloaded', title)
@@ -106,11 +109,11 @@ function loadUpdateSection() {
 }
 
 function tryLoadUpdateSection() {
-  if(localeLoaded == true) {
+  if (localeLoaded == true) {
     loadUpdateSection()
     console.log('loading update section')
   } else {
-    setTimeout(() => {tryLoadUpdateSection()}, 500)
+    setTimeout(() => { tryLoadUpdateSection() }, 500)
     console.log('locale not loaded, retrying in 500ms')
   }
 }
