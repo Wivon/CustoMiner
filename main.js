@@ -229,14 +229,13 @@ ipcMain.on('view-folder', (event, args) => {
 
 // list files in directory
 ipcMain.handle('list-files', (event, args) => {
-    let response = []
-    fs.readdirAsync(args, function (err, files) {
+    fs.readdir(args, response = (err, files) => {
         // error
         if (err) {
             return console.log(err)
         } 
 
-        response = files
+        console.log(files)
+        return files
     })
-    return response
 })

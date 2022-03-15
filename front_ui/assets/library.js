@@ -1,12 +1,13 @@
-let localFoldersContainer = document.querySelector('.libraryNav .localFolders')
+let NavFoldersContainer = document.querySelector('.libraryNav .localFolders')
 let libraryContainer = document.querySelector('.menu.library')
 let libraryAnimationContainer = document.querySelector('.menu.library .container')
+let libraryFolderContent = document.querySelector('.menu.library .folderContent')
 let libraryNavItems
 let CURRENT_LIBRARY_VIEW
 
 function RenderAddNewItemsInLibrary() {
     // clear old items if there are
-    localFoldersContainer.innerHTML = ""
+    NavFoldersContainer.innerHTML = ""
 
     // render items
     Object.keys(addNewItems).forEach(item => {
@@ -43,7 +44,7 @@ function RenderAddNewItemsInLibrary() {
                 <span>/${addNewItems[item].folderName}</span>
             </div>
             `
-            localFoldersContainer.appendChild(newItem)
+            NavFoldersContainer.appendChild(newItem)
         }
     })
 
@@ -93,8 +94,30 @@ function renderLibraryContainer() {
     if (CURRENT_LIBRARY_VIEW != "curseforge") {
         let item = addNewItems[CURRENT_LIBRARY_VIEW]
         let name = getDictionnaryItemByStringName(localeTexts, item.name)
-        libraryContainer.querySelector('h2.title').innerHTML = "<span>/" + item.folderName + "</span><br>" + name 
+        libraryContainer.querySelector('h2.title').innerHTML = "<span>/" + item.folderName + "</span><br>" + name
+        renderFolderContentInHTML(item.folderName)
     } else {
         libraryContainer.querySelector('h2.title').innerHTML = "<span>work in progress</span><br>Curseforge"
     }
+
+}
+
+// render folder content in html
+function renderFolderContentInHTML(minecraftFolder) {
+    let files = listFilesInFolder(gameDir + '\\' + minecraftFolder)
+    files = JSON.parse(files)
+
+    libraryFolderContent.innerHTML = ""
+
+    files.forEach(file => {
+        let newItem = document.createElement('section')
+        newItem.innerHTML = `<h2>${file}</h2>`
+        libraryFolderContent.appendChild()
+    })
+}
+
+function listFilesInFolder(folderPath) {
+    let response = ipcRenderer.invoke('list-files', folderPath)
+    console.log(response)
+    return response
 }
