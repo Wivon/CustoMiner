@@ -48,7 +48,7 @@
     /* text weights */
     --title-weight: 700;
     --subtitle-weight: 500;
-    --text-weight: 500;
+    --text-weight: 400;
     
     /* text colors */
     --main-text-color: #ffffff;
@@ -73,6 +73,7 @@ body {
     background-size: 25%;
     background-position: fixed;
     overflow-x: hidden;
+    height: 100%;
 }
  
 .nav {
@@ -1137,6 +1138,7 @@ button.accent {
     align-items: flex-start;
     padding-left: 40px;
     padding-top: 60px;
+    height: 100%;
 }
 
 .menu.library h2.title {
@@ -1149,21 +1151,26 @@ button.accent {
     font-weight: 300;
 }
 
-.menu.library .container {
+.menu.library .container .folderContent section {
     animation: none;
 }
 
-.menu.library .container.animate {
-    animation: bottomToTop 0.2s ease-in;
+.menu.library .container .folderContent section h2 {
+    font-size: var(--info-size);
+    font-weight: var(--text-weight);
+    padding: 5px 10px;
 }
 
-@keyframes bottomToTop {
-    from {
-        transform: translateY(1000px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* open view animation */
+.menu.library .container {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.3s var(--animation-timing-function);
+    height: 100% !important;
+}
+
+.menu.library .container.animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: none;
 }

@@ -228,14 +228,22 @@ ipcMain.on('view-folder', (event, args) => {
 })
 
 // list files in directory
-ipcMain.handle('list-files', (event, args) => {
-    fs.readdir(args, response = (err, files) => {
-        // error
-        if (err) {
-            return console.log(err)
-        } 
+function listFilesInDirectory(path) {
+    return new Promise((resolve, reject) => {
+        fs.readdir(path, response = (err, files) => {
+            // error
+            if (err) {
+                reject(err)
+            }
 
-        console.log(files)
-        return files
+            resolve(files)
+        })
     })
+}
+
+ipcMain.handle('list-files', (_event, args) => {
+    return listFilesInDirectory(args).then(files => {
+        return JSON.stringify(files)
+    })
+        .catch(err => { console.log(err); return err })
 })

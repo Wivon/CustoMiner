@@ -13,15 +13,8 @@ function RenderAddNewItemsInLibrary() {
     Object.keys(addNewItems).forEach(item => {
         // detect items that are hidden in library
         let hideInLibrary = false
-        if (addNewItems[item].properties) {
-            addNewItems[item].properties.forEach(i => {
-                if (i == "hideInLibrary") {
-                    hideInLibrary = true
-                    return
-                }
-                return
-            })
-            return
+        if (addNewItems[item].hideInLibrary == true) {
+            hideInLibrary = true
         }
 
         // render those that aren't hiddens
@@ -52,24 +45,31 @@ function RenderAddNewItemsInLibrary() {
 
     // default focus on first element
     libraryNavItems[0].classList.add('active')
-    renderLibraryNavIndicator()
+    openView(libraryNavItems[0])
 
     // add listeners
     addLibraryNavItemsEventListener()
 }
 
 function addLibraryNavItemsEventListener() {
-
     libraryNavItems.forEach(item => {
         item.onclick = () => {
-            document.querySelector('.libraryNav .item.active').classList.remove('active')
-            item.classList.add('active')
-            // save current view
-            CURRENT_LIBRARY_VIEW = item.getAttribute('add-new-items-key')
-            renderLibraryNavIndicator()
-            renderLibraryContainer()
+            openView(item)
         }
     })
+}
+
+function openView(item) {
+    if (CURRENT_LIBRARY_VIEW != item.getAttribute('add-new-items-key')) {
+        // change view in nav
+        document.querySelector('.libraryNav .item.active').classList.remove('active')
+        item.classList.add('active')
+
+        // render new view
+        CURRENT_LIBRARY_VIEW = item.getAttribute('add-new-items-key')
+        renderLibraryNavIndicator()
+        renderLibraryContainer()
+    }
 }
 
 function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item.active')) {
@@ -85,12 +85,10 @@ function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item
 }
 
 function renderLibraryContainer() {
+    // start animation
     libraryAnimationContainer.classList.add('animate')
-    setTimeout(() => {
-        console.log('animated')
-        libraryAnimationContainer.classList.remove('animate')
-    }, 1000)
-    libraryAnimationContainer.classList.remove('animate')
+
+    // load view
     if (CURRENT_LIBRARY_VIEW != "curseforge") {
         let item = addNewItems[CURRENT_LIBRARY_VIEW]
         let name = getDictionnaryItemByStringName(localeTexts, item.name)
@@ -98,26 +96,35 @@ function renderLibraryContainer() {
         renderFolderContentInHTML(item.folderName)
     } else {
         libraryContainer.querySelector('h2.title').innerHTML = "<span>work in progress</span><br>Curseforge"
+        libraryFolderContent.innerHTML = "loading Curseforge API..."
     }
 
 }
 
 // render folder content in html
 function renderFolderContentInHTML(minecraftFolder) {
-    let files = listFilesInFolder(gameDir + '\\' + minecraftFolder)
-    files = JSON.parse(files)
+    listFilesInDirectory(gameDir + '\\' + minecraftFolder).then(response => {
+        let files = JSON.parse(response)
 
-    libraryFolderContent.innerHTML = ""
+        libraryFolderContent.innerHTML = ""
+    
+        files.forEach(file => {
+            let newItem = document.createElement('section')
+            newItem.innerHTML = `<h2>${file}</h2>`
+            libraryFolderContent.appendChild(newItem)
+        })
 
-    files.forEach(file => {
-        let newItem = document.createElement('section')
-        newItem.innerHTML = `<h2>${file}</h2>`
-        libraryFolderContent.appendChild()
+        // end animation
+        setTimeout(() => {
+            libraryAnimationContainer.classList.remove('animate')
+        }, 200)
     })
 }
 
-function listFilesInFolder(folderPath) {
-    let response = ipcRenderer.invoke('list-files', folderPath)
-    console.log(response)
-    return response
+function listFilesInDirectory(path) {
+    return new Promise((resolve, reject) => {
+        ipcRenderer.invoke('list-files', path).then(response => {    
+            resolve(response)
+        })
+    })
 }
