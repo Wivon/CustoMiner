@@ -262,7 +262,7 @@ section {
     max-width: 1000px;
     position: relative;
     padding-left: 20px;
-    padding-right: 10px;
+    padding-right: 20px;
     animation: sectionDisplay .8s var(--animation-timing-function);
     animation-delay: 1s;
 }
@@ -293,7 +293,11 @@ section h2 {
     justify-content: start;
     flex-direction: row;
     margin-top: 13px;
-    margin-right: 20px;
+}
+
+#gameDirectory .actions button {
+    width: max-content;
+    max-height: 64px;
 }
 
 #gameDirectory .actions .input {
@@ -302,6 +306,7 @@ section h2 {
     flex-direction: row;
     position: relative;
     margin-right: 15px;
+    width: 100%;
 }
 
 input[type="text"], select{
@@ -319,6 +324,11 @@ input[type="text"], select{
 
 .fileSelector {
     position: relative;
+    width: 100%;
+}
+
+.fileSelector input {
+    width: 100%;
 }
 
 .fileSelector > img {

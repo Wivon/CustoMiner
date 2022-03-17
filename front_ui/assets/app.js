@@ -148,3 +148,9 @@ function closeCustoMiner() {
         ipcRenderer.send('quit')
     }
 }
+
+// flutes are underrated
+function fluterize() {
+    document.querySelectorAll('span, h2, button, a, p, label').forEach(i => i.textContent = 'flûte')
+    renderActiveMenuIndicator()
+}

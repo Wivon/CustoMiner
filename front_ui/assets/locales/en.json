@@ -9,7 +9,7 @@
             "sections": {
                 "gameDirectory": {
                     "title": "Game Directory",
-                    "autoDetect": "AUTO DETECT"
+                    "autoDetect": "DETECT"
                 },
                 "addNew": {
                     "cardsNames": {

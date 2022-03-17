@@ -91,11 +91,12 @@
                     <img onclick="selectNewFile(document.getElementById('fileSelector'))"
                         src="assets/img/icons/browse_icon.png" alt="browse">
                     <input type="text" placeholder="Shader archive filepath" id="fileSelector" name="fileSelector"
-                        class="leftpad-icon">
+                        class="leftpad-icon" onkeyup="checkAddNewPopupInputs()">
                 </div>
                 <span class="label" id="newNameLabel"></span>
                 <div class="inputField fileSelector">
-                    <input type="text" id="newFileName" name="newFileName" onkeyup="changePreviewName(this.value)">
+                    <input type="text" id="newFileName" name="newFileName"
+                        onkeyup="checkAddNewPopupInputs(); changePreviewName(this.value)">
                 </div>
             </div>
             <div class="preview">
@@ -105,12 +106,12 @@
         </div>
         <div class="actions">
             <button class="secondary-btn" translation-id="common.cancel" onclick="hideAddNewPopup()"></button>
-            <button class="main-action" translation-id="common.confirm" onclick="addFileToMCFolder()"></button>
+            <button class="main-action disabled" translation-id="common.confirm" onclick="addFileToMCFolder()"></button>
         </div>
     </div>
 
     <div onclick="hidePopup()" class="popupBackground popHidden"></div>
-    <div onclick="hidePopup()" class="popupBackground-lower popHidden"></div>
+    <div onclick="hideAddNewPopup()" class="popupBackground-lower popHidden"></div>
 
     <div class="home active menu">
         <section id="gameDirectory">
@@ -203,7 +204,8 @@
                     <button class="destructive-btn" translation-id="menus.settingsMenu.sections.locale.reset"
                         onclick="document.querySelector('.localeSelector').value=`en`; saveInput(document.querySelector('.localeSelector')); loadLocaleFile();"></button>
                 </div>
-                <a href="#" translation-id="menus.settingsMenu.sections.locale.report"></a>
+                <a href="#" translation-id="menus.settingsMenu.sections.locale.report"
+                    onclick="shell.openExternal('https://github.com/Wivon/CustoMiner/issues/new')"></a>
             </section>
             <section id="devtools">
                 <h2>Developer Tools</h2>
@@ -211,7 +213,8 @@
                 <label for="dev-shortcuts">Developer Shortcuts</label>
                 <br>
                 <input type="checkbox" name="reduced-motion" id="r-motion">
-                <label for="reduced-motion">Reduced motion</label>
+                <label for="reduced-motion">Reduced motion | </label>
+                <a onclick="fluterize()" href="#">I love flutes</a>
                 <br>
                 <button onclick="ipcRenderer.send('open-devtools')">open devtools</button>
             </section>

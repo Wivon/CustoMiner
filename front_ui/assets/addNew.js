@@ -142,6 +142,9 @@ function selectNewFile(input) {
 
             // change preview text
             changePreviewName(filename)
+
+            // refresh main action button
+            checkAddNewPopupInputs()
         }
     })
 }
@@ -167,4 +170,16 @@ function addFileToMCFolder() {
     let destination = MCFolder + '\\' + filenameInput.value + '.' + filenameInput.getAttribute('extension')
     copyFile(src, destination)
     hideAddNewPopup()
+}
+
+function checkAddNewPopupInputs() {
+    let fileInput = document.querySelector("#fileSelector")
+    let newFileNameInput = document.querySelector("#newFileName")
+    let popupMainBtn = document.querySelector(".addnew-popup .actions .main-action")
+
+    if (fileInput.value != "" && newFileNameInput.value != "") {
+        popupMainBtn.classList.remove('disabled')
+    } else {
+        popupMainBtn.classList.add('disabled')
+    }
 }
