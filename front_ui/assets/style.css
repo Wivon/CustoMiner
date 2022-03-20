@@ -300,7 +300,7 @@ section h2 {
     max-height: 64px;
 }
 
-#gameDirectory .actions .input {
+.right-button {
     display: flex;
     justify-content: start;
     flex-direction: row;
@@ -1042,13 +1042,13 @@ button.accent {
 .libraryNav {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 45px;
     bottom: 0;
     width: 280px;
     background: rgba(31, 31, 31, 0.3);
     backdrop-filter: blur(3px);
     transform: translateX(-100%);
-    padding-top: 70px;
+    padding-top: 25px;
     border-right: solid 4px rgba(255, 255, 255, 0.65);
     opacity: .2;
     transition-duration: 0.3s;
@@ -1147,6 +1147,7 @@ button.accent {
     margin-left: 280px;
     align-items: flex-start;
     padding-left: 40px;
+    padding-right: 40px;
     padding-top: 60px;
     height: 100%;
 }
@@ -1163,12 +1164,14 @@ button.accent {
 
 .menu.library .container .folderContent section {
     animation: none;
+    margin-top: 15px;
 }
 
 .menu.library .container .folderContent section h2 {
     font-size: var(--info-size);
     font-weight: var(--text-weight);
     padding: 5px 10px;
+    margin-top: 0 !important;
 }
 
 /* open view animation */
@@ -1177,10 +1180,50 @@ button.accent {
     transform: translateY(0);
     transition: 0.3s var(--animation-timing-function);
     height: 100% !important;
+    width: 100%;
 }
 
 .menu.library .container.animate {
     opacity: 0;
     transform: translateY(50px);
     transition: none;
+}
+
+.library.menu div .curseforgeContainer {
+    width: 100%;
+}
+
+.library.menu div .curseforgeContainer section {
+    animation-delay: 0s !important;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.library.menu div .curseforgeContainer section h2 {
+    margin-top: 0 !important;
+}
+
+.library.menu div .curseforgeContainer #curseforgeSearch {
+    margin-top: 20px;
+}
+
+.library.menu div .curseforgeContainer #curseforgeSearch .inputs {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.library.menu div .curseforgeContainer #curseforgeSearch .inputs > *{
+    margin-right: 15px;
+}
+
+.library.menu div .curseforgeContainer #curseforgeSearch .inputs .right-button {
+    width: 400px;
+}
+
+.library.menu div .curseforgeContainer #curseforgeSearch .inputs select {
+    width: 100%;
 }

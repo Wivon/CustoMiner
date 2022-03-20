@@ -2,6 +2,7 @@ let NavFoldersContainer = document.querySelector('.libraryNav .localFolders')
 let libraryContainer = document.querySelector('.menu.library')
 let libraryAnimationContainer = document.querySelector('.menu.library .container')
 let libraryFolderContent = document.querySelector('.menu.library .folderContent')
+let CurseforgeContainer = document.querySelector('.menu.library .curseforgeContainer')
 let libraryNavItems
 let CURRENT_LIBRARY_VIEW
 
@@ -80,7 +81,7 @@ function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item
         offsetTop = elemRect.top - bodyRect.top,
         offsetLeft = elemRect.left - bodyRect.left;
 
-    activeMenuIndicator.style.top = (offsetTop + 16) + "px"
+    activeMenuIndicator.style.top = (offsetTop + 16 - 45) + "px"
     activeMenuIndicator.style.height = (a.offsetHeight - 32) + "px"
 }
 
@@ -93,10 +94,15 @@ function renderLibraryContainer() {
         let item = addNewItems[CURRENT_LIBRARY_VIEW]
         let name = getDictionnaryItemByStringName(localeTexts, item.name)
         libraryContainer.querySelector('h2.title').innerHTML = "<span>/" + item.folderName + "</span><br>" + name
+        libraryFolderContent.style.display = "block"
+        CurseforgeContainer.style.display = "none"
         renderFolderContentInHTML(item.folderName)
     } else {
-        libraryContainer.querySelector('h2.title').innerHTML = "<span>work in progress</span><br>Curseforge"
-        libraryFolderContent.innerHTML = "loading Curseforge API..."
+        libraryContainer.querySelector('h2.title').innerHTML = "Curseforge"
+        libraryFolderContent.innerHTML = ""
+        libraryFolderContent.style.display = "none"
+        CurseforgeContainer.style.display = "block"
+        loadCurseforgeView()
     }
 
 }
@@ -107,7 +113,7 @@ function renderFolderContentInHTML(minecraftFolder) {
         let files = JSON.parse(response)
 
         libraryFolderContent.innerHTML = ""
-    
+
         files.forEach(file => {
             let newItem = document.createElement('section')
             newItem.innerHTML = `<h2>${file}</h2>`
@@ -123,8 +129,15 @@ function renderFolderContentInHTML(minecraftFolder) {
 
 function listFilesInDirectory(path) {
     return new Promise((resolve, reject) => {
-        ipcRenderer.invoke('list-files', path).then(response => {    
+        ipcRenderer.invoke('list-files', path).then(response => {
             resolve(response)
         })
     })
+}
+
+function loadCurseforgeView() {
+    // end animation
+    setTimeout(() => {
+        libraryAnimationContainer.classList.remove('animate')
+    }, 200)
 }

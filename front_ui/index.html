@@ -18,6 +18,7 @@
     <script src="assets/shortcuts.js" defer></script>
     <script src="assets/updater.js" defer></script>
     <script src="assets/library.js" defer></script>
+    <script src="assets/curseforge.js" defer></script>
 </head>
 
 <body class="loading">
@@ -117,7 +118,7 @@
         <section id="gameDirectory">
             <h2 translation-id="menus.homeMenu.sections.gameDirectory.title"></h2>
             <div class="actions">
-                <div class="input">
+                <div class="input right-button">
                     <div class="fileSelector">
                         <img src="assets/img/icons/browse_icon.png" alt="browse">
                         <input type="text" onkeyup="saveInput(this); gameDir = this.value" id="gameDirectoryInput"
@@ -262,9 +263,31 @@
 
     <div class="library menu" style="height: 0;">
         <div class="container">
-            <h2 class="title">Loading...</h2>
+            <h2 class="title"></h2>
             <div class="folderContent">
-                loading...
+            </div>
+            <div class="curseforgeContainer">
+                <section id="curseforgeSearch">
+                    <h2>Search</h2>
+                    <div class="inputs">
+                        <div class="right-button">
+                            <input type="text" class="rounded-left" id="gameDirectoryInput" name="search"
+                                placeholder="search on Curseforge">
+                            <button onclick="searchOnCurseforge()" class="rounded-right iconBTN">
+                                <img src="assets/img/icons/next-transparent.png" alt="search" id="nextGameDirectory">
+                            </button>
+                        </div>
+                        <select name="type" id="type">
+                            <option value="shaders">Shaders</option>
+                            <option value="resourcepacks">Resource Packs</option>
+                            <option value="mods">Mods</option>
+                            <option value="maps">Maps</option>
+                        </select>
+                        <select name="version" id="gameVersion">
+                        </select>
+                    </div>
+                </section>
+                <div class="results"></div>
             </div>
         </div>
     </div>

@@ -48,10 +48,10 @@ function setTexts() {
         let translationID = elem.getAttribute('translation-id')
         setTranslation(translationID, elem)
     })
-    renderActiveMenuIndicator()
-    tryLoadUpdateSection()
-    RenderAddNewItemsInLibrary()
     localeLoaded = true
+    renderActiveMenuIndicator()
+    RenderAddNewItemsInLibrary()
+    tryLoadUpdateSection()
 }
 
 function setTranslation(id, elem, prefix = "") {
