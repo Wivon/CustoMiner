@@ -108,7 +108,7 @@ function openAddNewPopup(newType) {
             }
         })
     } else {
-        openPopup(menus.homeMenu.sections.gameDirectory.title, 
+        openPopup(localeTexts.menus.homeMenu.sections.gameDirectory.title, 
         'Minecraft directory not found', 
         true, 
         `<button onclick="detectMinecraftDirAndOpenPopup('${newType}')">${localeTexts.menus.homeMenu.sections.gameDirectory.autoDetect}</button>

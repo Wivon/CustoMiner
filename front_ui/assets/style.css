@@ -49,6 +49,7 @@
     --title-weight: 700;
     --subtitle-weight: 500;
     --text-weight: 400;
+    --description-weight: 300;
     
     /* text colors */
     --main-text-color: #ffffff;
@@ -973,13 +974,11 @@ button.accent {
     bottom: 0;
     box-shadow: 0 -30px 20px rgba(0, 0, 0, 0.8) inset;
     z-index: 50;
-    transition: 0.2s ease-in;
+    transition: 0.15s ease-in;
 }
 
 .addnew-popup .container .preview:hover::after {
-    box-shadow: 0 -60px 45px rgba(0, 0, 0, 0.9) inset;
-    right: -10px;
-    left: -10px;
+    box-shadow: 0 -50px 45px rgba(0, 0, 0, 0.9) inset;
 }
 
 .addnew-popup .container .preview img {
@@ -1198,6 +1197,7 @@ button.accent {
     width: 100%;
     padding-top: 10px;
     padding-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .library.menu div .curseforgeContainer section h2 {
@@ -1226,4 +1226,43 @@ button.accent {
 
 .library.menu div .curseforgeContainer #curseforgeSearch .inputs select {
     width: 100%;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection {
+    max-height: 400px;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection p {
+    margin-top: 12px;
+    line-height: 26px;
+    font-size: var(--small-text-size);
+    font-weight: var(--description-weight);
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection .lower {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    vertical-align: bottom;
+    margin-top: 20px;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    height: 120px;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img:nth-child(3) {
+    height: 80px;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection .lower .actions {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: max-content;
+    padding: 5px 0;
 }

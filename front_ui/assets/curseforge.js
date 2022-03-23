@@ -1,7 +1,7 @@
 const URL_BASE = 'https://api.curseforge.com'
 let MinecraftVersions = []
 let MinecraftVersionsSelector = document.querySelector('#gameVersion')
-let CurseforgeSearchResultsContainer = document.querySelector('library.menu .curseforgeContainer .results')
+let CurseforgeSearchResultsContainer = document.querySelector('.curseforgeContainer .results')
 
 const headers = {
     'Accept': 'application/json',
@@ -11,9 +11,9 @@ const headers = {
 function fetchApi(urlAndArgs) {
     return new Promise((resolve, reject) => {
         fetch(URL_BASE + urlAndArgs, {
-                method: 'GET',
-                headers: headers
-            })
+            method: 'GET',
+            headers: headers
+        })
             .then(res => {
                 return res.json()
             }).then(body => {
@@ -44,15 +44,28 @@ function searchOnCurseforge() {
     let type = document.querySelector('#type').value
     let gameVersion = MinecraftVersionsSelector.value
 
-    fetchApi(`/v1/mods/search?gameId=432&searchFilter=${query}&gameVersion=${gameVersion}&sortField=6`).then(response => {
-        let results = Object.values(response.data)
 
-        results.forEach(i => {
+    fetchApi(`/v1/mods/search?gameId=432&searchFilter=${query}&gameVersion=${gameVersion}&classId=6`).then(response => {
+        let results = Object.values(response.data)
+        console.log(results)
+
+        CurseforgeSearchResultsContainer.innerHTML = ""
+        results.forEach((item, index) => {
             let newItem = document.createElement('section')
-            newItem.textContent = i.name
+            if (index === 0) {
+                console.log(item)
+                newItem.innerHTML = item.name + "<br>" + item.description
+            } else {
+                newItem.textContent = item.name
+            }
             CurseforgeSearchResultsContainer.appendChild(newItem)
         })
     })
 }
+
+// fetchApi('/v1/categories?classId=7').then(response => {
+//     let results = response.data
+//     console.log(results)
+// })
 
 getMinecraftVersions()
