@@ -2,6 +2,7 @@ const URL_BASE = 'https://api.curseforge.com'
 let MinecraftVersions = []
 let MinecraftVersionsSelector = document.querySelector('#gameVersion')
 let CurseforgeSearchResultsContainer = document.querySelector('.curseforgeContainer .results')
+let searchInput = document.querySelector('#curseforgeSearch .inputs div input')
 
 const headers = {
     'Accept': 'application/json',
@@ -40,21 +41,38 @@ function getMinecraftVersions() {
 
 
 function searchOnCurseforge() {
-    let query = document.querySelector('#curseforgeSearch .inputs div input').value
+    let query = searchInput.value
     let type = document.querySelector('#type').value
     let gameVersion = MinecraftVersionsSelector.value
 
 
-    fetchApi(`/v1/mods/search?gameId=432&searchFilter=${query}&gameVersion=${gameVersion}&classId=6`).then(response => {
+    fetchApi(`/v1/mods/search?gameId=432&searchFilter=${query}&gameVersion=${gameVersion}&classId=6&sortField=6&sortOrder=desc`).then(response => {
         let results = Object.values(response.data)
-        console.log(results)
 
         CurseforgeSearchResultsContainer.innerHTML = ""
         results.forEach((item, index) => {
             let newItem = document.createElement('section')
             if (index === 0) {
                 console.log(item)
-                newItem.innerHTML = item.name + "<br>" + item.description
+                let screenshotsHTML = ""
+                item.screenshots.forEach((s, i) => {
+                    if (i < 3) {
+                        screenshotsHTML = `${screenshotsHTML}<img src="${s.url}">`
+                    }
+                })
+
+                newItem.innerHTML = `
+                    <h2>${item.name}</h2>
+                    <p>${item.summary}</p>
+                    <div class="lower">
+                        <div class="screenshots">${screenshotsHTML}</div>
+                        <div class="actions">
+                            <button class="secondary-btn" onclick="shell.openExternal('${item.links.websiteUrl}')">DETAILS</button>
+                            <button class="primary-btn">DOWNLOAD</button>
+                       </div>
+                    </div>
+                `
+                newItem.classList.add('primarySection')
             } else {
                 newItem.textContent = item.name
             }
@@ -67,5 +85,11 @@ function searchOnCurseforge() {
 //     let results = response.data
 //     console.log(results)
 // })
+
+searchInput.onkeydown = (e) => {
+    if (e.keyCode === 13) {
+        searchOnCurseforge()
+    }
+}
 
 getMinecraftVersions()
