@@ -1228,8 +1228,36 @@ button.accent {
     width: 100%;
 }
 
+.library.menu div .curseforgeContainer .results .error {
+    font-size: var(--subtitle-size);
+    font-weight: 600;
+}
+
+.library.menu div .curseforgeContainer .results .error span {
+    font-family: 'Helvetica';
+    font-size: var(--title-size);
+    font-weight: 900;
+    text-align: center;
+}
+
 .library.menu div .curseforgeContainer .results section.primarySection {
     max-height: 400px;
+}
+
+.library.menu div .curseforgeContainer .results section h2 {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    vertical-align: middle;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection .logo {
+    aspect-ratio: 1 / 1;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 12px;
+    border-radius: 4px;
+    transform: translateY(10%);
 }
 
 .library.menu div .curseforgeContainer .results section.primarySection p {
@@ -1238,6 +1266,7 @@ button.accent {
     font-size: var(--small-text-size);
     font-weight: var(--description-weight);
 }
+
 
 .library.menu div .curseforgeContainer .results section.primarySection .lower {
     display: flex;
@@ -1253,6 +1282,7 @@ button.accent {
     height: 120px;
     border-radius: 8px;
     margin-right: 12px;
+    transition: 0.2s ease-in
 }
 
 .library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img:nth-child(3) {
@@ -1265,4 +1295,17 @@ button.accent {
     flex-direction: column;
     width: max-content;
     padding: 5px 0;
+}
+
+@media (max-width: 1277px) {
+    .library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img:nth-child(3) {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1122px) {
+    .library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img:nth-child(2) {
+        height: 80px;
+    }
 }

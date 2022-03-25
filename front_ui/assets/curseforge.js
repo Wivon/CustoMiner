@@ -19,13 +19,14 @@ function fetchApi(urlAndArgs) {
                 return res.json()
             }).then(body => {
                 resolve(body)
-            })
+            }).catch(err => reject(err))
     })
 }
 
 function getMinecraftVersions() {
     fetchApi('/v1/minecraft/version').then(response => {
         MinecraftVersions = Object.values(response.data)
+        MinecraftVersionsSelector.innerHTML = ""
 
         // create an selector option for each version
         MinecraftVersions.forEach(version => {
@@ -40,29 +41,41 @@ function getMinecraftVersions() {
 }
 
 
-function searchOnCurseforge() {
-    let query = searchInput.value
+function searchOnCurseforge(defaultQuery = null) {
+    let query = defaultQuery ?? searchInput.value
     let type = document.querySelector('#type').value
     let gameVersion = MinecraftVersionsSelector.value
 
 
     fetchApi(`/v1/mods/search?gameId=432&searchFilter=${query}&gameVersion=${gameVersion}&classId=6&sortField=6&sortOrder=desc`).then(response => {
         let results = Object.values(response.data)
+        if (results.length == 0) {
+            // no results
+            CurseforgeSearchResultsContainer.innerHTML = `
+            <p class="error">
+                <span>(´。＿。｀)</span><br><br>Curseforge couldn't find what you were looking for.
+            </p>
+            `
+        } else {
+            CurseforgeSearchResultsContainer.innerHTML = ""
+            results.forEach((item, index) => {
+                let newItem = document.createElement('section')
+                if (index === 0) {
+                    // first result
 
-        CurseforgeSearchResultsContainer.innerHTML = ""
-        results.forEach((item, index) => {
-            let newItem = document.createElement('section')
-            if (index === 0) {
-                console.log(item)
-                let screenshotsHTML = ""
-                item.screenshots.forEach((s, i) => {
-                    if (i < 3) {
-                        screenshotsHTML = `${screenshotsHTML}<img src="${s.url}">`
-                    }
-                })
+                    // console.log(item)
+                    let screenshotsHTML = ""
+                    item.screenshots.forEach((s, i) => {
+                        if (i < 3) {
+                            screenshotsHTML = `${screenshotsHTML}<img src="${s.url}">`
+                        }
+                    })
 
-                newItem.innerHTML = `
-                    <h2>${item.name}</h2>
+                    newItem.innerHTML = `
+                    <h2>
+                        <img src=${item.logo.url} class="logo">
+                        ${item.name}
+                    </h2>
                     <p>${item.summary}</p>
                     <div class="lower">
                         <div class="screenshots">${screenshotsHTML}</div>
@@ -72,12 +85,20 @@ function searchOnCurseforge() {
                        </div>
                     </div>
                 `
-                newItem.classList.add('primarySection')
-            } else {
-                newItem.textContent = item.name
-            }
-            CurseforgeSearchResultsContainer.appendChild(newItem)
-        })
+                    newItem.classList.add('primarySection')
+                } else {
+                    newItem.textContent = item.name
+                }
+                CurseforgeSearchResultsContainer.appendChild(newItem)
+            })
+        }
+    }).catch(err => {
+        // API error
+        CurseforgeSearchResultsContainer.innerHTML = `
+        <p class="error">
+            <span>＞﹏＜</span><br><br>It looks like you'r not connected to the internet.<br>${err}
+        </p>
+        `
     })
 }
 
@@ -92,4 +113,5 @@ searchInput.onkeydown = (e) => {
     }
 }
 
+searchOnCurseforge("")
 getMinecraftVersions()
