@@ -1,5 +1,6 @@
 let addNewPopupDisplayed = false
 let addNewPopup = document.querySelector('.addnew-popup')
+let addNewCardsContainer = document.querySelector('#addNew .container')
 
 let CURRENT_ITEM
 
@@ -37,6 +38,61 @@ const addNewItems = {
         "hideInLibrary": true
     }
 }
+
+class addNewCard extends HTMLElement {
+    constructor() {
+        super()
+    }
+
+    getAddNewItem(returnObj = false) {
+        this.addNewItemKey = this.getAttribute('add-new-item-key')
+        if (returnObj == true) return addNewItems[this.addNewItemKey]
+    }
+
+    translate() {
+        this.querySelector('.add .name').textContent = getDictionnaryItemByStringName(localeTexts, this.getAddNewItem(true).name)
+        this.querySelector('.add button').textContent = localeTexts.common.add
+    }
+
+    disable() {
+        this.querySelector('.add button').classList.add('disabled')
+        this.querySelector('img').removeAttribute('onclick')
+    }
+
+    customAction(HTMLEventAttribute) {
+        this.querySelector('.add button').setAttribute('onclick', HTMLEventAttribute)
+        this.querySelector('img').setAttribute('onclick', HTMLEventAttribute)
+    }
+
+    render() {
+        this.innerHTML = `
+        <img src="assets/img/banners/${this.getAddNewItem(true).image}" onclick="openAddNewPopup('${this.addNewItemKey}')" alt="mods banner">
+        <div class="add">
+            <p class="name"></p>
+            <button class="addBtn" onclick="openAddNewPopup('${this.addNewItemKey}')"></button>
+        </div>`
+        this.classList.add('card')
+    }
+}
+
+customElements.define('add-new-card', addNewCard)
+
+function renderAddNewCards() {
+    Object.keys(addNewItems).forEach(item => {
+        let newCard = document.createElement('add-new-card')
+        newCard.setAttribute('add-new-item-key', item)
+        addNewCardsContainer.appendChild(newCard)
+
+        // setup card
+        newCard.getAddNewItem()
+        newCard.render()
+
+        if (item == 'datapacks') { newCard.disable() }
+        if (item == 'screenshots') { newCard.customAction('openScreenshotsFolder()') }
+    })
+}
+
+renderAddNewCards()
 
 
 function hideAddNewPopup() {
@@ -76,15 +132,15 @@ function hideAddNewPopup() {
 }
 
 function openAddNewPopup(newType) {
-    if(gameDir != "") {
+    if (gameDir != "") {
         // display
         addNewPopupDisplayed = true
         addNewPopup.style.display = 'flex';
         CURRENT_ITEM = newType;
-    
+
         // background
         document.querySelector('.popupBackground-lower').classList.remove('popHidden')
-    
+
         // change texts and images
         setTranslation(addNewItems[newType].name, addNewPopup.querySelector('.top h2'), localeTexts.common.add + ": ")
         setTranslation(addNewItems[newType].name, addNewPopup.querySelector('.container .preview span'))
@@ -93,7 +149,7 @@ function openAddNewPopup(newType) {
         // change input labels
         document.querySelector('#selectorLabel').innerHTML = localeTexts.labels.addNew.selectorLabel.replace('{name}', "<span>" + getDictionnaryItemByStringName(localeTexts, addNewItems[newType].name) + "</span>")
         document.querySelector('#newNameLabel').textContent = localeTexts.labels.addNew.newNameLabel
-    
+
         // nav
         let popupNavItem = document.querySelector('.nav .left .actions a[href="#!hideAddNewPopup"]')
         // force display when animation is too fast
@@ -108,10 +164,10 @@ function openAddNewPopup(newType) {
             }
         })
     } else {
-        openPopup(localeTexts.menus.homeMenu.sections.gameDirectory.title, 
-        'Minecraft directory not found', 
-        true, 
-        `<button onclick="detectMinecraftDirAndOpenPopup('${newType}')">${localeTexts.menus.homeMenu.sections.gameDirectory.autoDetect}</button>
+        openPopup(localeTexts.menus.homeMenu.sections.gameDirectory.title,
+            'Minecraft directory not found',
+            true,
+            `<button onclick="detectMinecraftDirAndOpenPopup('${newType}')">${localeTexts.menus.homeMenu.sections.gameDirectory.autoDetect}</button>
         <button onclick="hidePopup(); selectMinecraftFolder()">${localeTexts.common.browse}</button>
         <button class="secondary-btn" onclick="hidePopup()">${localeTexts.common.cancel}</button>`
         )
@@ -182,4 +238,8 @@ function checkAddNewPopupInputs() {
     } else {
         popupMainBtn.classList.add('disabled')
     }
+}
+
+function openScreenshotsFolder() {
+    ipcRenderer.send('view-folder', gameDir + '\\' + addNewItems.screenshots.folderName)
 }

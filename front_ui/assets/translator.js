@@ -52,6 +52,10 @@ function setTexts() {
     renderActiveMenuIndicator()
     RenderAddNewItemsInLibrary()
     tryLoadUpdateSection()
+    // translate cards
+    document.querySelectorAll('add-new-card').forEach(i => {
+        i.translate()
+    })
 }
 
 function setTranslation(id, elem, prefix = "") {

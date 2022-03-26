@@ -96,7 +96,7 @@ function searchOnCurseforge(defaultQuery = null) {
         // API error
         CurseforgeSearchResultsContainer.innerHTML = `
         <p class="error">
-            <span>＞﹏＜</span><br><br>It looks like you'r not connected to the internet.<br>${err}
+            <span>＞﹏＜</span><br><br>It looks like you're not connected to the internet.<br>${err}
         </p>
         `
     })
