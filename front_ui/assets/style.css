@@ -42,6 +42,7 @@
     --title-size: 48px;
     --subtitle-size: 40px;
     --info-size: 32px;
+    --card-text-size: 24px;
     --text-size: 22px;
     --small-text-size: 18px;
     
@@ -152,7 +153,7 @@ body:not(.reduced-motion) .nav {
     color: var(--secondary-text-color);
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: var(--card-text-size);
     margin-right: 35px;
     cursor: pointer !important;
     position: relative;
@@ -319,7 +320,7 @@ input[type="text"], select{
     padding-bottom: 5px;
     height: 64px;
     border: none;
-    font-size: 24px;
+    font-size: var(--card-text-size);
     width: 600px;
 }
 
@@ -377,6 +378,10 @@ button.iconBTN img {
     margin: 40px 20px;
 }
 
+#addNew .container .card:active {
+    transform: scale(0.92);
+}
+
 #addNew .container .card, #addNew .container .card * {
     transition: 0.3s var(--animation-timing-function);
 }
@@ -409,7 +414,7 @@ button.iconBTN img {
 }
 
 #addNew .container .card .add p.name {
-    font-size: 24px;
+    font-size: var(--card-text-size);
     width: 150%;
     text-align: center;
     font-weight: 500;
@@ -420,7 +425,7 @@ button.iconBTN img {
 #addNew .container .card .add button {
     width: 194px;
     height: 41px;
-    font-size: 24px;
+    font-size: var(--card-text-size);
 }
 
 #addNew .container .card:hover .add {
@@ -459,6 +464,7 @@ button {
     cursor: pointer;
     align-items: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
 }
 
 .active-anim:active, .nav .left a:active, button:active, .input img:active{
@@ -1297,6 +1303,18 @@ button.accent {
     padding: 5px 0;
 }
 
+/* when there are no images */
+.library.menu div .curseforgeContainer .results section.primarySection.no-img {
+    height: 160px;
+}
+
+.library.menu div .curseforgeContainer .results section.primarySection.no-img .lower {
+    transform: translateY(-80%);
+    height: 130px;
+}
+
+
+/* first card responsive */
 @media (max-width: 1277px) {
     .library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img:nth-child(3) {
         height: 0;
@@ -1308,4 +1326,48 @@ button.accent {
     .library.menu div .curseforgeContainer .results section.primarySection .lower .screenshots img:nth-child(2) {
         height: 80px;
     }
+}
+
+.library.menu div .curseforgeContainer .results .horizontalContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 1 / 1;
+    width: max-content !important;
+    height: 220px;
+    margin-right: 15px;
+    padding: 20px;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection img {
+    width: 80px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection p {
+    text-align: center;
+    font-size: var(--card-text-size);
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection .actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection .actions button {
+    margin: 0 10px;
+    aspect-ratio: 1 / 1 !important;
 }

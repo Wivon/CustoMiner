@@ -49,13 +49,17 @@ function setTexts() {
         setTranslation(translationID, elem)
     })
     localeLoaded = true
+    // nav & update section
     renderActiveMenuIndicator()
-    RenderAddNewItemsInLibrary()
     tryLoadUpdateSection()
     // translate cards
     document.querySelectorAll('add-new-card').forEach(i => {
         i.translate()
     })
+    // library & curseforge
+    RenderAddNewItemsInLibrary()
+    searchOnCurseforge("")
+    getMinecraftVersions()
 }
 
 function setTranslation(id, elem, prefix = "") {

@@ -62,8 +62,6 @@ function searchOnCurseforge(defaultQuery = null) {
                 let newItem = document.createElement('section')
                 if (index === 0) {
                     // first result
-
-                    // console.log(item)
                     let screenshotsHTML = ""
                     item.screenshots.forEach((s, i) => {
                         if (i < 3) {
@@ -84,12 +82,43 @@ function searchOnCurseforge(defaultQuery = null) {
                             <button class="primary-btn">DOWNLOAD</button>
                        </div>
                     </div>
-                `
+                    `
+                    if (screenshotsHTML == "") {
+                        newItem.classList.add('no-img')
+                    }
                     newItem.classList.add('primarySection')
+                    CurseforgeSearchResultsContainer.appendChild(newItem)
+                } else if (index < 5) {
+                    // create horizontal container
+                    let horizontalContainer = CurseforgeSearchResultsContainer.querySelector('.horizontalContainer')
+                    if (horizontalContainer == null) {
+                        horizontalContainer = document.createElement('div')
+                        horizontalContainer.classList.add('horizontalContainer')
+                        CurseforgeSearchResultsContainer.appendChild(horizontalContainer)
+                        horizontalContainer = CurseforgeSearchResultsContainer.querySelector('.horizontalContainer')
+                    }
+                    // other firsts results | horizontal
+                    let screenshotsHTML = ""
+                    item.screenshots.forEach((s, i) => {
+                        if (i < 3) {
+                            screenshotsHTML = `${screenshotsHTML}<img src="${s.url}">`
+                        }
+                    })
+
+                    newItem.innerHTML = `
+                    <img src=${item.logo.url}>
+                    <p>${item.name}</p>
+                    <div class="actions">
+                        <button class="secondary-btn" onclick="shell.openExternal('${item.links.websiteUrl}')">0</button>
+                        <button class="primary-btn">I</button>
+                    </div>
+                    `
+                    newItem.classList.add('horizontalSection')
+                    horizontalContainer.appendChild(newItem)
                 } else {
                     newItem.textContent = item.name
+                    CurseforgeSearchResultsContainer.appendChild(newItem)
                 }
-                CurseforgeSearchResultsContainer.appendChild(newItem)
             })
         }
     }).catch(err => {
@@ -112,6 +141,3 @@ searchInput.onkeydown = (e) => {
         searchOnCurseforge()
     }
 }
-
-searchOnCurseforge("")
-getMinecraftVersions()
