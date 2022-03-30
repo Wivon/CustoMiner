@@ -43,6 +43,13 @@
                     }
                 }
             }
+        },
+        "libraryMenu": {
+            "curseforge": {
+                "search": "search",
+                "download": "download",
+                "details": "details"
+            }
         }
     },
     "notification": {
