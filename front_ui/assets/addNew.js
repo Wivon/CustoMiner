@@ -29,6 +29,7 @@ const addNewItems = {
         "name": "menus.homeMenu.sections.addNew.cardsNames.screenshots",
         "image": "screenshots_banner.png",
         "folderName": "screenshots",
+        "customBtnText": "menus.homeMenu.sections.addNew.view",
         "hideInLibrary": true
     },
     "datapacks": {
@@ -51,7 +52,11 @@ class addNewCard extends HTMLElement {
 
     translate() {
         this.querySelector('.add .name').textContent = getDictionnaryItemByStringName(localeTexts, this.getAddNewItem(true).name)
-        this.querySelector('.add button').textContent = localeTexts.common.add
+        if (this.getAddNewItem(true).customBtnText) {
+            this.querySelector('.add button').textContent = getDictionnaryItemByStringName(localeTexts, this.getAddNewItem(true).customBtnText)
+        } else {
+            this.querySelector('.add button').textContent = localeTexts.common.add
+        }
     }
 
     disable() {

@@ -109,8 +109,8 @@ function searchOnCurseforge(defaultQuery = null) {
                     <img src=${item.logo.url}>
                     <p>${item.name}</p>
                     <div class="actions">
-                        <button class="secondary-btn" onclick="shell.openExternal('${item.links.websiteUrl}')">0</button>
-                        <button class="primary-btn">I</button>
+                        <button class="secondary-btn" onclick="shell.openExternal('${item.links.websiteUrl}')"><img src="assets/img/icons/openExt_icon.png" alt="details"></button>
+                        <button class="primary-btn" onclick="this.parentNode.parentNode.classList.add('downloading')"><img src="assets/img/icons/download_icon.png" alt="download"></button>
                     </div>
                     `
                     newItem.classList.add('horizontalSection')

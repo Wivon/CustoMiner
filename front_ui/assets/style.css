@@ -73,7 +73,6 @@ body {
     background: url(img/bg-wool-dark.png);
     background-repeat: repeat;
     background-size: 25%;
-    background-position: fixed;
     overflow-x: hidden;
     height: 100%;
 }
@@ -354,9 +353,10 @@ input[type="text"], select{
     padding: 0 !important;
 }
 
-button.iconBTN img {
-    height: 40px;
+button img {
+    width: 40px !important;
     vertical-align: middle;
+    aspect-ratio: 1 / 1;
 }
 
 #addNew {
@@ -1347,7 +1347,7 @@ button.accent {
     padding: 20px;
 }
 
-.library.menu div .curseforgeContainer .results section.horizontalSection img {
+.library.menu div .curseforgeContainer .results section.horizontalSection > img {
     width: 80px;
     margin-right: auto;
     margin-left: auto;
@@ -1371,5 +1371,26 @@ button.accent {
 
 .library.menu div .curseforgeContainer .results section.horizontalSection .actions button {
     margin: 0 10px;
-    aspect-ratio: 1 / 1 !important;
+    padding: 0 !important;
+    height: 55px;
+    width: 55px;
 }
+
+.library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img {
+    transform: scale(0.7);
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img:after {
+    content: '';
+    border-radius: 50%;
+    background: red;
+    width: 300px;
+    border: 5px solid green;
+    aspect-ratio: 1 / 1;
+    z-index: -1;
+}
+
+/* TODO: */
+/* fix section background */
+/* fix download animation for horizontal */
+/* and more daddy */
