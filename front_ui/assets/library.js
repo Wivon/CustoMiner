@@ -71,6 +71,7 @@ function openView(item) {
         renderLibraryNavIndicator()
         renderLibraryContainer()
     }
+    window.location.hash = ACTIVE_MENU.toLowerCase() + "/" + addNewItems[CURRENT_LIBRARY_VIEW].folderName
 }
 
 function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item.active')) {

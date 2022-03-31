@@ -2,17 +2,21 @@ let ACTIVE_MENU = "HOME"
 
 document.querySelectorAll('.nav .left a').forEach(a => {
     a.onclick = () => {
-        openMenu(a)
-
-        let libraryNav = document.querySelector('.libraryNav')
-        if (libraryNav.classList.contains('active') && a.getAttribute('href') != "#library") {
-            libraryNav.classList.remove('active')
-        }
-        if (a.getAttribute('href') == "#library") {
-            libraryNav.classList.add('active')
-        }
+        navElClick(a)
     }
 })
+
+function navElClick(a) {
+    openMenu(a)
+
+    let libraryNav = document.querySelector('.libraryNav')
+    if (libraryNav.classList.contains('active') && a.getAttribute('href') != "#library") {
+        libraryNav.classList.remove('active')
+    }
+    if (a.getAttribute('href') == "#library") {
+        libraryNav.classList.add('active')
+    }
+}
 
 function openMenu(a) {
     if (!a.classList.contains('active') && a.getAttribute('href').slice(1, 2) != "!") {
@@ -147,6 +151,22 @@ function closeCustoMiner() {
     } else {
         ipcRenderer.send('quit')
     }
+}
+
+window.onhashchange = function() {
+    document.querySelectorAll('.nav .left a').forEach(a => {
+        if (a.getAttribute('href') == window.location.hash.slice(0, a.getAttribute('href').length) && ACTIVE_MENU != window.location.hash.slice(1, a.getAttribute('href').length).toUpperCase()) {
+            navElClick(a)
+
+            if (window.location.hash.includes("/")) {
+                document.querySelectorAll('.libraryNav .item').forEach(i => {
+                    if (i.getAttribute('add-new-items-key') == window.location.hash.split('/')[1]) {
+                        openView(i)
+                    }
+                })
+            }
+        }
+    })
 }
 
 // flutes are underrated
