@@ -126,7 +126,7 @@ if (localStorage.getItem('r-motion') !== null) {
 setTimeout(() => {
     document.querySelector('.nav').style.transform = 'translateY(0)'
     document.querySelector('.nav').style.opacity = 1
-}, 500)
+}, 1000)
 
 // add backslashes before backslashes for filepaths
 function addslashes(string) {

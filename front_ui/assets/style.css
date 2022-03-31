@@ -356,6 +356,8 @@ input[type="text"], select{
 button img {
     width: 40px !important;
     vertical-align: middle;
+    margin-right: auto;
+    margin-left: auto;
     aspect-ratio: 1 / 1;
 }
 
@@ -420,12 +422,13 @@ button img {
     text-align: center;
     font-weight: 500;
     margin-bottom: 12px;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 8px #000000;
 }
 
 #addNew .container .card .add button {
     width: 194px;
     height: 41px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
     font-size: var(--card-text-size);
 }
 
@@ -434,11 +437,12 @@ button img {
     width: 100%;
     height: 67px;
     padding-bottom: 12px;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(2px);
 }
 
 #addNew .container .card:hover .add button {
     transform: translateY(-40%);
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.6);
 }
 
 #addNew .container .card:hover img {
@@ -700,16 +704,19 @@ body.loading {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 200px;
+    margin-bottom: 175px;
 }
 
 .loading .CustoMiner img {
-    transform: scale(0.8);
+    margin-right: auto;
+    margin-left: auto;
+    height: 195px;
+    width: 195px;
 }
 
 .loading .CustoMiner h1 {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .loading .loader .animation {
@@ -1310,9 +1317,12 @@ button.accent {
     height: 160px;
 }
 
-.library.menu div .curseforgeContainer .results section.primarySection.no-img .lower {
-    transform: translateY(-100%);
-    height: 130px;
+.library.menu div .curseforgeContainer .results section.primarySection.no-img .actions {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 120px;
 }
 
 
@@ -1374,14 +1384,24 @@ button.accent {
     padding: 0 !important;
     height: 55px;
     width: 55px;
+    position: relative;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection .actions button img {
+    border-radius: 0px;
+    transform: scale(0.9);
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
 }
 
 .library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img {
     transform: scale(0.7);
 }
 
-.library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img:after {
-    content: '';
+.library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img::after {
+    content: 'dzqdz';
     border-radius: 50%;
     background: red;
     width: 300px;
