@@ -17,9 +17,13 @@ CustoMiner helps you to add shaders, resource packs, mods, maps and more to Mine
 
 CustoMiner is designed to go fast, don't waste a minute of play! Select your file, and click confirm. CustoMiner will move the files to the ".minecraft" folder just like you could.
 
+<img src="https://wivon-hub.tk/projects/custominer/assets/img/previews/preview-1-v0.2.0.png" width="480px">
+
 # Library
 
 Manage your Minecraft mods, maps, resource packs directly in CustoMiner
+
+<img src="https://wivon-hub.tk/projects/custominer/assets/img/previews/preview-2-library.png" width="480px">
 
 # Curseforge integration
 
