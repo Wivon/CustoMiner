@@ -1410,7 +1410,41 @@ button.accent {
     z-index: -1;
 }
 
+action-menu {
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    height: max-content;
+    width: max-content;
+    left: 50%;
+    bottom: 50%;
+    z-index: 105;
+}
+
+action-menu button {
+    border-radius: 0;
+    width: 100%;
+    box-shadow: none;
+    font-size: var(--card-text-size);
+}
+
+action-menu button:first-child {
+    border-radius: 8px 8px 0 0 !important;
+    border-bottom: 1px solid #000;
+}
+
+action-menu button:not(action-menu button:first-child):not(action-menu button:last-child) {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+action-menu button:last-child {
+    border-radius: 0 0 8px 8px !important;
+    border-top: 1px solid #000;
+}
+
 /* TODO: */
 /* fix section background */
 /* fix download animation for horizontal */
-/* and more daddy */
