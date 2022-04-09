@@ -1369,7 +1369,7 @@ button.accent {
     text-align: center;
     font-size: var(--card-text-size);
     white-space: nowrap;
-    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 .library.menu div .curseforgeContainer .results section.horizontalSection .actions {
@@ -1418,9 +1418,24 @@ action-menu {
     flex-direction: column;
     height: max-content;
     width: max-content;
-    left: 50%;
-    bottom: 50%;
     z-index: 105;
+    animation: actionMenu 0.4s var(--animation-timing-function);
+}
+
+@keyframes actionMenu {
+    from {
+        transform-origin: top right;
+        transform: scale(.2);
+        opacity:0;
+    }
+    50% {
+        opacity:1;
+    }
+    to {
+        transform-origin: top right;
+        transform: scale(1);
+        opacity:1;
+    }
 }
 
 action-menu button {

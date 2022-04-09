@@ -71,7 +71,6 @@ function openView(item) {
         renderLibraryNavIndicator()
         renderLibraryContainer()
     }
-    window.location.hash = ACTIVE_MENU.toLowerCase() + "/" + addNewItems[CURRENT_LIBRARY_VIEW].folderName
 }
 
 function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item.active')) {
@@ -79,8 +78,7 @@ function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item
     let activeMenuIndicator = document.querySelector('.libraryNav .indicator')
     let bodyRect = document.body.getBoundingClientRect(),
         elemRect = a.getBoundingClientRect(),
-        offsetTop = elemRect.top - bodyRect.top,
-        offsetLeft = elemRect.left - bodyRect.left;
+        offsetTop = elemRect.top - bodyRect.top
 
     activeMenuIndicator.style.top = (offsetTop + 16 - 45) + "px"
     activeMenuIndicator.style.height = (a.offsetHeight - 32) + "px"
@@ -117,7 +115,13 @@ function renderFolderContentInHTML(minecraftFolder) {
 
         files.forEach(file => {
             let newItem = document.createElement('section')
-            newItem.innerHTML = `<h2>${file}</h2>`
+            newItem.innerHTML = `
+                <h2>${file}</h2>
+                <div class="actions">
+                    <button>A</button>
+                    <button>B</button>
+                    <button>C</button>
+                </div>`
             libraryFolderContent.appendChild(newItem)
         })
 
