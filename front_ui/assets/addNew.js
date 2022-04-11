@@ -61,7 +61,12 @@ class addNewCard extends HTMLElement {
 
     disable() {
         this.querySelector('.add button').classList.add('disabled')
-        this.querySelector('img').removeAttribute('onclick')
+        this.style.pointerEvents = "none"
+    }
+
+    enable() {
+        this.querySelector('.add button').classList.remove('disabled')
+        this.style.pointerEvents = "auto"
     }
 
     customAction(HTMLEventAttribute) {
