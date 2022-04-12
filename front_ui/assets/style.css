@@ -1173,6 +1173,7 @@ button.accent {
     opacity: 0.5;
     font-size: var(--text-size);
     font-weight: 300;
+    text-transform: lowercase;
 }
 
 .menu.library .container .folderContent section {
