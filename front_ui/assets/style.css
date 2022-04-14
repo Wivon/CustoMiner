@@ -267,6 +267,7 @@ section {
     padding-right: 20px;
     animation: sectionDisplay .8s var(--animation-timing-function);
     animation-delay: 1s;
+    height: max-content;
 }
 
 @keyframes sectionDisplay {
@@ -282,7 +283,7 @@ section {
 
 section#gameDirectory {
     height: 156px;
-    background: var(--secondary-action-backgrnd);
+    background: var(--section-backgrnd);
     width: 1000px;
 }
 
@@ -538,6 +539,10 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     width: 1000px;
 }
 
+.horizontal section:last-child {
+    width: 100%;
+}
+
 /* settings section */
 #locale {
     padding-right: 20px;
@@ -634,7 +639,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     margin-right: 10px;
 }
 
-#updates .actions .utd button img {
+button img {
     aspect-ratio: 1/1; 
     height: 34px; 
     vertical-align: middle;
@@ -1398,17 +1403,27 @@ button.accent {
 }
 
 .library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img {
-    transform: scale(0.7);
+    transform: scale(0.55);
+    border-radius: 10px;
 }
 
-.library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img::after {
-    content: 'dzqdz';
-    border-radius: 50%;
-    background: red;
-    width: 300px;
-    border: 5px solid green;
+.library.menu div .curseforgeContainer .results section.horizontalSection.downloading::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    height: 75px;
+    transform: translateX(-50%);
     aspect-ratio: 1 / 1;
-    z-index: -1;
+    font-size: 100px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+}
+
+.library.menu div .curseforgeContainer .results section.horizontalSection.downloading .actions button:nth-child(2) {
+    opacity: .5;
+    pointer-events: none;
 }
 
 action-menu {

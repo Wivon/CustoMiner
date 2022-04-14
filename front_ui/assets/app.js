@@ -35,14 +35,15 @@ function openMenu(a) {
 }
 
 function renderActiveMenuIndicator(a = document.querySelector('.nav .left .actions a.active')) {
+    const pad = 15
     // render active menu indicator
     let activeMenuIndicator = document.querySelector('.activeMenuIndicator')
     let bodyRect = document.body.getBoundingClientRect(),
         elemRect = a.getBoundingClientRect(),
         offsetLeft = elemRect.left - bodyRect.left;
 
-    activeMenuIndicator.style.left = offsetLeft + "px"
-    activeMenuIndicator.style.width = a.offsetWidth + "px"
+    activeMenuIndicator.style.left = (offsetLeft - (pad / 2)) + "px"
+    activeMenuIndicator.style.width = a.offsetWidth + pad + "px"
 }
 
 function showMenu(menuClassName, navElem) {

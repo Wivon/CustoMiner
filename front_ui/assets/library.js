@@ -106,7 +106,7 @@ function renderLibraryContainer() {
 
 }
 
-// render folder content in html
+// render folder content in DOM
 function renderFolderContentInHTML(minecraftFolder) {
     listFilesInDirectory(gameDir + '\\' + minecraftFolder).then(response => {
         let files = JSON.parse(response)
