@@ -1,6 +1,14 @@
 class actionMenu extends HTMLElement {
     constructor() {
         super()
+        this.onclick = () => {
+            this.destruct()
+        }
+        closeActionMenu()
+    }
+
+    destruct(animation=true) {
+        this.remove()
     }
 
     init() {
@@ -8,6 +16,7 @@ class actionMenu extends HTMLElement {
         this.blur = this.getAttribute('blur')
         this.x = this.getAttribute('pos-x')
         this.y = this.getAttribute('pos-y')
+        this.triggerHeight = this.getAttribute('trigger-h')
 
         this.render()
     }
@@ -15,19 +24,14 @@ class actionMenu extends HTMLElement {
     setPosition() {
         // body width and height
         let bodyX = document.body.offsetWidth
-        let bodyY = document.body.offsetHeight
-        
+
         // get top and right offset
-        const margin = 25
+        const margin = 10
 
         let ROff = (bodyX - this.x) + margin
-        let TOff = this.y + margin
-
-        console.log(`ROff = (${bodyX} - ${this.x}) + ${margin}`)
-        console.log(`TOff = ${this.y} + ${margin}`)
 
         this.style.right = ROff + "px"
-        this.style.top = TOff + "px"
+        this.style.top = this.y + "px"
     }
 
     render() {
@@ -62,11 +66,18 @@ function openActionMenu(actions, trigger, blur = false) {
     newActionMenu.setAttribute('actions', actionsAttr)
     newActionMenu.setAttribute('pos-x', triggerPosX)
     newActionMenu.setAttribute('pos-y', triggerPosY)
+    newActionMenu.setAttribute('trigger-h', trigger.offsetHeight)
     newActionMenu.setAttribute('blur', blur)
 
     document.body.appendChild(newActionMenu)
 
     newActionMenu.init()
+}
+
+function closeActionMenu() {
+    document.querySelectorAll('action-menu').forEach(i => {
+        i.destruct()
+    })
 }
 
 // action menu test

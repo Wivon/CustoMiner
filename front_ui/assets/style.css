@@ -355,11 +355,12 @@ input[type="text"], select{
 }
 
 button img {
-    width: 40px !important;
+    height: 36px;
     vertical-align: middle;
     margin-right: auto;
     margin-left: auto;
     aspect-ratio: 1 / 1;
+    opacity: .9;
 }
 
 #addNew {
@@ -471,6 +472,7 @@ button {
     align-items: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     white-space: nowrap;
+    max-height: 64px;
 }
 
 .active-anim:active, .nav .left a:active, button:active, .input img:active{
@@ -639,14 +641,6 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     margin-right: 10px;
 }
 
-button img {
-    aspect-ratio: 1/1; 
-    height: 34px; 
-    vertical-align: middle;
-    transform: translateY(-3px);
-    opacity: .9;
-}
-
 #updates .actions {
     padding-top: 15px;
 }
@@ -673,6 +667,10 @@ button img {
 #devtools input {
     width: 20px;
     transform: scale(1.5);
+    margin-bottom: 10px;
+}
+
+#devtools button {
     margin-bottom: 10px;
 }
 
@@ -1184,6 +1182,8 @@ button.accent {
 .menu.library .container .folderContent section {
     animation: none;
     margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .menu.library .container .folderContent section h2 {
@@ -1391,15 +1391,6 @@ button.accent {
     height: 55px;
     width: 55px;
     position: relative;
-}
-
-.library.menu div .curseforgeContainer .results section.horizontalSection .actions button img {
-    border-radius: 0px;
-    transform: scale(0.9);
-    position:absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
 }
 
 .library.menu div .curseforgeContainer .results section.horizontalSection.downloading > img {

@@ -56,6 +56,7 @@ function addLibraryNavItemsEventListener() {
     libraryNavItems.forEach(item => {
         item.onclick = () => {
             openView(item)
+            closeActionMenu()
         }
     })
 }
@@ -118,9 +119,9 @@ function renderFolderContentInHTML(minecraftFolder) {
             newItem.innerHTML = `
                 <h2>${file}</h2>
                 <div class="actions">
-                    <button>A</button>
-                    <button>B</button>
-                    <button>C</button>
+                    <button onclick="openFolderItemActionMenu(this)"><img src="assets/img/icons/details_icon.png"></button>
+                    <button><img src="assets/img/icons/close_icon.png"></button>
+                    <button><img src="assets/img/icons/close_icon.png"></button>
                 </div>`
             libraryFolderContent.appendChild(newItem)
         })
@@ -145,4 +146,8 @@ function loadCurseforgeView() {
     setTimeout(() => {
         libraryAnimationContainer.classList.remove('animate')
     }, 200)
+}
+
+function openFolderItemActionMenu(FolderItemDOM) {
+    openActionMenu([{'text': 'Open Folder', 'onclick': ''}, {'text': 'Open Curseforge', 'onclick': ''}], FolderItemDOM)
 }
