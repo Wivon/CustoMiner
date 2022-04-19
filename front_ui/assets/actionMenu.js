@@ -1,14 +1,34 @@
+let ACTION_MENU_OPEN = false
+
 class actionMenu extends HTMLElement {
     constructor() {
         super()
-        this.onclick = () => {
-            this.destruct()
-        }
+        ACTION_MENU_OPEN = true
+        this.onclick = () => this.destruct()
         closeActionMenu()
     }
 
-    destruct(animation=true) {
-        this.remove()
+    destruct(animation = true) {
+        if (animation == true) {
+            this.style.transform = "scale(.5)"
+            this.style.opacity = 0
+            setTimeout(() => {
+                this.remove()
+                this.unblur()
+                ACTION_MENU_OPEN = false
+            }, 300)
+        } else {
+            this.remove()
+            this.unblur()
+        }
+    }
+
+    showBlur() {
+        document.querySelector('.popupBackground').classList.remove('popHidden')
+    }
+
+    unblur() {
+        document.querySelector('.popupBackground').classList.add('popHidden')
     }
 
     init() {
@@ -17,6 +37,10 @@ class actionMenu extends HTMLElement {
         this.x = this.getAttribute('pos-x')
         this.y = this.getAttribute('pos-y')
         this.triggerHeight = this.getAttribute('trigger-h')
+
+        if (this.blur == "true") {
+            this.showBlur()
+        }
 
         this.render()
     }
@@ -54,6 +78,7 @@ customElements.define('action-menu', actionMenu)
  */
 
 function openActionMenu(actions, trigger, blur = false) {
+
     let actionsAttr = JSON.stringify(actions)
 
     // get trigger position
@@ -70,7 +95,6 @@ function openActionMenu(actions, trigger, blur = false) {
     newActionMenu.setAttribute('blur', blur)
 
     document.body.appendChild(newActionMenu)
-
     newActionMenu.init()
 }
 
@@ -78,6 +102,12 @@ function closeActionMenu() {
     document.querySelectorAll('action-menu').forEach(i => {
         i.destruct()
     })
+}
+
+document.onclick = () => {
+    if(ACTION_MENU_OPEN == true) {
+        closeActionMenu()
+    }
 }
 
 // action menu test

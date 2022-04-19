@@ -149,5 +149,6 @@ function loadCurseforgeView() {
 }
 
 function openFolderItemActionMenu(FolderItemDOM) {
-    openActionMenu([{'text': 'Open Folder', 'onclick': ''}, {'text': 'Open Curseforge', 'onclick': ''}], FolderItemDOM)
+    let pathToItem = addslashes(gameDir + "\\" + addNewItems[CURRENT_LIBRARY_VIEW].folderName + "\\" + FolderItemDOM.parentElement.parentElement.querySelector('h2').innerHTML)
+    openActionMenu([{ 'text': 'Open Folder', 'onclick': 'showFileInExplorer(\'' + pathToItem + '\')' }, { 'text': 'Open Curseforge', 'onclick': '' }], FolderItemDOM)
 }

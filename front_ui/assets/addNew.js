@@ -223,11 +223,6 @@ function changePreviewName(name) {
     }
 }
 
-function copyFile(source, destination) {
-    console.log('copy from: ' + addslashes(source) + 'to: ' + destination)
-    ipcRenderer.send('copy-file', JSON.stringify([addslashes(source), addslashes(destination)]))
-}
-
 function addFileToMCFolder() {
     let filenameInput = document.querySelector('.addnew-popup .container .infos #newFileName')
 
@@ -251,5 +246,5 @@ function checkAddNewPopupInputs() {
 }
 
 function openScreenshotsFolder() {
-    ipcRenderer.send('view-folder', gameDir + '\\' + addNewItems.screenshots.folderName)
+    openFolder(gameDir + '\\' + addNewItems.screenshots.folderName)
 }

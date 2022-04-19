@@ -1184,13 +1184,24 @@ button.accent {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
 
 .menu.library .container .folderContent section h2 {
     font-size: var(--info-size);
     font-weight: var(--text-weight);
-    padding: 5px 10px;
     margin-top: 0 !important;
+    height: max-content;
+    vertical-align: center;
+}
+
+.menu.library .container .folderContent .actions button {
+    margin-left: 10px;
 }
 
 /* open view animation */
@@ -1426,7 +1437,10 @@ action-menu {
     height: max-content;
     width: max-content;
     z-index: 105;
+    transform-origin: top right;
     animation: actionMenu 0.4s var(--animation-timing-function);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
 }
 
 @keyframes actionMenu {
@@ -1467,6 +1481,10 @@ action-menu button:last-child {
     border-top: 1px solid #000;
 }
 
+action-menu button:active {
+    opacity: .8;
+    transform: scale(1);
+}
+
 /* TODO: */
-/* fix section background */
 /* fix download animation for horizontal */
