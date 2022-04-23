@@ -1164,12 +1164,31 @@ button.accent {
     align-items: flex-start;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 60px;
     height: 100%;
+}
+
+.menu.library.active {
+    padding-top: 80px;
 }
 
 .menu.library h2.title {
     text-align: left;
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    transition-duration: 0.15s;
+}
+
+.menu.library h2.title.sticky {
+    border-radius: 12px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255, 0.2);
+    padding: 10px 20px;
+    backdrop-filter: blur(15px);
+    transform: scale(1.025) translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .menu.library h2.title span {
@@ -1190,6 +1209,11 @@ button.accent {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    max-width: 100%;
+}
+
+.menu.library .container .folderContent {
+    padding-top: 100px;
 }
 
 .menu.library .container .folderContent section h2 {

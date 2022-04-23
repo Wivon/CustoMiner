@@ -71,6 +71,10 @@ function openView(item) {
         CURRENT_LIBRARY_VIEW = item.getAttribute('add-new-items-key')
         renderLibraryNavIndicator()
         renderLibraryContainer()
+
+        let titleBx = document.querySelector('h2.title')
+        titleBx.style.top = 0
+        titleBx.classList.remove('sticky')
     }
 }
 
@@ -151,4 +155,20 @@ function loadCurseforgeView() {
 function openFolderItemActionMenu(FolderItemDOM) {
     let pathToItem = addslashes(gameDir + "\\" + addNewItems[CURRENT_LIBRARY_VIEW].folderName + "\\" + FolderItemDOM.parentElement.parentElement.querySelector('h2').innerHTML)
     openActionMenu([{ 'text': 'Open Folder', 'onclick': 'showFileInExplorer(\'' + pathToItem + '\')' }, { 'text': 'Open Curseforge', 'onclick': '' }], FolderItemDOM)
+}
+
+// title scroll and sticky
+document.onscroll = () => {
+    if (CURRENT_LIBRARY_VIEW == "curseforge") return
+
+    if (ACTIVE_MENU == "LIBRARY" && window.scrollY > 180) {
+        let titleBx = document.querySelector('h2.title')
+        titleBx.classList.add('sticky')
+        titleBx.style.top = window.scrollY + 10 + "px"
+    }
+    if (window.scrollY <= 180) {
+        let titleBx = document.querySelector('h2.title')
+        titleBx.style.top = 0
+        titleBx.classList.remove('sticky')
+    }
 }

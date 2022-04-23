@@ -3,7 +3,6 @@ let ACTION_MENU_OPEN = false
 class actionMenu extends HTMLElement {
     constructor() {
         super()
-        ACTION_MENU_OPEN = true
         this.onclick = () => this.destruct()
         closeActionMenu()
     }
@@ -32,6 +31,8 @@ class actionMenu extends HTMLElement {
     }
 
     init() {
+        ACTION_MENU_OPEN = true
+
         this.actions = JSON.parse(this.getAttribute('actions'))
         this.blur = this.getAttribute('blur')
         this.x = this.getAttribute('pos-x')
@@ -49,9 +50,8 @@ class actionMenu extends HTMLElement {
         // body width and height
         let bodyX = document.body.offsetWidth
 
-        // get top and right offset
+        // calc right offset
         const margin = 10
-
         let ROff = (bodyX - this.x) + margin
 
         this.style.right = ROff + "px"
@@ -105,9 +105,11 @@ function closeActionMenu() {
 }
 
 document.onclick = () => {
-    if(ACTION_MENU_OPEN == true) {
-        closeActionMenu()
-    }
+    setTimeout(() => {
+        if (ACTION_MENU_OPEN == true) {
+            closeActionMenu()
+        }
+    }, 100)
 }
 
 // action menu test
