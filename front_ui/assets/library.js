@@ -95,6 +95,7 @@ function renderLibraryContainer() {
 
     // load view
     if (CURRENT_LIBRARY_VIEW != "curseforge") {
+        libraryContainer.querySelector('h2.title').style.position = "absolute"
         let item = addNewItems[CURRENT_LIBRARY_VIEW]
         let name = getDictionnaryItemByStringName(localeTexts, item.name)
         libraryContainer.querySelector('h2.title').innerHTML = "<span>/" + item.folderName + "</span><br>" + name
@@ -103,6 +104,7 @@ function renderLibraryContainer() {
         renderFolderContentInHTML(item.folderName)
     } else {
         libraryContainer.querySelector('h2.title').innerHTML = "Curseforge"
+        libraryContainer.querySelector('h2.title').style.position = "relative"
         libraryFolderContent.innerHTML = ""
         libraryFolderContent.style.display = "none"
         CurseforgeContainer.style.display = "block"
@@ -161,12 +163,12 @@ function openFolderItemActionMenu(FolderItemDOM) {
 document.onscroll = () => {
     if (CURRENT_LIBRARY_VIEW == "curseforge") return
 
-    if (ACTIVE_MENU == "LIBRARY" && window.scrollY > 180) {
+    if (ACTIVE_MENU == "LIBRARY" && window.scrollY > 80) {
         let titleBx = document.querySelector('h2.title')
         titleBx.classList.add('sticky')
-        titleBx.style.top = window.scrollY + 10 + "px"
+        titleBx.style.top = window.scrollY + "px"
     }
-    if (window.scrollY <= 180) {
+    if (window.scrollY <= 80) {
         let titleBx = document.querySelector('h2.title')
         titleBx.style.top = 0
         titleBx.classList.remove('sticky')

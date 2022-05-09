@@ -354,15 +354,6 @@ input[type="text"], select{
     padding: 0 !important;
 }
 
-button img {
-    height: 36px;
-    vertical-align: middle;
-    margin-right: auto;
-    margin-left: auto;
-    aspect-ratio: 1 / 1;
-    opacity: .9;
-}
-
 #addNew {
     width: 1000px;
     padding: 40px 0;
@@ -459,7 +450,7 @@ button img {
 }
 
 /* global */
-
+/* keywords: btng buttonglobal anim hover transition input sectionmt mt colors directions btn img btnimg*/
 button {
     background: var(--primary-action-backgrnd);
     border: none;
@@ -472,7 +463,20 @@ button {
     align-items: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     white-space: nowrap;
+    height: 53px;
     max-height: 64px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+button img {
+    height: 80%;
+    vertical-align: middle;
+    aspect-ratio: 1 / 1;
+    opacity: .9;
 }
 
 .active-anim:active, .nav .left a:active, button:active, .input img:active{
@@ -1176,7 +1180,7 @@ button.accent {
     position: absolute;
     width: 100%;
     z-index: 50;
-    transition-duration: 0.15s;
+    transition-duration: 0.35s;
 }
 
 .menu.library h2.title.sticky {
