@@ -240,11 +240,27 @@ function checkAddNewPopupInputs() {
 
     if (fileInput.value != "" && newFileNameInput.value != "") {
         popupMainBtn.classList.remove('disabled')
+        return true
     } else {
         popupMainBtn.classList.add('disabled')
+        return false
     }
 }
 
 function openScreenshotsFolder() {
     openFolder(gameDir + '\\' + addNewItems.screenshots.folderName)
+}
+
+// shortcuts
+document.onkeyup = (e) => {
+    if (e.keyCode == 27) {
+        if (addNewPopupDisplayed == true) {
+            hideAddNewPopup()
+        }
+    }
+    if (e.keyCode == 13) {
+        if (addNewPopupDisplayed == true && checkAddNewPopupInputs() == true) {
+            addFileToMCFolder()
+        }
+    }
 }
