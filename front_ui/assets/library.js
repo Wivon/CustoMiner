@@ -22,6 +22,7 @@ function RenderAddNewItemsInLibrary() {
         if (!hideInLibrary) {
             // cut the name if it's too long
             let name = getDictionnaryItemByStringName(localeTexts, addNewItems[item].name)
+            let fullName = name
             if (name.length > 10) {
                 name = name.slice(0, 10) + "..."
             }
@@ -38,6 +39,7 @@ function RenderAddNewItemsInLibrary() {
                 <span>/${addNewItems[item].folderName}</span>
             </div>
             `
+            newItem.setAttribute('title', `${fullName} in .minecraft/${addNewItems[item].folderName}`)
             NavFoldersContainer.appendChild(newItem)
         }
     })
@@ -69,6 +71,7 @@ function openView(item) {
 
         // render new view
         CURRENT_LIBRARY_VIEW = item.getAttribute('add-new-items-key')
+        scrollToTop()
         renderLibraryNavIndicator()
         renderLibraryContainer()
 
@@ -125,9 +128,9 @@ function renderFolderContentInHTML(minecraftFolder) {
             newItem.innerHTML = `
                 <h2>${file}</h2>
                 <div class="actions">
-                    <button onclick="openFolderItemActionMenu(this)"><img src="assets/img/icons/details_icon.png"></button>
-                    <button><img src="assets/img/icons/close_icon.png"></button>
-                    <button><img src="assets/img/icons/close_icon.png"></button>
+                    <button title="more options" onclick="openFolderItemActionMenu(this)"><img src="assets/img/icons/details_icon.png"></button>
+                    <button title="rename"><img src="assets/img/icons/close_icon.png"></button>
+                    <button title="delete"><img src="assets/img/icons/close_icon.png"></button>
                 </div>`
             libraryFolderContent.appendChild(newItem)
         })

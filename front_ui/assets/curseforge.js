@@ -1,4 +1,5 @@
 const URL_BASE = 'https://api.curseforge.com'
+let MC_VERSIONS_LOADED = false
 let MinecraftVersions = []
 let MinecraftVersionsSelector = document.querySelector('#gameVersion')
 let CurseforgeSearchResultsContainer = document.querySelector('.curseforgeContainer .results')
@@ -36,14 +37,20 @@ function getMinecraftVersions() {
 
             // add to DOM
             MinecraftVersionsSelector.appendChild(newVersionOptionInHTMLSelect)
+            MC_VERSIONS_LOADED = true
         })
     })
 }
 
+function tryLoadVersions() {
+    if (MC_VERSIONS_LOADED == true) return
+    getMinecraftVersions()
+    console.log('getting versions...')
+}
 
 function searchOnCurseforge(defaultQuery = null) {
     let query = defaultQuery ?? searchInput.value
-    let type = document.querySelector('#type').value
+    // let type = document.querySelector('#type').value
     let gameVersion = MinecraftVersionsSelector.value
 
 

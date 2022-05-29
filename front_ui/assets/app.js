@@ -62,6 +62,7 @@ function showMenu(menuClassName, navElem) {
             }, 120)
         }
     })
+    scrollToTop()
     renderActiveMenuIndicator(navElem)
 }
 
@@ -80,6 +81,10 @@ function scrollToElm(elemQuery) {
     document.querySelector(elemQuery).scrollIntoView()
 }
 
+function scrollToTop() {
+    window.scrollTo({ top: 0 });
+}
+
 // restore game directory input
 if (localStorage.getItem('gameDir') !== null) {
     document.querySelector('#gameDirectoryInput').value = localStorage.getItem('gameDir')
@@ -90,7 +95,7 @@ setTimeout(() => {
 }, 200)
 
 window.onload = () => {
-    window.scrollTo({ top: 0 });
+    scrollToTop()
     setTimeout(() => {
         if (!document.body.classList.contains('reduced-motion')) {
             document.querySelector('.loader').style.transform = 'scale(1.5)'

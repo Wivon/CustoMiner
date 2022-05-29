@@ -602,6 +602,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 }
 
 #updates.u-av .actions .downloading {
+    margin-top: 20px;
     display: flex !important;
     flex-direction: row;
     justify-content: start;
@@ -649,14 +650,28 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     padding-top: 15px;
 }
 
-#updates .actions .utd, #updates .actions .downloading, #updates .actions .downloaded {
+#updates .actions div {
     margin-top: 0;
     display: none;
     position: relative;
+    animation: updateActionsDisplay 0.2s var(--animation-timing-function);
+}
+
+@keyframes updateActionDisplay {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #updates.utd .actions .utd {
-    display: block !important;
+    display: flex !important;
+    justify-content: start;
+    flex-direction: row;
 }
 
 /* dev tools */
@@ -1180,7 +1195,6 @@ button.accent {
     position: absolute;
     width: 100%;
     z-index: 50;
-    transition-duration: 0.35s;
 }
 
 .menu.library h2.title.sticky {
@@ -1193,6 +1207,8 @@ button.accent {
     backdrop-filter: blur(15px);
     transform: scale(1.025) translateY(-10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: 0.1s;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .menu.library h2.title span {
@@ -1200,6 +1216,11 @@ button.accent {
     font-size: var(--text-size);
     font-weight: 300;
     text-transform: lowercase;
+}
+
+.menu.library h2.title.sticky span {
+    opacity: 0.75;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 .menu.library .container .folderContent section {

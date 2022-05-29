@@ -139,6 +139,10 @@
         <section id="addNew" class="section-mt">
             <div class="container"></div>
         </section>
+
+        <section id="curseforge-min" class="section-mt">
+            <h2></h2>
+        </section>
     </div>
 
     <div class="settings menu" style="height: 0;">
@@ -204,7 +208,7 @@
         </div>
         <hr>
         <div class="online">
-            <div class="item" add-new-items-key="curseforge">
+            <div title="download from Curseforge" class="item" add-new-items-key="curseforge">
                 <div class="icon">
                     <img src="assets/img/icons/curseforge_icon.png" alt="folder icon">
                 </div>
@@ -238,7 +242,7 @@
                             <option value="resourcepacks">Resource Packs</option>
                             <option value="maps">Maps</option>
                         </select>
-                        <select name="version" id="gameVersion">
+                        <select onclick="tryLoadVersions()" name="version" id="gameVersion">
                             <option value="">loading...</option>
                         </select>
                     </div>

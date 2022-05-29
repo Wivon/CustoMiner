@@ -32,6 +32,7 @@ let localeTexts = {}
 let localeLoaded = false
 
 function loadLocaleFile(locale = localStorage.getItem('locale')) {
+    document.querySelector('html').setAttribute('lang', locale)
     fetch('assets/locales/' + locale + '.json').then(response => {
         response.json().then(res => {
             localeTexts = res
