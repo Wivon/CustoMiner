@@ -778,7 +778,7 @@ body.loading {
     min-height: 90px;
     max-width: 600px;
     min-width: 250px;
-    top: 40px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 99;

@@ -40,6 +40,7 @@ function RenderAddNewItemsInLibrary() {
             </div>
             `
             newItem.setAttribute('title', `${fullName} in .minecraft/${addNewItems[item].folderName}`)
+            newItem.setAttribute('alt', `${fullName} in .minecraft/${addNewItems[item].folderName}`)
             NavFoldersContainer.appendChild(newItem)
         }
     })

@@ -216,6 +216,10 @@ function selectNewFile(input) {
 }
 
 function changePreviewName(name) {
+    if (name == "") {
+        document.querySelector('.container .preview span').textContent = getDictionnaryItemByStringName(localeTexts, addNewItems[CURRENT_LIBRARY_VIEW].name)
+        return
+    }
     if (name.length < 14) {
         document.querySelector('.container .preview span').textContent = name
     } else {
@@ -237,6 +241,22 @@ function checkAddNewPopupInputs() {
     let fileInput = document.querySelector("#fileSelector")
     let newFileNameInput = document.querySelector("#newFileName")
     let popupMainBtn = document.querySelector(".addnew-popup .actions .main-action")
+
+    // remove unallowed file name
+    const UNALLOWED = ['/', '\\', '*', '?', '"', "<", ">", "|", '@', "{", '}', '=', '+', '#', '%', '&', '$', '!', '\'', ':', '`']
+    UNALLOWED.forEach(x => {
+        if (newFileNameInput.value.includes(x)) {
+            let oldValue = newFileNameInput.value
+            let newValue = oldValue.replace(x, "")
+            newFileNameInput.value = newValue
+            sendNotification("Removed illegal character", "the character you typed isn't allowed, it has been removed")
+        }
+    })
+
+    // max 31 characters
+    let oldValue = newFileNameInput.value
+    let newValue = oldValue.slice(0, 31)
+    newFileNameInput.value = newValue
 
     if (fileInput.value != "" && newFileNameInput.value != "") {
         popupMainBtn.classList.remove('disabled')
