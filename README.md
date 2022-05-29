@@ -29,7 +29,7 @@ Manage your Minecraft mods, maps, resource packs directly in CustoMiner
 
 ### Download mods, shaders and more directly from Curseforge.
 
-You probably use Curseforge for downloading minecraft mods, but it’s so long if you have a lot of mods to download. In CustoMiner you juste have to find what you want to add, CustoMiner will download and install the file for you!
+You probably use Curseforge for downloading minecraft mods, but it’s so long if you have a lot of mods to download. In CustoMiner you have to find what you want to add, CustoMiner will download and install the file for you!
 
 # installation guide
 ### (website coming soon)
