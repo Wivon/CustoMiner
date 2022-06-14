@@ -24,6 +24,11 @@ document.getElementById('devshortcuts').onclick = () => {
     }
 }
 
+document.onkeydown = (e) => {
+    if (e.keyCode != 9) return
+    SwitchMenu()
+}
+
 // restore dev short
 if (localStorage.getItem('devshortcuts') !== null) {
     DEV_SHORTCUTS = JSON.parse(localStorage.getItem('devshortcuts'))

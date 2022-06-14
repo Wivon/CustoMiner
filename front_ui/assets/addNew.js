@@ -173,6 +173,9 @@ function openAddNewPopup(newType) {
                 a.classList.add('disabled')
             }
         })
+
+        // focus first input
+        document.querySelector("#fileSelector").focus()
     } else {
         openPopup(localeTexts.menus.homeMenu.sections.gameDirectory.title,
             'Minecraft directory not found',

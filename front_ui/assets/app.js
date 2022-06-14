@@ -66,6 +66,27 @@ function showMenu(menuClassName, navElem) {
     renderActiveMenuIndicator(navElem)
 }
 
+function SwitchMenu() {
+    if (addNewPopupDisplayed == true || popupDisplayed == true) return
+
+    let navActions = document.querySelectorAll('.nav .left .actions a:not(a.disable-focus)')
+    let activeNavAction = document.querySelector('.nav .left .actions a.active')
+
+    let actionIndex
+
+    navActions.forEach((action, i) => {
+        if (action == activeNavAction) {
+            actionIndex = i
+        }
+    })
+
+    if (actionIndex < navActions.length - 1) {
+        navElClick(navActions[actionIndex + 1])
+    } else {
+        navElClick(navActions[0])
+    }
+}
+
 function highlight(elem) {
     elem.style.transform = "scale(1.025)"
     setTimeout(() => {

@@ -185,7 +185,7 @@ body:not(.reduced-motion) .nav {
     transition: 0.45s cubic-bezier(.68, -0.04, 0, 1.31);
 }
 
-.right {
+.nav .right {
     display: flex;
     justify-content: end;
     width: max-content;
@@ -194,7 +194,7 @@ body:not(.reduced-motion) .nav {
     padding-right: 8px;
 }
 
-.right .miniBtn {
+.nav .right .miniBtn {
     aspect-ratio: 1 / 1;
     height: 35px;
     text-align: center;
@@ -210,9 +210,10 @@ body:not(.reduced-motion) .nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999 !important;
 }
 
-.miniBtn .square {
+.nav .right .miniBtn .square {
     background: transparent;
     aspect-ratio: 1 / 1;
     height: 18px;
@@ -222,7 +223,7 @@ body:not(.reduced-motion) .nav {
 }
 
 .right .closeBtn {
-    background: var(--destructive-transparent-dark);
+    background: var(--destructive-transparent-dark) !important;
 }
 
 h2 {
@@ -1204,7 +1205,7 @@ button.accent {
     right: 0;
     background: rgba(255,255,255, 0.2);
     padding: 10px 20px;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
     transform: scale(1.025) translateY(-10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     transition: 0.1s;
