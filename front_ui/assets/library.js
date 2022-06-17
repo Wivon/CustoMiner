@@ -3,6 +3,7 @@ let libraryContainer = document.querySelector('.menu.library')
 let libraryAnimationContainer = document.querySelector('.menu.library .container')
 let libraryFolderContent = document.querySelector('.menu.library .folderContent')
 let CurseforgeContainer = document.querySelector('.menu.library .curseforgeContainer')
+let DownloadsContainer = document.querySelector('.menu.library .downloads-container')
 let libraryNavItems
 let CURRENT_LIBRARY_VIEW
 
@@ -106,13 +107,19 @@ function renderLibraryContainer() {
         libraryFolderContent.style.display = "block"
         CurseforgeContainer.style.display = "none"
         renderFolderContentInHTML(item.folderName)
-    } else {
+    } else if (CURRENT_LIBRARY_VIEW == "curseforge") {
         libraryContainer.querySelector('h2.title').innerHTML = "Curseforge"
         libraryContainer.querySelector('h2.title').style.position = "relative"
         libraryFolderContent.innerHTML = ""
         libraryFolderContent.style.display = "none"
         CurseforgeContainer.style.display = "block"
         loadCurseforgeView()
+    } else {
+        libraryContainer.querySelector('h2.title').innerHTML = "Downloads"
+        libraryContainer.querySelector('h2.title').style.position = "relative"
+        libraryFolderContent.innerHTML = ""
+        libraryFolderContent.style.display = "none"
+        DownloadsContainer.style.display = "block"
     }
 
 }

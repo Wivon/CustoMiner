@@ -10,15 +10,15 @@ const addNewItems = {
         "image": "shaders_banner.png",
         "folderName": "shaderpacks"
     },
-    "resourcepacks": {
-        "name": "menus.homeMenu.sections.addNew.cardsNames.resourcePacks",
-        "image": "resourcepacks_banner.png",
-        "folderName": "resourcepacks"
-    },
     "mods": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.mods",
         "image": "mods_banner.png",
         "folderName": "mods"
+    },
+    "resourcepacks": {
+        "name": "menus.homeMenu.sections.addNew.cardsNames.resourcePacks",
+        "image": "resourcepacks_banner.png",
+        "folderName": "resourcepacks"
     },
     "maps": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.maps",
