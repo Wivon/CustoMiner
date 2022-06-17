@@ -15,6 +15,7 @@ function navElClick(a) {
     }
     if (a.getAttribute('href') == "#library") {
         libraryNav.classList.add('active')
+        renderLibraryNavIndicator()
     }
 }
 

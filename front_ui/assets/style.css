@@ -464,8 +464,7 @@ button {
     align-items: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     white-space: nowrap;
-    height: 53px;
-    max-height: 64px;
+    height: auto;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -474,7 +473,7 @@ button {
 }
 
 button img {
-    height: 80%;
+    height: 43px;
     vertical-align: middle;
     aspect-ratio: 1 / 1;
     opacity: .9;
@@ -1224,13 +1223,19 @@ button.accent {
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
+
+.menu.library .container .folderContent {
+    padding-top: 100px;
+}
+
 .menu.library .container .folderContent section {
+    height: 70px;
     animation: none;
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1238,8 +1243,18 @@ button.accent {
     max-width: 100%;
 }
 
-.menu.library .container .folderContent {
-    padding-top: 100px;
+.folderContent section .actions {
+    display: flex;
+}
+
+.menu.library .container .folderContent .actions button {
+    margin-right: 10px;
+    aspect-ratio: 1 / 1;
+    height: 50px;
+}
+
+.menu.library .container .folderContent .actions button img {
+    height: 34px;
 }
 
 .menu.library .container .folderContent section h2 {
@@ -1248,10 +1263,7 @@ button.accent {
     margin-top: 0 !important;
     height: max-content;
     vertical-align: center;
-}
-
-.menu.library .container .folderContent .actions button {
-    margin-left: 10px;
+    text-overflow: ellipsis;
 }
 
 /* open view animation */

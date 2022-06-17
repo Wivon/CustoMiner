@@ -99,7 +99,7 @@ function renderLibraryContainer() {
     libraryAnimationContainer.classList.add('animate')
 
     // load view
-    if (CURRENT_LIBRARY_VIEW != "curseforge") {
+    if (CURRENT_LIBRARY_VIEW != "curseforge" && CURRENT_LIBRARY_VIEW != "downloads" ) {
         libraryContainer.querySelector('h2.title').style.position = "absolute"
         let item = addNewItems[CURRENT_LIBRARY_VIEW]
         let name = getDictionnaryItemByStringName(localeTexts, item.name)
