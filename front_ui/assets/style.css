@@ -1524,6 +1524,7 @@ action-menu {
 action-menu button {
     border-radius: 0;
     width: 100%;
+    padding: 7px 15px;
     box-shadow: none;
     font-size: var(--card-text-size);
 }

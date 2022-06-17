@@ -8,18 +8,19 @@ class actionMenu extends HTMLElement {
     }
 
     destruct(animation = true) {
-        if (animation == true) {
-            this.style.transform = "scale(.5)"
-            this.style.opacity = 0
-            setTimeout(() => {
-                this.remove()
-                this.unblur()
-                ACTION_MENU_OPEN = false
-            }, 300)
-        } else {
+        if (animation == false) {
             this.remove()
             this.unblur()
+            ACTION_MENU_OPEN = false
+            return
         }
+        this.style.transform = "scale(.5)"
+        this.style.opacity = 0
+        setTimeout(() => {
+            this.remove()
+            this.unblur()
+            ACTION_MENU_OPEN = false
+        }, 300)
     }
 
     showBlur() {
@@ -31,7 +32,6 @@ class actionMenu extends HTMLElement {
     }
 
     init() {
-        ACTION_MENU_OPEN = true
 
         this.actions = JSON.parse(this.getAttribute('actions'))
         this.blur = this.getAttribute('blur')
@@ -56,6 +56,11 @@ class actionMenu extends HTMLElement {
 
         this.style.right = ROff + "px"
         this.style.top = this.y + "px"
+
+        // min delay after popup opening.
+        setTimeout(() => {
+            ACTION_MENU_OPEN = true
+        }, 300)
     }
 
     render() {
@@ -105,11 +110,9 @@ function closeActionMenu() {
 }
 
 document.onclick = () => {
-    setTimeout(() => {
-        if (ACTION_MENU_OPEN == true) {
-            closeActionMenu()
-        }
-    }, 100)
+    if (ACTION_MENU_OPEN === true) {
+        closeActionMenu()
+    }
 }
 
 // action menu test
