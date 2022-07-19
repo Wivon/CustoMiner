@@ -7,34 +7,34 @@ let CURRENT_ITEM
 const addNewItems = {
     "shaders": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.shaderPacks",
-        "image": "shaders_banner.png",
+        "image": "shaders_banner.jpg",
         "folderName": "shaderpacks"
     },
     "mods": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.mods",
-        "image": "mods_banner.png",
+        "image": "mods_banner.jpg",
         "folderName": "mods"
     },
     "resourcepacks": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.resourcePacks",
-        "image": "resourcepacks_banner.png",
+        "image": "resourcepacks_banner.jpg",
         "folderName": "resourcepacks"
     },
     "maps": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.maps",
-        "image": "maps_banner.png",
+        "image": "maps_banner.jpg",
         "folderName": "saves"
     },
     "screenshots": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.screenshots",
-        "image": "screenshots_banner.png",
+        "image": "screenshots_banner.jpg",
         "folderName": "screenshots",
         "customBtnText": "menus.homeMenu.sections.addNew.view",
         "hideInLibrary": true
     },
     "datapacks": {
         "name": "menus.homeMenu.sections.addNew.cardsNames.datapacks",
-        "image": "datapacks_banner.png",
+        "image": "datapacks_banner.jpg",
         "folderName": "$$SelectSave-datapacks",
         "hideInLibrary": true
     }
@@ -62,11 +62,13 @@ class addNewCard extends HTMLElement {
     disable() {
         this.querySelector('.add button').classList.add('disabled')
         this.style.pointerEvents = "none"
+        this.style.opacity = .6
     }
 
     enable() {
         this.querySelector('.add button').classList.remove('disabled')
         this.style.pointerEvents = "auto"
+        this.style.opacity = 1
     }
 
     customAction(HTMLEventAttribute) {

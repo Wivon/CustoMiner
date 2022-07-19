@@ -6,6 +6,7 @@ let CurseforgeContainer = document.querySelector('.menu.library .curseforgeConta
 let DownloadsContainer = document.querySelector('.menu.library .downloads-container')
 let libraryNavItems
 let CURRENT_LIBRARY_VIEW
+const specialLibraryView = [CurseforgeContainer, DownloadsContainer]
 
 function RenderAddNewItemsInLibrary() {
     // clear old items if there are
@@ -100,34 +101,80 @@ function renderLibraryContainer() {
 
     // load view
     if (CURRENT_LIBRARY_VIEW != "curseforge" && CURRENT_LIBRARY_VIEW != "downloads" ) {
+        // change title
         libraryContainer.querySelector('h2.title').style.position = "absolute"
         let item = addNewItems[CURRENT_LIBRARY_VIEW]
         let name = getDictionnaryItemByStringName(localeTexts, item.name)
         libraryContainer.querySelector('h2.title').innerHTML = "<span>/" + item.folderName + "</span><br>" + name
+        // display folder contents
         libraryFolderContent.style.display = "block"
-        CurseforgeContainer.style.display = "none"
+        // hide others views
+        hideSpecialLibraryView()
+        // get files and render it.
         renderFolderContentInHTML(item.folderName)
     } else if (CURRENT_LIBRARY_VIEW == "curseforge") {
+        // change title
         libraryContainer.querySelector('h2.title').innerHTML = "Curseforge"
         libraryContainer.querySelector('h2.title').style.position = "relative"
+        // clear & hide folder content
         libraryFolderContent.innerHTML = ""
         libraryFolderContent.style.display = "none"
+        // hide ohters views
+        hideSpecialLibraryView()
         CurseforgeContainer.style.display = "block"
+        // load curseforge view
         loadCurseforgeView()
     } else {
+        // change title
         libraryContainer.querySelector('h2.title').innerHTML = "Downloads"
         libraryContainer.querySelector('h2.title').style.position = "relative"
+        // clear & hide folder content
         libraryFolderContent.innerHTML = ""
         libraryFolderContent.style.display = "none"
+        // hide others view
+        hideSpecialLibraryView()
         DownloadsContainer.style.display = "block"
+        // load downloads view
+        loadDownloadsView()
     }
 
+}
+
+function hideSpecialLibraryView() {
+    specialLibraryView.forEach(view => {
+        view.style.display = "none"
+    })
 }
 
 // render folder content in DOM
 function renderFolderContentInHTML(minecraftFolder) {
     listFilesInDirectory(gameDir + '\\' + minecraftFolder).then(response => {
-        let files = JSON.parse(response)
+        console.log(response)
+        let files = []
+
+        if (response.includes('ENOENT')) {
+            libraryFolderContent.innerHTML = `
+            <div class="error">
+                <span>>__<</span><br><br>Errors:-This folder hasn't been created.<br><br>CustoMiner was looking for ${minecraftFolder}<br>
+                <button>create folder</button>
+                <br><br>
+                <span style="font-size: 18px font-weight: 400;">${e}</span>
+            </div>
+            `
+            console.log('fichtgre')
+            
+            return
+        }
+
+        files = JSON.parse(response)
+
+        if (files.length < 1) {
+            libraryFolderContent.innerHTML = `
+            <p class="error">
+                <span>>__<</span><br><br>Errors:<br>-This folder is empty<br>-it hasn't been created.<br><br>CustoMiner was looking for ${minecraftFolder}<br>
+            </p>
+            `
+        }
 
         libraryFolderContent.innerHTML = ""
 
@@ -137,7 +184,7 @@ function renderFolderContentInHTML(minecraftFolder) {
                 <h2>${file}</h2>
                 <div class="actions">
                     <button title="more options" onclick="openFolderItemActionMenu(this)"><img src="assets/img/icons/details_icon.png"></button>
-                    <button title="rename"><img src="assets/img/icons/close_icon.png"></button>
+                    <button title="rename"><img src="assets/img/icons/rename_icon.png"></button>
                     <button title="delete"><img src="assets/img/icons/close_icon.png"></button>
                 </div>`
             libraryFolderContent.appendChild(newItem)
@@ -165,9 +212,28 @@ function loadCurseforgeView() {
     }, 200)
 }
 
+function loadDownloadsView() {
+    // end animation
+    setTimeout(() => {
+        libraryAnimationContainer.classList.remove('animate')
+    }, 200)
+}
+
 function openFolderItemActionMenu(FolderItemDOM) {
-    let pathToItem = addslashes(gameDir + "\\" + addNewItems[CURRENT_LIBRARY_VIEW].folderName + "\\" + FolderItemDOM.parentElement.parentElement.querySelector('h2').innerHTML)
-    openActionMenu([{ 'text': 'Open Folder', 'onclick': 'showFileInExplorer(\'' + pathToItem + '\')' }, { 'text': 'Open Curseforge', 'onclick': '' }], FolderItemDOM)
+    if (ACTION_MENU_OPEN === false) {
+        let pathToItem = addslashes(gameDir + "\\" + addNewItems[CURRENT_LIBRARY_VIEW].folderName + "\\" + FolderItemDOM.parentElement.parentElement.querySelector('h2').innerHTML)
+        openActionMenu(
+            [{ 'text': 'Open Folder', 
+                'onclick': 'showFileInExplorer(\'' + pathToItem + '\')' 
+            }, { 
+                'text': 'Open Curseforge', 
+                'onclick': '' 
+            }], 
+            FolderItemDOM
+        )
+    } else {
+        closeActionMenu()
+    }
 }
 
 // title scroll and sticky

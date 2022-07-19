@@ -66,6 +66,8 @@ function searchOnCurseforge(defaultQuery = null) {
         } else {
             CurseforgeSearchResultsContainer.innerHTML = ""
             results.forEach((item, index) => {
+                // console.log(item)
+
                 let newItem = document.createElement('section')
                 if (index === 0) {
                     // first result
@@ -86,7 +88,7 @@ function searchOnCurseforge(defaultQuery = null) {
                         <div class="screenshots">${screenshotsHTML}</div>
                         <div class="actions">
                             <button class="secondary-btn" onclick="shell.openExternal('${item.links.websiteUrl}')">DETAILS</button>
-                            <button class="primary-btn">DOWNLOAD</button>
+                            <button class="primary-btn" onclick="getModFromCurseforge(${item.id})">DOWNLOAD</button>
                        </div>
                     </div>
                     `
@@ -117,7 +119,7 @@ function searchOnCurseforge(defaultQuery = null) {
                     <p>${item.name}</p>
                     <div class="actions">
                         <button class="secondary-btn" onclick="shell.openExternal('${item.links.websiteUrl}')"><img src="assets/img/icons/openExt_icon.png" alt="details"></button>
-                        <button class="primary-btn" onclick="this.parentNode.parentNode.classList.add('downloading')"><img src="assets/img/icons/download_icon.png" alt="download"></button>
+                        <button class="primary-btn" onclick="this.parentNode.parentNode.classList.add('downloading'); getModFromCurseforge(${item.id})"><img src="assets/img/icons/download_icon.png" alt="download"></button>
                     </div>
                     `
                     newItem.classList.add('horizontalSection')
@@ -132,7 +134,7 @@ function searchOnCurseforge(defaultQuery = null) {
         // API error
         CurseforgeSearchResultsContainer.innerHTML = `
         <p class="error">
-            <span>＞﹏＜</span><br><br>It looks like you're not connected to the internet.<br>${err}
+            <span>>__<</span><br><br>It looks like you're not connected to the internet.<br>${err}
         </p>
         `
     })
@@ -142,6 +144,10 @@ function searchOnCurseforge(defaultQuery = null) {
 //     let results = response.data
 //     console.log(results)
 // })
+
+function getModFromCurseforge(id) {
+    console.log(id)
+}
 
 searchInput.onkeydown = (e) => {
     if (e.keyCode === 13) {

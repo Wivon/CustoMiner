@@ -14,7 +14,7 @@ class actionMenu extends HTMLElement {
             ACTION_MENU_OPEN = false
             return
         }
-        this.style.transform = "scale(.5)"
+        this.style.transform = "scale(.2, .1) translateX(40px)"
         this.style.opacity = 0
         setTimeout(() => {
             this.remove()

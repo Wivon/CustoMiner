@@ -73,6 +73,7 @@ body {
     background: url(img/bg-wool-dark.png);
     background-repeat: repeat;
     background-size: 25%;
+    background-attachment: fixed;
     overflow-x: hidden;
     height: 100%;
 }
@@ -642,8 +643,8 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
     z-index: 3;
 }
 
-#updates .actions .utd button {
-    margin-right: 10px;
+#updates .actions .utd button:not(button:last-child) {
+    margin-right: 15px;
 }
 
 #updates .actions {
@@ -1207,7 +1208,7 @@ button.accent {
     backdrop-filter: blur(10px);
     transform: scale(1.025) translateY(-10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    transition: 0.1s;
+    transition: 0.05s;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -1262,7 +1263,10 @@ button.accent {
     font-weight: var(--text-weight);
     margin-top: 0 !important;
     height: max-content;
-    vertical-align: center;
+    width: auto;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 
@@ -1422,7 +1426,9 @@ button.accent {
 .library.menu div .curseforgeContainer .results .horizontalContainer {
     display: flex;
     flex-direction: row;
+    width: auto;
     justify-content: start;
+    max-width: 1000px;
 }
 
 .library.menu div .curseforgeContainer .results section.horizontalSection  {
@@ -1430,7 +1436,7 @@ button.accent {
     flex-direction: column;
     justify-content: space-between;
     aspect-ratio: 1 / 1;
-    width: max-content !important;
+    width: 100%;
     height: 220px;
     margin-right: 15px;
     padding: 20px;
@@ -1447,6 +1453,7 @@ button.accent {
 .library.menu div .curseforgeContainer .results section.horizontalSection p {
     text-align: center;
     font-size: var(--card-text-size);
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -1508,7 +1515,7 @@ action-menu {
 @keyframes actionMenu {
     from {
         transform-origin: top right;
-        transform: scale(.2);
+        transform: scale(.3, .05) translateX(40px);
         opacity:0;
     }
     50% {
