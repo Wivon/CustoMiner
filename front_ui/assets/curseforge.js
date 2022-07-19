@@ -7,6 +7,7 @@ let searchInput = document.querySelector('#curseforgeSearch .inputs div input')
 
 const headers = {
     'Accept': 'application/json',
+    // I know this shouldn't be here, but i don't care it's just a curseforge API key :]
     'x-api-key': '$2a$10$fxKx4A2JuaovI.Jycm1l8.y.HdTZperW5jDDCndKlJr1tx5ELODyG'
 };
 

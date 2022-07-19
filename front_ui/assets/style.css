@@ -10,6 +10,9 @@
     user-select: none;
     -webkit-user-drag: none;
     outline: none;
+}
+
+*:not(.loading > *) {
     scroll-behavior: smooth;
 }
 
@@ -77,6 +80,8 @@ body {
     overflow-x: hidden;
     height: 100%;
 }
+
+
  
 .nav {
     position: fixed;
@@ -698,6 +703,7 @@ input.leftpad-icon[type="text"] { padding-left: 65px }
 
 body.loading {
     overflow: hidden;
+    height: 100vh;
 }
 
 .loader {
@@ -1277,12 +1283,6 @@ button.accent {
     transition: 0.3s var(--animation-timing-function);
     height: 100% !important;
     width: 100%;
-}
-
-.menu.library .container.animate {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: none;
 }
 
 .library.menu div .curseforgeContainer {

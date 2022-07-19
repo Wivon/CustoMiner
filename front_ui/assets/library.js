@@ -6,7 +6,7 @@ let CurseforgeContainer = document.querySelector('.menu.library .curseforgeConta
 let DownloadsContainer = document.querySelector('.menu.library .downloads-container')
 let libraryNavItems
 let CURRENT_LIBRARY_VIEW
-const specialLibraryView = [CurseforgeContainer, DownloadsContainer]
+const othersLibraryView = [CurseforgeContainer, DownloadsContainer]
 
 function RenderAddNewItemsInLibrary() {
     // clear old items if there are
@@ -96,9 +96,6 @@ function renderLibraryNavIndicator(a = document.querySelector('.libraryNav .item
 }
 
 function renderLibraryContainer() {
-    // start animation
-    libraryAnimationContainer.classList.add('animate')
-
     // load view
     if (CURRENT_LIBRARY_VIEW != "curseforge" && CURRENT_LIBRARY_VIEW != "downloads" ) {
         // change title
@@ -109,7 +106,7 @@ function renderLibraryContainer() {
         // display folder contents
         libraryFolderContent.style.display = "block"
         // hide others views
-        hideSpecialLibraryView()
+        hideothersLibraryView()
         // get files and render it.
         renderFolderContentInHTML(item.folderName)
     } else if (CURRENT_LIBRARY_VIEW == "curseforge") {
@@ -120,7 +117,7 @@ function renderLibraryContainer() {
         libraryFolderContent.innerHTML = ""
         libraryFolderContent.style.display = "none"
         // hide ohters views
-        hideSpecialLibraryView()
+        hideothersLibraryView()
         CurseforgeContainer.style.display = "block"
         // load curseforge view
         loadCurseforgeView()
@@ -132,7 +129,7 @@ function renderLibraryContainer() {
         libraryFolderContent.innerHTML = ""
         libraryFolderContent.style.display = "none"
         // hide others view
-        hideSpecialLibraryView()
+        hideothersLibraryView()
         DownloadsContainer.style.display = "block"
         // load downloads view
         loadDownloadsView()
@@ -140,8 +137,36 @@ function renderLibraryContainer() {
 
 }
 
-function hideSpecialLibraryView() {
-    specialLibraryView.forEach(view => {
+function loadCurseforgeView() {
+    endLibraryTransition()
+}
+
+function loadDownloadsView() {
+    endLibraryTransition()
+}
+
+function endLibraryTransition() {
+    // play display animation
+    libraryAnimationContainer.animate(
+        [
+            {
+                opacity: 0,
+                transform: "translateY(100px)"
+            }, {
+                opacity: 1,
+                transform: "translateY(0)"
+            }
+        ], {
+            duration: 300,
+            iterations: 1,
+            timingFunction: "cubic-bezier(.68, -0.04, 0, 1.31)",
+            fillMode: "forwards"
+        }
+    )
+}
+
+function hideothersLibraryView() {
+    othersLibraryView.forEach(view => {
         view.style.display = "none"
     })
 }
@@ -149,7 +174,7 @@ function hideSpecialLibraryView() {
 // render folder content in DOM
 function renderFolderContentInHTML(minecraftFolder) {
     listFilesInDirectory(gameDir + '\\' + minecraftFolder).then(response => {
-        console.log(response)
+        // console.log(response)
         let files = []
 
         if (response.includes('ENOENT')) {
@@ -191,9 +216,7 @@ function renderFolderContentInHTML(minecraftFolder) {
         })
 
         // end animation
-        setTimeout(() => {
-            libraryAnimationContainer.classList.remove('animate')
-        }, 200)
+        endLibraryTransition()
     })
 }
 
@@ -203,20 +226,6 @@ function listFilesInDirectory(path) {
             resolve(response)
         })
     })
-}
-
-function loadCurseforgeView() {
-    // end animation
-    setTimeout(() => {
-        libraryAnimationContainer.classList.remove('animate')
-    }, 200)
-}
-
-function loadDownloadsView() {
-    // end animation
-    setTimeout(() => {
-        libraryAnimationContainer.classList.remove('animate')
-    }, 200)
 }
 
 function openFolderItemActionMenu(FolderItemDOM) {
